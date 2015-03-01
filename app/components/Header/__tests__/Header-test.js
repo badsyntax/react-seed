@@ -6,8 +6,8 @@ import {Header} from '../Header.jsx';
 
 var { TestUtils } = React.addons;
 
-describe('CheckboxWithLabel', function() {
-  it('changes the text after click', function() {
+describe('Header', function() {
+  it('Has the correct css class', function() {
     var header = TestUtils.renderIntoDocument(
       <Header />
     );

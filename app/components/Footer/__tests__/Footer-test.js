@@ -6,8 +6,8 @@ import {Footer} from '../Footer.jsx';
 
 var { TestUtils } = React.addons;
 
-describe('CheckboxWithLabel', function() {
-  it('changes the text after click', function() {
+describe('Footer', function() {
+  it('Has the correct css class', function() {
     var footer = TestUtils.renderIntoDocument(
       <Footer />
     );
