@@ -15,7 +15,7 @@
     "prebuild": "npm run prep-dist-dir",
     "start": "NODE_ENV=production npm run build && npm run compress-js && npm run start-server",
     "start-dev": "NODE_ENV=development npm run build-dev && `npm run start-server & npm run watch`",
-    "clean": "rm -r $npm_package_config_dist_dir",
+    "clean": "rm -rf $npm_package_config_dist_dir",
     "prep-dist-dir": "npm run clean && mkdir -p $npm_package_config_dist_dir\"/bundle\"",
     "html-copy": "cd app && find . -name \"*.html\" -type f -exec rsync -R {} \"../\"$npm_package_config_dist_dir\"/\" \\; && npm run html-template",
     "html-template": "cat app/index.html | sed \"s/\\$version/$npm_package_version/g\" > $npm_package_config_dist_dir\"/index.html\"",
