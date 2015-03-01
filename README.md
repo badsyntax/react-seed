@@ -2,8 +2,6 @@
 
 A boilerplate for react with ES6 and browserify.
 
-This boilerplate will only really be useful once 0.13 is released and once other react libraries catch up (like react-router for example).
-
 ## What you get
 
 * Compilation of jsx with sourcemaps
@@ -69,3 +67,7 @@ export class Body extends React.Component {
 ```
 
 As you can see, you can use template literals [6] to create your classnames.
+
+## Credits
+
+This project was initially forked from https://github.com/tcoopman/react-es6-browserify
