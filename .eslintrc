@@ -1,0 +1,6 @@
+{
+  "settings": {
+    "ecmascript": 6,
+    "jsx": true
+  }
+}

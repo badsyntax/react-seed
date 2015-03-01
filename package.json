@@ -32,6 +32,7 @@
     "sass-watch": "nodemon -e scss -x \" npm run sass-dev\" --watch \"./app\"",
     "concat-vendor-css": "cat node_modules/normalize.css/normalize.css > $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\"",
     "watch": "npm run browserify-watch & npm run html-watch & npm run sass-watch",
+    "lint": "eslint app",
     "test": "jest"
   },
   "jest": {
@@ -46,7 +47,9 @@
       "es6",
       "jsx"
     ],
-    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   },
   "dependencies": {
     "flux": "^2.0.1",
@@ -58,6 +61,7 @@
     "babelify": "^5.0.3",
     "browserify": "^9.0.3",
     "clean-css": "^3.1.2",
+    "eslint": "^0.11.0-alpha.0",
     "http-server": "^0.7.5",
     "jest-cli": "^0.4.0",
     "node-sass": "^2.0.1",
