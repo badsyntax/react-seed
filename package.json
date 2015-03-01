@@ -5,7 +5,7 @@
   "private": true,
   "config": {
     "dist_dir": "./dist",
-    "js_bundle": "./dist/bundle/app",
+    "js_bundle": "./dist/js/app",
     "css_bundle": "./dist/css/main"
   },
   "scripts": {
@@ -16,24 +16,26 @@
     "start": "NODE_ENV=production npm run build && npm run compress-js && npm run start-server",
     "start-dev": "NODE_ENV=development npm run build-dev && `npm run start-server & npm run watch`",
     "clean": "rm -rf $npm_package_config_dist_dir",
-    "prep-dist-dir": "npm run clean && mkdir -p $npm_package_config_dist_dir\"/bundle\"",
+    "prep-dist-dir": "npm run clean && mkdir -p $npm_package_config_dist_dir\"/js\" && mkdir -p $npm_package_config_dist_dir\"/css\"",
     "html-copy": "cd app && find . -name \"*.html\" -type f -exec rsync -R {} \"../\"$npm_package_config_dist_dir\"/\" \\; && npm run html-template",
     "html-template": "cat app/index.html | sed \"s/\\$version/$npm_package_version/g\" > $npm_package_config_dist_dir\"/index.html\"",
-    "html-watch": "nodemon -e html -x \"npm run html-copy\" --include-path=\"./app\"",
+    "html-watch": "nodemon -e html -x \"npm run html-copy\" --watch \"./app\"",
     "browserify": "browserify --entry app/app.jsx --outfile $npm_package_config_js_bundle.$npm_package_version.js --transform babelify --verbose",
     "browserify-dev": "browserify --entry app/app.jsx --outfile $npm_package_config_js_bundle.$npm_package_version.js --transform babelify --verbose --debug",
     "browserify-watch": "watchify --entry app/app.jsx --outfile $npm_package_config_js_bundle.$npm_package_version.js --transform babelify --verbose --debug",
     "compress-js": "uglify -s $npm_package_config_js_bundle.$npm_package_version.js -o $npm_package_config_js_bundle.$npm_package_version.js",
     "start-server": "cd $npm_package_config_dist_dir && http-server -a localhost -p 8000 -c-1 -o",
-    "build": "npm run browserify && npm run html-copy && npm run sass",
+    "build": "npm run browserify && npm run html-copy && npm run concat-vendor-css && npm run sass",
     "build-dev": "npm run build",
     "sass": "node-sass --output-style compressed --include-path ./app/scss ./app/scss/main.scss $npm_package_config_css_bundle.$npm_package_version.css",
     "sass-dev": "node-sass --output-style expanded --source-map $npm_package_config_css_bundle.$npm_package_version.css.map --include-path ./app/scss ./app/scss/main.scss $npm_package_config_css_bundle.$npm_package_version.css",
-    "sass-watch": "nodemon -e scss -x \" npm run sass-dev\" --include-path=\"./app\"",
+    "sass-watch": "nodemon -e scss -x \" npm run sass-dev\" --watch \"./app\"",
+    "concat-vendor-css": "cat node_modules/normalize.css/normalize.css > $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\"",
     "watch": "npm run browserify-watch & npm run html-watch & npm run sass-watch"
   },
   "dependencies": {
     "flux": "^2.0.1",
+    "normalize.css": "^3.0.2",
     "react": "^0.13.0-rc1"
   },
   "devDependencies": {
