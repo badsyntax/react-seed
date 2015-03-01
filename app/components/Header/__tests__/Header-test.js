@@ -1,0 +1,17 @@
+import React from 'react/addons';
+
+jest.dontMock('../Header.jsx');
+
+import {Header} from '../Header.jsx';
+
+var { TestUtils } = React.addons;
+
+describe('CheckboxWithLabel', function() {
+  it('changes the text after click', function() {
+    var header = TestUtils.renderIntoDocument(
+      <Header />
+    );
+    var headerElem = TestUtils.findRenderedDOMComponentWithTag(header, 'header');
+    expect(headerElem.getDOMNode().className).toEqual('header');
+  });
+});
