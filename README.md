@@ -9,10 +9,14 @@ A boilerplate for react with ES6 and browserify.
 * Browserify bundling
 * Sass & CSS bundling
 
-## Usage
+## Getting started
+
+Clone the project and remove the git repository:
 
 ```
-git clone https://github.com/badsyntax/react-seed.git my-project && cd $_ && rm -r .git
+git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
+cd my-project
+rm -r .git
 ```
 
 ## npm scripts
@@ -20,6 +24,7 @@ git clone https://github.com/badsyntax/react-seed.git my-project && cd $_ && rm 
 _You'll need to be on a unixy type system to run the npm scripts._
 
 ```
+npm test # Run the tests
 npm start # Build and start the app in production mode
 npm run start-dev # Build and start the app in dev mode, watch for changes
 ```
@@ -52,9 +57,9 @@ export class App extends React.Component {
 
 ## Releasing
 
-* Log in to npm: `npm login`
+* Login to npm: `npm login`
 * Bump version: `npm version patch`
-* Push to remote: `git push`
+* Push to remote: `git push && git push --tags`
 * Publish package: `npm publish`
 
 ## Credits
