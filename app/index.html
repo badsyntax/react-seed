@@ -4,11 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>Boilerplate for react with ES6 and browserify</title>
-  <link type="text/css" rel="stylesheet" media="all" href="css/vendor.$version.css" />
-  <link type="text/css" rel="stylesheet" media="all" href="css/main.$version.css" />
+  <% if (production) { %>
+    <link type="text/css" rel="stylesheet" media="all" href="css/bundle.<%= version %>.css" />
+  <% } else { %>
+    <link type="text/css" rel="stylesheet" media="all" href="css/vendor.<%= version %>.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/main.<%= version %>.css" />
+  <% } %>
 </head>
 <body>
+<%= production %>
   <main id="app"></main>
-  <script src="js/app.$version.js"></script>
+  <script src="js/app.<%= version %>.js"></script>
 </body>
 </html>
