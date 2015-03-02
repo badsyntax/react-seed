@@ -5,7 +5,8 @@ import _ from 'lodash';
 
 export default class BaseStore extends EventEmitter {
 
-  constructor() {
+  constructor(...args) {
+    super(...args);
     this.setAll([]);
   }
 
