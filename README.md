@@ -21,14 +21,16 @@ npm start # Build and start the app in production mode
 npm run start-dev # Build and start the app in dev mode, watch for changes
 ```
 
-## React with ES6
+## React with ES6 examples
 
-### ES6 classes
+ES6 classes:
 
 ```js
+// Filename: MyComponent.jsx
+
 import React from 'react';
 
-export class MainSection extends React.Component {
+export class MyComponent extends React.Component {
   render() {
     return (
       <div>
@@ -40,15 +42,13 @@ export class MainSection extends React.Component {
 }
 ```
 
-We can use ES6 classes and can extend from React.Component. (React 0.13.0 requirement.)
-
-ES6 modules work too!
+ES6 modules work too:
 
 ```js
-import {MainSection} from './components/MainSection.react.jsx';
+import {MyComponent} from './MyComponent.jsx';
 ```
 
-### String templating for classes
+You can use template literals within jsx:
 
 ```js
 export class Body extends React.Component {
@@ -67,8 +67,6 @@ export class Body extends React.Component {
   }
 }
 ```
-
-As you can see, you can use template literals [6] to create your classnames.
 
 ## Credits
 
