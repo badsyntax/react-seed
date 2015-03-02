@@ -4,7 +4,7 @@ import React from 'react/addons';
 
 jest.dontMock('../Header.jsx');
 
-import {Header} from '../Header.jsx';
+import Header from '../Header.jsx';
 
 var { TestUtils } = React.addons;
 

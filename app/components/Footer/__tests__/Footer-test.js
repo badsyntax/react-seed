@@ -4,7 +4,7 @@ import React from 'react/addons';
 
 jest.dontMock('../Footer.jsx');
 
-import {Footer} from '../Footer.jsx';
+import Footer from '../Footer.jsx';
 
 var { TestUtils } = React.addons;
 
