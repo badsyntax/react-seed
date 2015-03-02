@@ -8,6 +8,7 @@ A boilerplate for react with ES6 and browserify.
 * Jest testing framework
 * Browserify bundling
 * Sass & CSS bundling
+* Basic flux architecture with app actions, events and stores.
 
 ## Getting started
 
