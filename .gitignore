@@ -1,6 +1,4 @@
 node_modules
-bower_components
-dist
+/dist
 *.log*
 .DS_Store
-app/config/app.json

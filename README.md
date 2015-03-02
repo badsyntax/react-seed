@@ -7,8 +7,10 @@ A boilerplate for react with ES6 and browserify.
 * Compilation of jsx with sourcemaps
 * Compilation of ES6 to ES5
 * Compilation of Sass with sourcemaps
+* Jest test framework
 * Browserify bundling
-* Handy npm scripts for development
+* CSS bundling
+* Asset URL fingerprinting
 
 ## npm scripts
 
