@@ -58,6 +58,9 @@ export class App extends React.Component {
 Writing tests:
 
 ```js
+
+// Filename: __tests__/Footer-test.js
+
 import React from 'react/addons';
 
 var { TestUtils } = React.addons;
