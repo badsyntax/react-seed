@@ -57,7 +57,7 @@ export class App extends React.Component {
 
 Writing tests:
 
-```
+```js
 import React from 'react/addons';
 
 var { TestUtils } = React.addons;
