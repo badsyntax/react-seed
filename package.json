@@ -2,7 +2,6 @@
   "name": "react-seed",
   "version": "0.0.1",
   "repository": "https://github.com/badsyntax/react-seed",
-  "private": true,
   "config": {
     "dist_dir": "./dist",
     "js_bundle": "./dist/js/app",
