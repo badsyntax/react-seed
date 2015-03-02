@@ -1,12 +1,15 @@
 {
   "name": "react-es6-browserify",
   "version": "0.0.1",
-  "repository": "https://github.com/badsyntax/react-es6-browserify",
+  "repository": "https://github.com/badsyntax/react-seed",
   "private": true,
   "config": {
     "dist_dir": "./dist",
     "js_bundle": "./dist/js/app",
-    "css_bundle": "./dist/css/main"
+    "css_bundle": "./dist/css/main",
+    "vendor_css": [
+      "node_modules/normalize.css/normalize.css"
+    ]
   },
   "scripts": {
     "env": "env",
@@ -35,27 +38,11 @@
     "sass": "node-sass --output-style compressed --include-path ./app/scss ./app/scss/main.scss $npm_package_config_css_bundle.$npm_package_version.css",
     "sass-dev": "node-sass --output-style expanded --source-map $npm_package_config_css_bundle.$npm_package_version.css.map --include-path ./app/scss ./app/scss/main.scss $npm_package_config_css_bundle.$npm_package_version.css",
     "sass-watch": "nodemon -e scss -x \" npm run sass-dev\" --watch \"./app\"",
-    "concat-vendor-css": "cat node_modules/normalize.css/normalize.css > $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\"",
+    "concat-vendor-css": "cat `node -p \"require('./package.json').config.vendor_css.join(' ')\"` > $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\"",
     "watch": "npm run browserify-watch & npm run html-watch & npm run sass-watch",
     "release": "NODE_ENV=production npm run build && npm run compress",
     "lint": "eslint app",
     "test": "jest"
-  },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": [
-      "es6",
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "es6",
-      "jsx"
-    ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
-    ]
   },
   "dependencies": {
     "flux": "^2.0.1",
@@ -75,6 +62,22 @@
     "nodemon": "^1.3.7",
     "uglify": "^0.1.1",
     "watchify": "^2.4.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6",
+      "jsx"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   },
   "engines": {
     "node": ">=0.10.0"
