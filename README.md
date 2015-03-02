@@ -20,45 +20,24 @@ npm run start-dev # Build and start the app in dev mode, watch for changes
 
 ## Examples
 
-ES6 classes:
+ES6 classes, modules and template literals:
 
 ```js
-// Filename: MyComponent.jsx
+// Filename: App.jsx
 
 import React from 'react';
+import {Body} from './Body.jsx';
 
-export class MyComponent extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Example of React with es6 and browserify</h1>
-        <Body />
-      </div>
-    );
-  }
-}
-```
-
-ES6 modules:
-
-```js
-import {MyComponent} from './MyComponent.jsx';
-```
-
-ES6 template literals within jsx:
-
-```js
-export class Body extends React.Component {
-
+export class App extends React.Component {
   getClassName() {
     return 'foo';
   }
-
   render() {
-    var x = 'x';
+    let x = 'x';
     return (
       <div className={`${x} ${this.getClassName()} bar`}>
-        Hello there!
+        <h1>Example of React with es6 and browserify</h1>
+        <Body />
       </div>
     );
   }
