@@ -9,6 +9,12 @@ A boilerplate for react with ES6 and browserify.
 * Browserify bundling
 * Sass & CSS bundling
 
+## Usage
+
+```
+git clone https://github.com/badsyntax/react-seed.git my-project && cd $_ && rm -r .git
+```
+
 ## npm scripts
 
 _You'll need to be on a unixy type system to run the npm scripts._
