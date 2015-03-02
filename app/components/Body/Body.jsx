@@ -1,19 +1,40 @@
+'use strict';
+
 import React from 'react';
-import {ExampleStore} from '../../stores/ExampleStore.jsx';
+import AppActions from '../../actions/AppActions';
+import Menu from '../Menu/Menu.jsx';
+import SelectedList from '../SelectedList/SelectedList.jsx';
 
-export class Body extends React.Component {
+class Body extends React.Component {
 
-  getClassName() {
-    return 'foo';
+  _onMenuSelect(item) {
+    AppActions.selectItem(item);
+  }
+
+  _onMenuDeSelect(item) {
+    AppActions.deSelectItem(item);
   }
 
   render() {
-    var x = 'x';
-
     return (
-      <div className={`${x} ${this.getClassName()} bar`}>
-        Hello there!
+      <div className={'body'}>
+        <p>Here is a Menu component:</p>
+        <p><em>Click on a menu item.</em></p>
+        <Menu
+          items={this.props.items}
+          _onSelect={this._onMenuSelect}
+          _onDeSelect={this._onMenuDeSelect} />
+        <p>Your selections:</p>
+        <SelectedList
+          items={this.props.selectedItems} />
       </div>
     );
   }
 }
+
+Body.propTypes =  {
+  items: React.PropTypes.array.isRequired,
+  selectedItems: React.PropTypes.array.isRequired
+};
+
+export default Body;

@@ -1,10 +1,12 @@
+'use strict';
+
 import React from 'react';
 
-export class Footer extends React.Component {
+export default class Footer extends React.Component {
   render() {
     return (
-      <footer className="footer">
-        Footer here
+      <footer className={'footer'}>
+        &copy; 2015
       </footer>
     );
   }
