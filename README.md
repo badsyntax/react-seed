@@ -55,6 +55,28 @@ export class App extends React.Component {
 }
 ```
 
+Writing tests:
+
+```
+import React from 'react/addons';
+
+var { TestUtils } = React.addons;
+
+jest.dontMock('../Footer.jsx');
+
+import {Footer} from '../Footer.jsx';
+
+describe('Footer', function() {
+  it('Has the correct css class', function() {
+    var footer = TestUtils.renderIntoDocument(
+      <Footer />
+    );
+    var footerElem = TestUtils.findRenderedDOMComponentWithTag(footer, 'footer');
+    expect(footerElem.getDOMNode().className).toEqual('footer');
+  });
+});
+```
+
 ## Releasing
 
 * Login to npm: `npm login`
