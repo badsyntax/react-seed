@@ -4,24 +4,21 @@ A boilerplate for react with ES6 and browserify.
 
 ## What you get
 
-* Compilation of jsx with sourcemaps
-* Compilation of ES6 to ES5
-* Compilation of Sass with sourcemaps
-* Jest test framework
+* Compilation of ES6 with jsx to ES5
+* Jest testing framework
 * Browserify bundling
-* CSS bundling
-* Asset URL fingerprinting
+* Sass & CSS bundling
 
 ## npm scripts
 
-You'll need to be on a unixy type system to run the npm scripts.
+_You'll need to be on a unixy type system to run the npm scripts._
 
 ```
 npm start # Build and start the app in production mode
 npm run start-dev # Build and start the app in dev mode, watch for changes
 ```
 
-## React with ES6 examples
+## Examples
 
 ES6 classes:
 
@@ -42,13 +39,13 @@ export class MyComponent extends React.Component {
 }
 ```
 
-ES6 modules work too:
+ES6 modules:
 
 ```js
 import {MyComponent} from './MyComponent.jsx';
 ```
 
-You can use template literals within jsx:
+ES6 template literals within jsx:
 
 ```js
 export class Body extends React.Component {
