@@ -68,6 +68,13 @@ export class Body extends React.Component {
 }
 ```
 
+## Releasing
+
+* Log in to npm: `npm login`
+* Bump version: `npm version patch`
+* Push to remote: `git push`
+* Publish package: `npm publish`
+
 ## Credits
 
 This project was initially forked from https://github.com/tcoopman/react-es6-browserify
