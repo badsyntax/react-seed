@@ -1,6 +1,6 @@
 {
   "name": "react-seed",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "https://github.com/badsyntax/react-seed",
   "config": {
     "dist_dir": "./dist",
@@ -65,7 +65,9 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testPathDirs": ["./app"],
+    "testPathDirs": [
+      "./app"
+    ],
     "testFileExtensions": [
       "js"
     ],
