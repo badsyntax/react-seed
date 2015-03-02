@@ -1,5 +1,5 @@
 {
-  "name": "react-es6-browserify",
+  "name": "react-seed",
   "version": "0.0.1",
   "repository": "https://github.com/badsyntax/react-seed",
   "private": true,
@@ -18,11 +18,12 @@
     "prestart": "npm install",
     "prestart-dev": "npm run prestart",
     "prebuild": "npm run prep-dist-dir",
+    "preprep-dist-dir": "npm run clean",
     "bla": "NODE_ENV=production echo $npm_config_production",
     "start": "NODE_ENV=production npm run build && npm run compress && npm run start-server",
     "start-dev": "NODE_ENV=development npm run build-dev && `npm run start-server & npm run watch`",
     "clean": "rm -rf $npm_package_config_dist_dir",
-    "prep-dist-dir": "npm run clean && mkdir -p $npm_package_config_dist_dir\"/js\" && mkdir -p $npm_package_config_dist_dir\"/css\"",
+    "prep-dist-dir": "mkdir -p $npm_package_config_dist_dir\"/js\" && mkdir -p $npm_package_config_dist_dir\"/css\"",
     "html-copy": "cd app && find . -name \"*.html\" -type f -exec rsync -R {} \"../\"$npm_package_config_dist_dir\"/\" \\; && npm run html-template",
     "html-template": "[[ \"$NODE_ENV\" == \"production\" ]] && prod=\"true\" || prod=\"false\"; node -p \"require('lodash').template(require('fs').readFileSync('app/index.html'))({version:'$npm_package_version',production:$prod});\" > $npm_package_config_dist_dir\"/index.html\"",
     "html-watch": "nodemon -e html -x \"npm run html-copy\" --watch \"./app\"",
@@ -65,14 +66,13 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testPathDirs": ["./app"],
     "testFileExtensions": [
-      "es6",
       "js"
     ],
     "moduleFileExtensions": [
       "js",
       "json",
-      "es6",
       "jsx"
     ],
     "unmockedModulePathPatterns": [
