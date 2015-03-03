@@ -32,28 +32,46 @@ npm run start-dev # Build and start the app in dev mode, watch for changes
 
 ## Examples
 
-ES6 classes, modules and template literals:
+Writing components:
 
 ```js
-// Filename: App.jsx
+// Filename: Menu.jsx
+
+'use strict';
 
 import React from 'react';
-import {Body} from './Body.jsx';
+import MenuItem from '../MenuItem/MenuItem.jsx';
 
-export class App extends React.Component {
-  getClassName() {
-    return 'foo';
-  }
-  render() {
-    let x = 'x';
+var { PropTypes } = React;
+
+class Menu extends React.Component {
+
+  getMenuItem(item) {
     return (
-      <div className={`${x} ${this.getClassName()} bar`}>
-        <h1>Example of React with es6 and browserify</h1>
-        <Body />
-      </div>
+      <MenuItem
+        item={item}
+        onSelect={this.props.onSelect}
+        onDeselect={this.props.onDeselect}
+        key={'menu-item-' + item.id} />
+    );
+  }
+
+  render() {
+    return (
+      <ul className={'menu'}>
+        {this.props.items.map(this.getMenuItem, this)}
+      </ul>
     );
   }
 }
+
+Menu.propTypes =  {
+  items: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  onDeselect: PropTypes.func.isRequired
+};
+
+export default Menu;
 ```
 
 Writing tests:
