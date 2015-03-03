@@ -4,7 +4,8 @@ A boilerplate for building React apps with ES6 and browserify.
 
 ## What you get
 
-* Compilation of ES6 & jsx to ES5
+* React 0.13
+* Compilation of ES6 & JSX to ES5
 * Jest testing framework
 * Browserify bundling
 * Sass & CSS bundling
@@ -82,23 +83,37 @@ Writing tests:
 
 ```js
 
-// Filename: __tests__/Footer-test.js
+// Filename: __tests__/Menu-test.js
+
+'use strict';
 
 import React from 'react/addons';
 
+jest.dontMock('../Menu.jsx');
+jest.dontMock('../../MenuItem/MenuItem.jsx');
+
+import Menu from '../Menu.jsx';
+
 var { TestUtils } = React.addons;
 
-jest.dontMock('../Footer.jsx');
+describe('Menu', function() {
 
-import {Footer} from '../Footer.jsx';
+  var menuItems = [
+    { id: 1, label: 'Option 1' },
+    { id: 2, label: 'Option 2' }
+  ];
 
-describe('Footer', function() {
+  var menu = TestUtils.renderIntoDocument(
+    <Menu items={menuItems} onSelect={function(){}} onDeselect={function(){}} />
+  );
+  var menuElem = React.findDOMNode(menu);
+
   it('Has the correct css class', function() {
-    var footer = TestUtils.renderIntoDocument(
-      <Footer />
-    );
-    var footerElem = TestUtils.findRenderedDOMComponentWithTag(footer, 'footer');
-    expect(footerElem.getDOMNode().className).toEqual('footer');
+    expect(menuElem.className).toEqual('menu');
+  });
+
+  it('Renders the menu items', function() {
+    expect(menuElem.querySelectorAll('li').length).toEqual(2);
   });
 });
 ```
