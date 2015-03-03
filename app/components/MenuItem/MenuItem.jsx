@@ -34,7 +34,7 @@ class MenuItem extends React.Component {
   getClassName() {
     return classnames({
       'menu-item': true,
-      '--selected': this.isSelected()
+      '-selected': this.isSelected()
     });
   }
 

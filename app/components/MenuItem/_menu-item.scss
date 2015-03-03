@@ -6,4 +6,7 @@
   &:hover {
     background: yellow;
   }
+  &.-selected {
+    background: lightblue;
+  }
 }
