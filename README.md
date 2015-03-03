@@ -46,6 +46,14 @@ var { PropTypes } = React;
 
 class Menu extends React.Component {
 
+  constructor(...args) {
+    super(...args);
+    // Set initial state
+    this.state = {
+      foo: false
+    };
+  }
+
   getMenuItem(item) {
     return (
       <MenuItem
