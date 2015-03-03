@@ -1,10 +1,10 @@
 # React seed
 
-A boilerplate for react with ES6 and browserify.
+A boilerplate for building React apps with ES6 and browserify.
 
 ## What you get
 
-* Compilation of ES6 with jsx to ES5
+* Compilation of ES6 & jsx to ES5
 * Jest testing framework
 * Browserify bundling
 * Sass & CSS bundling
