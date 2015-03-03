@@ -13,7 +13,7 @@ describe('Header', function() {
     var header = TestUtils.renderIntoDocument(
       <Header />
     );
-    var headerElem = TestUtils.findRenderedDOMComponentWithTag(header, 'header');
-    expect(headerElem.getDOMNode().className).toEqual('header');
+    var headerElem = React.findDOMNode(header);
+    expect(headerElem.className).toEqual('header');
   });
 });

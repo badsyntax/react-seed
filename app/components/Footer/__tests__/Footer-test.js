@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React from 'react/addons';
 
 jest.dontMock('../Footer.jsx');
 
@@ -13,7 +13,7 @@ describe('Footer', function() {
     var footer = TestUtils.renderIntoDocument(
       <Footer />
     );
-    var footerElem = TestUtils.findRenderedDOMComponentWithTag(footer, 'footer');
-    expect(footerElem.getDOMNode().className).toEqual('footer');
+    var footerElem = React.findDOMNode(footer);
+    expect(footerElem.className).toEqual('footer');
   });
 });
