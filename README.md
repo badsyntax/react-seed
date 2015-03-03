@@ -104,7 +104,7 @@ describe('Menu', function() {
   ];
 
   var menu = TestUtils.renderIntoDocument(
-    <Menu items={menuItems} onSelect={function(){}} onDeselect={function(){}} />
+    <Menu items={menuItems} />
   );
   var menuElem = React.findDOMNode(menu);
 
