@@ -1,6 +1,9 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
+
+var { PropTypes } = React;
 
 class MenuItem extends React.Component {
 
@@ -11,10 +14,10 @@ class MenuItem extends React.Component {
     };
   }
 
-  _onClick(e) {
+  handleClick(e) {
     this.toggleSelected();
     this.props[
-      this.isSelected() ? '_onDeSelect' : '_onSelect'
+      this.isSelected() ? 'onDeselect' : 'onSelect'
     ](this.props.item);
   }
 
@@ -29,16 +32,15 @@ class MenuItem extends React.Component {
   }
 
   getClassName() {
-    var className = ['menu-item'];
-    if (this.isSelected()) {
-      className.push('--selected');
-    }
-    return className.join(' ');
+    return classnames({
+      'menu-item': true,
+      '--selected': this.isSelected()
+    });
   }
 
   render() {
     return (
-      <li className={this.getClassName()} onClick={this._onClick.bind(this)}>
+      <li className={this.getClassName()} onClick={this.handleClick.bind(this)}>
         {this.props.item.label}
       </li>
     );
@@ -46,9 +48,9 @@ class MenuItem extends React.Component {
 }
 
 MenuItem.propTypes =  {
-  item: React.PropTypes.object.isRequired,
-  _onSelect: React.PropTypes.func.isRequired,
-  _onDeSelect: React.PropTypes.func.isRequired
+  item: PropTypes.object.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  onDeselect: PropTypes.func.isRequired
 };
 
 export default MenuItem;

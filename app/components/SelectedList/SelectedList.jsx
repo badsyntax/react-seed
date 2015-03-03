@@ -3,6 +3,8 @@
 import React from 'react';
 import SelectedItem from '../SelectedItem/SelectedItem.jsx';
 
+var { PropTypes } = React;
+
 class SelectedList extends React.Component {
   render() {
     return (
@@ -20,7 +22,7 @@ class SelectedList extends React.Component {
 }
 
 SelectedList.propTypes =  {
-  items: React.PropTypes.array.isRequired
+  items: PropTypes.array.isRequired
 };
 
 export default SelectedList;

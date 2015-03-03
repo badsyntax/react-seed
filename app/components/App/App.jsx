@@ -22,8 +22,8 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    ItemsStore.addChangeListener(this._onChange.bind(this));
-    SelectedStore.addChangeListener(this._onChange.bind(this));
+    ItemsStore.addChangeListener(this.onChange.bind(this));
+    SelectedStore.addChangeListener(this.onChange.bind(this));
 
     ItemsStore.setAll(
       ['Item 1', 'Item 2'].map(function(item, i) {
@@ -36,11 +36,11 @@ export default class App extends React.Component {
   }
 
   componentWillUnmount() {
-    ItemsStore.removeChangeListener(this._onChange);
-    SelectedStore.removeChangeListener(this._onChange);
+    ItemsStore.removeChangeListener(this.onChange);
+    SelectedStore.removeChangeListener(this.onChange);
   }
 
-  _onChange() {
+  onChange() {
     this.setState(getAppState());
   }
 

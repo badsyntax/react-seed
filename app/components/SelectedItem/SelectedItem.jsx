@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+var { PropTypes } = React;
+
 class SelectedItem extends React.Component {
   render() {
     return (
@@ -13,7 +15,7 @@ class SelectedItem extends React.Component {
 }
 
 SelectedItem.propTypes =  {
-  item: React.PropTypes.object.isRequired
+  item: PropTypes.object.isRequired
 };
 
 export default SelectedItem;

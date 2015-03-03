@@ -3,14 +3,16 @@
 import React from 'react';
 import MenuItem from '../MenuItem/MenuItem.jsx';
 
+var { PropTypes } = React;
+
 class Menu extends React.Component {
 
   getMenuItem(item) {
     return (
       <MenuItem
         item={item}
-        _onSelect={this.props._onSelect}
-        _onDeSelect={this.props._onDeSelect}
+        onSelect={this.props.onSelect}
+        onDeselect={this.props.onDeselect}
         key={'menu-item-' + item.id} />
     );
   }
@@ -25,9 +27,9 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes =  {
-  items: React.PropTypes.array.isRequired,
-  _onSelect: React.PropTypes.func.isRequired,
-  _onDeSelect: React.PropTypes.func.isRequired
+  items: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  onDeselect: PropTypes.func.isRequired
 };
 
 export default Menu;

@@ -5,25 +5,26 @@ import AppActions from '../../actions/AppActions';
 import Menu from '../Menu/Menu.jsx';
 import SelectedList from '../SelectedList/SelectedList.jsx';
 
+var { PropTypes } = React;
+
 class Body extends React.Component {
 
-  _onMenuSelect(item) {
+  handleMenuSelect(item) {
     AppActions.selectItem(item);
   }
 
-  _onMenuDeSelect(item) {
+  handleMenuDeselect(item) {
     AppActions.deSelectItem(item);
   }
 
   render() {
     return (
       <div className={'body'}>
-        <p>Here is a Menu component:</p>
-        <p><em>Click on a menu item.</em></p>
+        <p><em>Click on a menu item to toggle:</em></p>
         <Menu
           items={this.props.items}
-          _onSelect={this._onMenuSelect}
-          _onDeSelect={this._onMenuDeSelect} />
+          onSelect={this.handleMenuSelect}
+          onDeselect={this.handleMenuDeselect} />
         <p>Your selections:</p>
         <SelectedList
           items={this.props.selectedItems} />
@@ -33,8 +34,8 @@ class Body extends React.Component {
 }
 
 Body.propTypes =  {
-  items: React.PropTypes.array.isRequired,
-  selectedItems: React.PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  selectedItems: PropTypes.array.isRequired
 };
 
 export default Body;
