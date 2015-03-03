@@ -20,6 +20,7 @@ class Body extends React.Component {
   render() {
     return (
       <div className={'body'}>
+        <h1>Example of React with es6 and browserify</h1>
         <p><em>Click on a menu item to toggle:</em></p>
         <Menu
           items={this.props.items}
