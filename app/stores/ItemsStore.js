@@ -14,4 +14,6 @@ class ItemsStore extends BaseStore {
   }
 }
 
-export default new ItemsStore();
+var store = new ItemsStore();
+
+export default store;

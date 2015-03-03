@@ -12,7 +12,7 @@
   },
   "scripts": {
     "env": "env",
-    "pretest": "npm install",
+    "pretest": "npm install && npm run lint",
     "prerelease": "npm test",
     "prestart": "npm install",
     "prestart-dev": "npm run prestart",
@@ -41,7 +41,7 @@
     "concat-vendor-css": "cat `node -p \"require('./package.json').config.vendor_css.join(' ')\"` > $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\"",
     "watch": "npm run browserify-watch & npm run html-watch & npm run sass-watch",
     "release": "NODE_ENV=production npm run build && npm run compress",
-    "lint": "eslint app",
+    "lint": "eslint ./app",
     "test": "jest"
   },
   "dependencies": {
@@ -51,11 +51,12 @@
     "react": "^0.13.0-rc1"
   },
   "devDependencies": {
+    "babel-eslint": "^1.0.12",
     "babel-jest": "^4.0.0",
     "babelify": "^5.0.3",
     "browserify": "^9.0.3",
     "clean-css": "^3.1.2",
-    "eslint": "^0.11.0-alpha.0",
+    "eslint": "^0.15.1",
     "http-server": "^0.7.5",
     "jest-cli": "^0.4.0",
     "lodash": "^3.3.1",
@@ -89,5 +90,23 @@
     "transform": [
       "babelify"
     ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "globals": {
+      "jest": true,
+      "describe": true,
+      "it": true,
+      "expect": true
+    },
+    "rules": {
+      "strict": true,
+      "indent": [2, 2],
+      "quotes": [2, "single"]
+    }
   }
 }
