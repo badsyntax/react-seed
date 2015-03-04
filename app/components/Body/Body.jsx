@@ -2,8 +2,10 @@
 
 import React from 'react';
 import AppActions from '../../actions/AppActions';
-import Menu from '../Menu/Menu.jsx';
-import SelectedList from '../SelectedList/SelectedList.jsx';
+import Menu from '../Menu/Menu';
+import SelectedList from '../SelectedList/SelectedList';
+
+import './_Body.scss';
 
 var { PropTypes } = React;
 
@@ -20,7 +22,7 @@ class Body extends React.Component {
   render() {
     return (
       <div className={'body'}>
-        <h1>Example of React with es6 and browserify</h1>
+        <h1>Example of React with ES6 and webpack</h1>
         <p><em>Click on a menu item to toggle:</em></p>
         <Menu
           items={this.props.items}

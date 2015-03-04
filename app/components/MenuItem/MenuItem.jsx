@@ -3,6 +3,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import './_MenuItem.scss';
+
 var { PropTypes } = React;
 
 class MenuItem extends React.Component {

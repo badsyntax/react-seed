@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import SelectedItem from '../SelectedItem/SelectedItem.jsx';
+import SelectedItem from '../SelectedItem/SelectedItem';
 
 var { PropTypes } = React;
 

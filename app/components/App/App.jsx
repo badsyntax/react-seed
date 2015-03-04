@@ -1,10 +1,12 @@
 'use strict';
 
 import React from 'react';
-import Body from '../Body/Body.jsx';
-import Footer from '../Footer/Footer.jsx';
+import Body from '../Body/Body';
+import Footer from '../Footer/Footer';
 import ItemsStore from '../../stores/ItemsStore';
 import SelectedStore from '../../stores/SelectedStore';
+
+import './_App.scss';
 
 function getAppState() {
   return {
@@ -25,7 +27,7 @@ export default class App extends React.Component {
     SelectedStore.addChangeListener(this.onChange.bind(this));
 
     ItemsStore.setAll(
-      ['Item 1', 'Item 2'].map(function(item, i) {
+      ['Item 1', 'Item 2'].map((item, i) => {
         return {
           id: i,
           label: item

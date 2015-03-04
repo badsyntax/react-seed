@@ -12,7 +12,6 @@
   },
   "scripts": {
     "env": "env",
-    "pretest": "npm install && npm run lint",
     "prerelease": "npm test",
     "prestart": "npm install",
     "prestart-dev": "npm run prestart",
@@ -26,20 +25,15 @@
     "html-copy": "cd app && find . -name \"*.html\" -type f -exec rsync -R {} \"../\"$npm_package_config_dist_dir\"/\" \\;",
     "html-template": "[[ \"$NODE_ENV\" == \"production\" ]] && prod=\"true\" || prod=\"false\"; node -p \"require('lodash').template(require('fs').readFileSync('app/index.html'))({version:'$npm_package_version',production:$prod});\" > $npm_package_config_dist_dir\"/index.html\"",
     "html-watch": "nodemon -e html -x \"npm run html-copy\" --watch \"./app\"",
-    "browserify": "browserify -e app/app.jsx -o $npm_package_config_js_bundle.$npm_package_version.js -t babelify -g uglifyify -t uglifyify",
-    "browserify-dev": "browserify -e app/app.jsx -o $npm_package_config_js_bundle.$npm_package_version.js -t babelify -d --verbose",
-    "browserify-watch": "watchify -e app/app.jsx -o $npm_package_config_js_bundle.$npm_package_version.js -t babelify -d --verbose",
+    "webpack": "webpack --config ./webpack.prod.config.js --progress --production",
+    "webpack-dev": "webpack --progress --config ./webpack.dev.config.js",
+    "webpack-watch": "webpack --progress --watch --config ./webpack.dev.config.js",
     "compress-js": "uglify -s $npm_package_config_js_bundle.$npm_package_version.js -o $npm_package_config_js_bundle.$npm_package_version.js",
-    "compress-css": "`cat $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\" $npm_package_config_dist_dir\"/css/main.$npm_package_version.css\" | cleancss -o dist/css/bundle.$npm_package_version.css` && rm $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\" && rm $npm_package_config_dist_dir\"/css/main.$npm_package_version.css\"",
-    "compress": "npm run compress-css && npm run compress-js",
-    "start-server": "cd $npm_package_config_dist_dir && http-server -a localhost -p 8000 -c-1 -o",
-    "build": "npm run browserify && npm run html-copy && npm run concat-vendor-css && npm run sass",
-    "build-dev": "npm run browserify-dev && npm run html-copy && npm run concat-vendor-css && npm run sass",
-    "sass": "node-sass --output-style compressed --include-path ./app/scss ./app/scss/main.scss $npm_package_config_css_bundle.$npm_package_version.css",
-    "sass-dev": "node-sass --output-style expanded --source-map $npm_package_config_css_bundle.$npm_package_version.css.map --include-path ./app/scss ./app/scss/main.scss $npm_package_config_css_bundle.$npm_package_version.css",
-    "sass-watch": "nodemon -e scss -x \" npm run sass-dev\" --watch \"./app\"",
-    "concat-vendor-css": "cat `node -p \"require('./package.json').config.vendor_css.join(' ')\"` > $npm_package_config_dist_dir\"/css/vendor.$npm_package_version.css\"",
-    "watch": "npm run browserify-watch & npm run html-watch & npm run sass-watch",
+    "compress": "npm run compress-js",
+    "start-server": "http-server $npm_package_config_dist_dir -a localhost -p 8000 -c-1 -o",
+    "build": "npm run webpack && npm run html-copy",
+    "build-dev": "npm run webpack-dev && npm run html-copy",
+    "watch": "npm run webpack-watch & npm run html-watch",
     "release": "NODE_ENV=production npm run build && npm run compress",
     "lint": "eslint ./app",
     "test": "jest"
@@ -48,23 +42,25 @@
     "classnames": "^1.1.4",
     "flux": "^2.0.1",
     "normalize.css": "^3.0.2",
-    "react": "^0.13.0-rc1"
+    "react": "^0.13.0-rc1",
+    "lodash": "^3.3.1"
   },
   "devDependencies": {
+    "babel-core": "^4.6.6",
     "babel-eslint": "^1.0.12",
     "babel-jest": "^4.0.0",
-    "babelify": "^5.0.3",
-    "browserify": "^9.0.3",
-    "clean-css": "^3.1.2",
+    "babel-loader": "^4.0.0",
+    "babel-runtime": "^4.6.6",
+    "css-loader": "^0.9.1",
     "eslint": "^0.15.1",
+    "extract-text-webpack-plugin": "^0.3.8",
     "http-server": "^0.7.5",
     "jest-cli": "^0.4.0",
-    "lodash": "^3.3.1",
-    "node-sass": "^2.0.1",
     "nodemon": "^1.3.7",
+    "sass-loader": "^0.4.0",
+    "style-loader": "^0.8.3",
     "uglify": "^0.1.1",
-    "uglifyify": "^3.0.1",
-    "watchify": "^2.4.0"
+    "webpack": "^1.7.2"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
@@ -86,11 +82,6 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
-  },
   "eslintConfig": {
     "parser": "babel-eslint",
     "env": {
@@ -105,8 +96,14 @@
     },
     "rules": {
       "strict": true,
-      "indent": [2, 2],
-      "quotes": [2, "single"]
+      "indent": [
+        2,
+        2
+      ],
+      "quotes": [
+        2,
+        "single"
+      ]
     }
   }
 }

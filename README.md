@@ -1,14 +1,13 @@
 # React seed
 
-A boilerplate for building React apps with ES6 and browserify.
+A boilerplate for building React apps with ES6 and webpack.
 
 ## What you get
 
 * React 0.13
 * Compilation of ES6 & JSX to ES5
 * Jest testing framework
-* Browserify bundling
-* Sass & CSS bundling
+* webpack bundling (js & scss)
 * Basic flux architecture with app actions, events and stores.
 
 ## Getting started
@@ -41,7 +40,9 @@ Writing components:
 'use strict';
 
 import React from 'react';
-import MenuItem from '../MenuItem/MenuItem.jsx';
+import MenuItem from '../MenuItem/MenuItem';
+
+import './_Menu.scss';
 
 var { PropTypes } = React;
 

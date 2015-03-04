@@ -1,8 +1,10 @@
 'use strict';
 
-import 'babelify/polyfill';
+import 'babel-core/polyfill';
 import React from 'react';
-import App from './components/App/App.jsx';
+import App from './components/App/App';
+
+import './scss/app.scss'
 
 React.render(
   <App />,
