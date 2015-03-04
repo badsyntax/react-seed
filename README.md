@@ -129,3 +129,9 @@ describe('Menu', function() {
 ## Credits
 
 This project was initially forked from https://github.com/tcoopman/react-es6-browserify
+
+License
+
+Copyright (c) 2015 Richard Willis
+
+MIT (http://opensource.org/licenses/MIT)
