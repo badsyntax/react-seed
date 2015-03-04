@@ -8,7 +8,7 @@ module.exports = {
   context: path.join(__dirname, 'app'),
   entry: './app.jsx',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: pkg.config.dist_dir,
     filename: path.join('js', util.format('app.%s.js', version))
   },
   module: {

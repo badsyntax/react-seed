@@ -3,12 +3,7 @@
   "version": "0.0.3",
   "repository": "https://github.com/badsyntax/react-seed",
   "config": {
-    "dist_dir": "./dist",
-    "js_bundle": "./dist/js/app",
-    "css_bundle": "./dist/css/main",
-    "vendor_css": [
-      "node_modules/normalize.css/normalize.css"
-    ]
+    "dist_dir": "./dist"
   },
   "scripts": {
     "env": "env",
@@ -28,7 +23,7 @@
     "webpack": "webpack --config ./webpack.prod.config.js --progress --production",
     "webpack-dev": "webpack --progress --config ./webpack.dev.config.js",
     "webpack-watch": "webpack --progress --watch --config ./webpack.dev.config.js",
-    "compress-js": "uglify -s $npm_package_config_js_bundle.$npm_package_version.js -o $npm_package_config_js_bundle.$npm_package_version.js",
+    "compress-js": "uglify -s ./dist/js/app.$npm_package_version.js -o ./dist/js/app.$npm_package_version.js",
     "compress": "npm run compress-js",
     "start-server": "http-server $npm_package_config_dist_dir -a localhost -p 8000 -c-1 -o",
     "build": "npm run webpack && npm run html-copy",
