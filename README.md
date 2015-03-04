@@ -130,7 +130,7 @@ describe('Menu', function() {
 
 This project was initially forked from https://github.com/tcoopman/react-es6-browserify
 
-License
+## License
 
 Copyright (c) 2015 Richard Willis
 
