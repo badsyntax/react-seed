@@ -24,11 +24,8 @@ rm -r .git
 
 _You'll need to be on a unixy type system to run the npm scripts._
 
-```
-npm test # Run the tests
-npm start # Build and start the app in production mode
-npm run start-dev # Build and start the app in dev mode, watch for changes
-```
+* `npm start` - Build and start the app in dev mode
+* `npm test` - Run the tests
 
 ## Examples
 
