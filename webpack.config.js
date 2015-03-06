@@ -86,7 +86,7 @@ var config = {
     app: ['webpack/hot/dev-server', './app.jsx']
   },
   output: {
-    path: pkg.config.dist_dir,
+    path: pkg.config.build_dir,
     publicPath: '/',
     filename: jsBundle,
     pathinfo: DEBUG
