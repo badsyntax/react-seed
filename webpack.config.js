@@ -42,6 +42,44 @@ if (DEBUG) {
   );
 }
 
+var loaders = [
+  {
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader?optional&optional=runtime'
+  },
+  {
+    test: /\.css$/,
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+  },
+  {
+    test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
+    loader: 'file-loader?name=[path][name].[ext]'
+  },
+  {
+    test: /\.html$/,
+    loader: [
+      'file-loader?name=[path][name].[ext]',
+      'template-html-loader?' + [
+        'raw=true',
+        'engine=lodash',
+        'version='+pkg.version
+      ].join('&')
+    ].join('!')
+  },
+  {
+    test: /\.scss$/,
+    loader: cssExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!' +
+      'sass-loader?' + [
+        'sourceMap',
+        'outputStyle=expanded',
+        'includePaths[]=' + path.resolve(__dirname, './app/scss'),
+        'includePaths[]=' + path.resolve(__dirname, './node_modules')
+      ].join('&')
+    )
+  }
+];
+
 var config = {
   context: path.join(__dirname, 'app'),
   cache: DEBUG,
@@ -56,43 +94,7 @@ var config = {
     filename: jsBundle,
   },
   module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader?optional&optional=runtime'
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-      },
-      {
-        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
-        loader: 'file-loader?name=[path][name].[ext]'
-      },
-      {
-        test: /\.html$/,
-        loader: [
-          'file-loader?name=[path][name].[ext]',
-          'template-html-loader?' + [
-            'raw=true',
-            'engine=lodash',
-            'version='+pkg.version
-          ].join('&')
-        ].join('!')
-      },
-      {
-        test: /\.scss$/,
-        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!' +
-          'sass-loader?' + [
-            'sourceMap',
-            'outputStyle=expanded',
-            'includePaths[]=' + path.resolve(__dirname, './app/scss'),
-            'includePaths[]=' + path.resolve(__dirname, './node_modules')
-          ].join('&')
-        )
-      }
-    ]
+    loaders: loaders
   },
   plugins: plugins,
   resolve: {

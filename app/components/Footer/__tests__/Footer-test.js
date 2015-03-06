@@ -8,8 +8,8 @@ import Footer from '../Footer.jsx';
 
 var { TestUtils } = React.addons;
 
-describe('Footer', function() {
-  it('Has the correct css class', function() {
+describe('Footer', () => {
+  it('Has the correct css class', () => {
     var footer = TestUtils.renderIntoDocument(
       <Footer />
     );
