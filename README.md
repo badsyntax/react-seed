@@ -90,7 +90,7 @@ import Menu from '../Menu.jsx';
 
 var { TestUtils } = React.addons;
 
-describe('Menu', function() {
+describe('Menu', () => {
 
   var menuItems = [
     { id: 1, label: 'Option 1' },
@@ -102,7 +102,7 @@ describe('Menu', function() {
   );
   var menuElem = React.findDOMNode(menu);
 
-  it('Renders the menu items', function() {
+  it('Renders the menu items', () => {
     expect(menuElem.querySelectorAll('li').length).toEqual(2);
   });
 });
