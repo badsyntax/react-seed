@@ -21,8 +21,8 @@ var cssExtractTextPlugin = new ExtractTextPlugin(cssBundle, {
 });
 
 var plugins =[
-  cssExtractTextPlugin,
-  new webpack.optimize.OccurenceOrderPlugin()
+  new webpack.optimize.OccurenceOrderPlugin(),
+  cssExtractTextPlugin
 ];
 
 if (DEBUG) {
@@ -83,12 +83,14 @@ var config = {
       },
       {
         test: /\.scss$/,
-        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader?' + [
-          'outputStyle=expanded',
-          'sourceMapEmbed',
-          'includePaths[]=' + path.resolve(__dirname, './app'),
-          'includePaths[]=' + path.resolve(__dirname, './node_modules')
-        ].join('&'))
+        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!' +
+          'sass-loader?' + [
+            'sourceMap',
+            'outputStyle=expanded',
+            'includePaths[]=' + path.resolve(__dirname, './app/scss'),
+            'includePaths[]=' + path.resolve(__dirname, './node_modules')
+          ].join('&')
+        )
       }
     ]
   },

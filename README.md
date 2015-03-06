@@ -55,9 +55,7 @@ class Menu extends React.Component {
 
   getMenuItem(item) {
     return (
-      <MenuItem
-        item={item}
-        key={'menu-item-' + item.id} />
+      <MenuItem item={item} key={'menu-item-' + item.id} />
     );
   }
 
@@ -106,15 +104,31 @@ describe('Menu', function() {
   );
   var menuElem = React.findDOMNode(menu);
 
-  it('Has the correct css class', function() {
-    expect(menuElem.className).toEqual('menu');
-  });
-
   it('Renders the menu items', function() {
     expect(menuElem.querySelectorAll('li').length).toEqual(2);
   });
 });
 ```
+
+## Sass, CSS & webpack
+
+You can `import` Sass and CSS files from within your JavaScript component files.
+
+You can also load sass/css files from the `node_modules` directory.
+
+For example:
+
+```js
+// Filename: app.jsx
+import 'normalize.css/normalize.css';
+import './scss/app.scss';
+```
+
+Sass include paths can be adjusted in the `webpack.config.js` file.
+
+## HTML files
+
+All `.html` files will be compiled with lodash.template and synced into the `./dist` directory.
 
 ## Releasing
 

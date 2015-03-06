@@ -1,0 +1,11 @@
+/* _functions.scss */
+
+$imported-once-files: ();
+
+@function import-once($filename) {
+  @if index($imported-once-files, $filename) {
+    @return false;
+  }
+  $imported-once-files: append($imported-once-files, $filename);
+  @return true;
+}

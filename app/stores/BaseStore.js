@@ -1,7 +1,6 @@
 'use strict';
 
 import EventEmitter from 'events';
-import _ from 'lodash';
 
 export default class BaseStore extends EventEmitter {
 
@@ -29,12 +28,6 @@ export default class BaseStore extends EventEmitter {
   remove(item) {
     this.data.delete(item);
     this.emitChange();
-  }
-
-  getById(id) {
-    return _.findWhere(this.getAll(), {
-      id: id
-    });
   }
 
   emitChange() {}
