@@ -3,16 +3,18 @@
   "version": "0.0.4",
   "repository": "https://github.com/badsyntax/react-seed",
   "config": {
-    "dist_dir": "./dist"
+    "dist_dir": "./dist",
+    "dev_port": 8000
   },
   "scripts": {
     "env": "env",
     "prerelease": "npm test",
-    "prestart": "npm install && npm run clean",
-    "start": "NODE_ENV=development npm run webpack && npm run start-dev-server",
-    "clean": "rm -rf $npm_package_config_dist_dir",
+    "prestart": "npm install",
+    "prewebpack": "npm run clean",
+    "clean": "rm -rf $npm_package_config_dist_dir && mkdir $npm_package_config_dist_dir",
+    "start": "NODE_ENV=development npm run webpack && opn http://localhost:$npm_package_config_dev_port && npm run start-dev-server",
     "webpack": "webpack --colors --progress --config ./webpack.config.js",
-    "start-dev-server": "webpack-dev-server --colors --port 8000 --content-base $npm_package_config_dist_dir --hot --config webpack.config.js --output-pathinfo --inline",
+    "start-dev-server": "webpack-dev-server --colors --port $npm_package_config_dev_port --content-base $npm_package_config_dist_dir --config webpack.config.js --output-pathinfo --inline",
     "release": "NODE_ENV=production npm run webpack",
     "lint": "eslint ./app",
     "test": "jest"
@@ -36,10 +38,10 @@
     "file-loader": "^0.8.1",
     "html-loader": "^0.2.3",
     "jest-cli": "^0.4.0",
+    "opn": "^1.0.1",
     "sass-loader": "^0.4.0",
     "style-loader": "^0.8.3",
     "template-html-loader": "0.0.3",
-    "uglify": "^0.1.1",
     "webpack": "^1.7.2",
     "webpack-dev-server": "^1.7.0"
   },

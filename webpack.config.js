@@ -20,9 +20,27 @@ var cssExtractTextPlugin = new ExtractTextPlugin(cssBundle, {
   allChunks: true
 });
 
-var htmlExtractTextPlugin = new ExtractTextPlugin('./index.html', {
-  allChunks: true
-});
+var plugins =[
+  cssExtractTextPlugin,
+  new webpack.optimize.OccurenceOrderPlugin()
+];
+
+if (DEBUG) {
+  plugins.push(
+    new webpack.HotModuleReplacementPlugin()
+  );
+} else {
+  plugins.push(
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.NoErrorsPlugin()
+  );
+}
 
 var config = {
   context: path.join(__dirname, 'app'),
@@ -34,7 +52,7 @@ var config = {
   },
   output: {
     path: pkg.config.dist_dir,
-    publicPath: pkg.config.dist_dir,
+    publicPath: '/',
     filename: jsBundle,
   },
   module: {
@@ -46,52 +64,38 @@ var config = {
       },
       {
         test: /\.css$/,
-        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      },
+      {
+        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
+        loader: 'file-loader?name=[path][name].[ext]'
       },
       {
         test: /\.html$/,
-        loader: htmlExtractTextPlugin.extract(
-          'html-loader',
+        loader: [
+          'file-loader?name=[path][name].[ext]',
           'template-html-loader?' + [
+            'raw=true',
             'engine=lodash',
-            'version=' + pkg.version,
-            'debug=' + (!DEBUG ? 'true' : 'false')
+            'version='+pkg.version
           ].join('&')
-        )
+        ].join('!')
       },
       {
         test: /\.scss$/,
         loader: cssExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader?' + [
           'outputStyle=expanded',
           'sourceMapEmbed',
-          'sourceComments',
           'includePaths[]=' + path.resolve(__dirname, './app'),
           'includePaths[]=' + path.resolve(__dirname, './node_modules')
         ].join('&'))
       }
     ]
   },
-  plugins: [
-    cssExtractTextPlugin,
-    htmlExtractTextPlugin,
-    new webpack.optimize.OccurenceOrderPlugin()
-  ],
+  plugins: plugins,
   resolve: {
     extensions: ['', '.js', '.json', '.jsx']
   }
 };
-
-if (!DEBUG) {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new webpack.NoErrorsPlugin()
-  );
-}
 
 module.exports = config;
