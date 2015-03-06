@@ -24,7 +24,7 @@ rm -rf .git
 
 * `npm start` - Build and start the app in dev mode
 * `npm test` - Run the tests
-* `npm run release` - Run a production build
+* `npm run build` - Run a production build
 
 ## Examples
 
@@ -124,7 +124,7 @@ All imported Sass/CSS is run through Autoprefixer.
 
 ## HTML files
 
-All required `.html` files are compiled with lodash.template and synced into the `./dist` directory:
+All required `.html` files are compiled with lodash.template and synced into the `./build` directory:
 
 ```js
 // Filename: app.jsx

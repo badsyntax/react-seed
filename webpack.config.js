@@ -7,15 +7,8 @@ var pkg = require('./package.json');
 
 var DEBUG = process.env.NODE_ENV !== 'production';
 
-var cssBundle = path.join(
-  'css',
-  util.format('app.%s.css', pkg.version)
-);
-
-var jsBundle = path.join(
-  'js',
-  util.format('app.%s.js', pkg.version)
-);
+var cssBundle = path.join('css', util.format('[name].%s.css', pkg.version));
+var jsBundle = path.join('js', util.format('[name].%s.js', pkg.version));
 
 var cssExtractTextPlugin = new ExtractTextPlugin(cssBundle, {
   allChunks: true
@@ -87,6 +80,7 @@ var config = {
   context: path.join(__dirname, 'app'),
   cache: DEBUG,
   debug: DEBUG,
+  target: 'web',
   devtool: DEBUG ? '#inline-source-map' : false,
   entry: {
     app: ['webpack/hot/dev-server', './app.jsx']
@@ -95,6 +89,7 @@ var config = {
     path: pkg.config.dist_dir,
     publicPath: '/',
     filename: jsBundle,
+    pathinfo: DEBUG
   },
   module: {
     loaders: loaders

@@ -3,7 +3,7 @@
   "version": "0.0.5",
   "repository": "https://github.com/badsyntax/react-seed",
   "config": {
-    "dist_dir": "./dist",
+    "build_dir": "./build",
     "dev_port": 8000
   },
   "scripts": {
@@ -11,11 +11,11 @@
     "prerelease": "npm test",
     "prestart": "npm install",
     "prewebpack": "npm run clean",
-    "clean": "rm -rf $npm_package_config_dist_dir && mkdir $npm_package_config_dist_dir",
+    "clean": "rm -rf $npm_package_config_build_dir && mkdir $npm_package_config_build_dir",
     "start": "NODE_ENV=development npm run webpack && opn http://localhost:$npm_package_config_dev_port && npm run start-dev-server",
     "webpack": "webpack --colors --progress --config ./webpack.config.js",
-    "start-dev-server": "webpack-dev-server --colors --port $npm_package_config_dev_port --content-base $npm_package_config_dist_dir --config webpack.config.js --output-pathinfo --inline",
-    "release": "NODE_ENV=production npm run webpack",
+    "start-dev-server": "webpack-dev-server --colors --port $npm_package_config_dev_port --content-base $npm_package_config_build_dir --config webpack.config.js --output-pathinfo --inline",
+    "build": "NODE_ENV=production npm run webpack",
     "lint": "eslint ./app",
     "test": "jest"
   },
