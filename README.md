@@ -22,8 +22,6 @@ rm -r .git
 
 ## npm scripts
 
-_You'll need to be on a unixy type system to run the npm scripts._
-
 * `npm start` - Build and start the app in dev mode
 * `npm test` - Run the tests
 
@@ -68,7 +66,7 @@ class Menu extends React.Component {
   }
 }
 
-Menu.propTypes =  {
+Menu.propTypes = {
   items: PropTypes.array.isRequired
 };
 
@@ -78,7 +76,6 @@ export default Menu;
 Writing tests:
 
 ```js
-
 // Filename: __tests__/Menu-test.js
 
 'use strict';
@@ -128,7 +125,7 @@ Sass include paths can be adjusted in the `webpack.config.js` file.
 
 ## HTML files
 
-All `.html` files will be compiled with lodash.template and synced into the `./dist` directory.
+All `.html` files are compiled with lodash.template and synced into the `./dist` directory.
 
 ## Releasing
 
