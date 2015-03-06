@@ -26,6 +26,8 @@ rm -rf .git
 * `npm test` - Run the tests
 * `npm run build` - Run a production build
 
+The dev server can be accessed on port 8000.
+
 ## Examples
 
 Writing components:

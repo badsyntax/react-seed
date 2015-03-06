@@ -83,7 +83,10 @@ var config = {
   target: 'web',
   devtool: DEBUG ? '#inline-source-map' : false,
   entry: {
-    app: ['webpack/hot/dev-server', './app.jsx']
+    app: [
+      'webpack/hot/dev-server',
+      './app.jsx'
+    ]
   },
   output: {
     path: pkg.config.build_dir,
