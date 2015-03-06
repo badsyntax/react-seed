@@ -7,8 +7,8 @@ A boilerplate for building React apps with ES6 and webpack.
 * React 0.13
 * Compilation of ES6 & JSX to ES5
 * Jest testing framework
-* webpack bundling (js & scss)
-* Basic flux architecture with app actions, events and stores.
+* webpack bundling with html, css & sass loaders
+* Basic flux architecture with app actions, events and stores
 
 ## Getting started
 
@@ -17,7 +17,7 @@ Clone the project and remove the git repository:
 ```
 git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 cd my-project
-rm -r .git
+rm -rf .git
 ```
 
 ## npm scripts
