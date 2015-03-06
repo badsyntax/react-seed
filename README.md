@@ -113,8 +113,6 @@ You can `import` Sass and CSS files from within your JavaScript component files.
 
 You can also load sass/css files from the `node_modules` directory.
 
-For example:
-
 ```js
 // Filename: app.jsx
 import 'normalize.css/normalize.css';
@@ -125,7 +123,13 @@ Sass include paths can be adjusted in the `webpack.config.js` file.
 
 ## HTML files
 
-All `.html` files are compiled with lodash.template and synced into the `./dist` directory.
+All required `.html` files are compiled with lodash.template and synced into the `./dist` directory:
+
+```js
+// Filename: app.jsx
+import './index.html';
+```
+
 
 ## Releasing
 
