@@ -24,6 +24,7 @@ rm -r .git
 
 * `npm start` - Build and start the app in dev mode
 * `npm test` - Run the tests
+* `npm run release` - Run a production build
 
 ## Examples
 
