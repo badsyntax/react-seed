@@ -110,9 +110,7 @@ describe('Menu', () => {
 
 ## Sass, CSS & webpack
 
-You can `import` Sass and CSS files from within your JavaScript component files.
-
-You can also load sass/css files from the `node_modules` directory.
+`import` Sass and CSS files from within your JavaScript component files:
 
 ```js
 // Filename: app.jsx
@@ -121,6 +119,8 @@ import './scss/app.scss';
 ```
 
 Sass include paths can be adjusted in the `webpack.config.js` file.
+
+All imported Sass/CSS is run through Autoprefixer.
 
 ## HTML files
 

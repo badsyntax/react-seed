@@ -2,6 +2,7 @@ var path = require('path');
 var util = require('util');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer-core');
 var pkg = require('./package.json');
 
 var DEBUG = process.env.NODE_ENV !== 'production';
@@ -50,7 +51,7 @@ var loaders = [
   },
   {
     test: /\.css$/,
-    loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
   },
   {
     test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
@@ -69,14 +70,16 @@ var loaders = [
   },
   {
     test: /\.scss$/,
-    loader: cssExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!' +
+    loader: cssExtractTextPlugin.extract('style-loader', [
+      'css-loader?sourceMap',
+      'postcss-loader',
       'sass-loader?' + [
         'sourceMap',
         'outputStyle=expanded',
         'includePaths[]=' + path.resolve(__dirname, './app/scss'),
         'includePaths[]=' + path.resolve(__dirname, './node_modules')
       ].join('&')
-    )
+    ].join('!'))
   }
 ];
 
@@ -96,6 +99,9 @@ var config = {
   module: {
     loaders: loaders
   },
+  postcss: [
+    autoprefixer
+  ],
   plugins: plugins,
   resolve: {
     extensions: ['', '.js', '.json', '.jsx']

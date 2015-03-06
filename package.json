@@ -26,6 +26,7 @@
     "react": "^0.13.0-rc2"
   },
   "devDependencies": {
+    "autoprefixer-core": "^5.1.7",
     "babel-core": "^4.6.6",
     "babel-eslint": "^1.0.12",
     "babel-jest": "^4.0.0",
@@ -39,6 +40,7 @@
     "jest-cli": "^0.4.0",
     "lodash": "^3.3.1",
     "opn": "^1.0.1",
+    "postcss-loader": "^0.3.0",
     "sass-loader": "^0.4.0",
     "style-loader": "^0.8.3",
     "template-html-loader": "0.0.3",
