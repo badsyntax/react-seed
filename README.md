@@ -138,13 +138,13 @@ import './index.html';
 
 Updating version:
 
-* Bump version: `npm version patch`
-* Push to remote: `git push && git push --tags`
+* `npm version patch` - Bump version
+* `git push && git push --tags` - Push to remote
 
 Publishing package:
 
-* Login to npm: `npm login`
-* Publish package: `npm publish`
+* `npm login` - Login to npm
+* `npm publish` - Publish package
 
 ## Credits
 
