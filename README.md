@@ -122,6 +122,8 @@ import './scss/app.scss';
 * All CSS (compiled or otherwise) is run through Autoprefixer.
 * CSS files are combined in the order in which they are imported in JavaScript, thus
 you should always import your CSS/Sass before importing any other JavaScript files.
+* Use an approach like [BEM](http://cssguidelin.es/#bem-like-naming) to avoid specificity
+issues that might exist due to unpredicatable order of CSS rules.
 
 ## HTML files
 
