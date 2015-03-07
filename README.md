@@ -22,11 +22,9 @@ rm -rf .git
 
 ## npm scripts
 
-* `npm start` - Build and start the app in dev mode
+* `npm start` - Build and start the app in dev mode at http://localhost:8000
 * `npm test` - Run the tests
 * `npm run build` - Run a production build
-
-The dev server can be accessed on port 8000.
 
 ## Examples
 
@@ -37,10 +35,10 @@ Writing components:
 
 'use strict';
 
+import './_Menu.scss';
+
 import React from 'react';
 import MenuItem from '../MenuItem/MenuItem';
-
-import './_Menu.scss';
 
 var { PropTypes } = React;
 
@@ -120,9 +118,10 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 ```
 
-Sass include paths can be adjusted in the `webpack.config.js` file.
-
-All imported Sass/CSS is run through Autoprefixer.
+* Sass include paths can be adjusted in the `webpack.config.js` file.
+* All CSS (compiled or otherwise) is run through Autoprefixer.
+* CSS files are combined in the order in which they are imported in JavaScript, thus
+you should always import your CSS/Sass before importing any other JavaScript files.
 
 ## HTML files
 
@@ -133,12 +132,18 @@ All required `.html` files are compiled with lodash.template and synced into the
 import './index.html';
 ```
 
+* You can adjust the lodash template data in the `webpack.config.js` file.
 
 ## Releasing
 
-* Login to npm: `npm login`
+Updating version:
+
 * Bump version: `npm version patch`
 * Push to remote: `git push && git push --tags`
+
+Publishing package:
+
+* Login to npm: `npm login`
 * Publish package: `npm publish`
 
 ## Credits

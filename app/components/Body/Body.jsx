@@ -1,11 +1,11 @@
 'use strict';
 
+import './_Body.scss';
+
 import React from 'react';
 import AppActions from '../../actions/AppActions';
 import Menu from '../Menu/Menu';
 import SelectedList from '../SelectedList/SelectedList';
-
-import './_Body.scss';
 
 var { PropTypes } = React;
 

@@ -1,9 +1,9 @@
 'use strict';
 
+import './_Menu.scss';
+
 import React from 'react';
 import MenuItem from '../MenuItem/MenuItem';
-
-import './_Menu.scss';
 
 var { PropTypes } = React;
 

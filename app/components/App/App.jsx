@@ -1,12 +1,12 @@
 'use strict';
 
+import './_App.scss';
+
 import React from 'react';
 import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
 import ItemsStore from '../../stores/ItemsStore';
 import SelectedStore from '../../stores/SelectedStore';
-
-import './_App.scss';
 
 function getAppState() {
   return {
