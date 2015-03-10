@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="React-seed : Seed project for React apps using ES6 &amp; webpack">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>React-seed</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/badsyntax/react-seed">View on GitHub</a>
+
+          <h1 id="project_title">React-seed</h1>
+          <h2 id="project_tagline">Seed project for React apps using ES6 &amp; webpack</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/badsyntax/react-seed/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/badsyntax/react-seed/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="react-seed" class="anchor" href="#react-seed" aria-hidden="true"><span class="octicon octicon-link"></span></a>React seed</h1>
+
+<p>A boilerplate for building React apps with ES6 and webpack.</p>
+
+<h2>
+<a id="what-you-get" class="anchor" href="#what-you-get" aria-hidden="true"><span class="octicon octicon-link"></span></a>What you get</h2>
+
+<ul>
+<li>React 0.13</li>
+<li>Compilation of ES6 &amp; JSX to ES5</li>
+<li>Jest testing framework</li>
+<li>webpack bundling with html, css &amp; sass loaders</li>
+<li>Basic flux architecture with app actions, events and stores</li>
+</ul>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p>Clone the project and remove the git repository:</p>
+
+<pre><code>git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
+cd my-project
+rm -rf .git
+</code></pre>
+
+<h2>
+<a id="npm-scripts" class="anchor" href="#npm-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>npm scripts</h2>
+
+<ul>
+<li>
+<code>npm start</code> - Build and start the app in dev mode at http://localhost:8000</li>
+<li>
+<code>npm test</code> - Run the tests</li>
+<li>
+<code>npm run build</code> - Run a production build</li>
+</ul>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Writing components:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c">// Filename: Menu.jsx</span>
+
+<span class="pl-s1"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>./_Menu.scss<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">import</span> React from <span class="pl-s1"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> MenuItem from <span class="pl-s1"><span class="pl-pds">'</span>../MenuItem/MenuItem<span class="pl-pds">'</span></span>;
+
+<span class="pl-s">var</span> { PropTypes } <span class="pl-k">=</span> React;
+
+<span class="pl-st">class</span> Menu <span class="pl-s">extends</span> React.Component {
+
+  constructor(...args) {
+    <span class="pl-v">super</span>(...args);
+    <span class="pl-c">// Set initial state</span>
+    <span class="pl-v">this</span>.state <span class="pl-k">=</span> {
+      foo<span class="pl-k">:</span> <span class="pl-c1">false</span>
+    };
+  }
+
+  getMenuItem(item) {
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>MenuItem item<span class="pl-k">=</span>{item} key<span class="pl-k">=</span>{<span class="pl-s1"><span class="pl-pds">'</span>menu-item-<span class="pl-pds">'</span></span> <span class="pl-k">+</span> item.<span class="pl-sc">id</span>} /<span class="pl-k">&gt;</span>
+    );
+  }
+
+  render() {
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>ul className<span class="pl-k">=</span>{<span class="pl-s1"><span class="pl-pds">'</span>menu<span class="pl-pds">'</span></span>}<span class="pl-k">&gt;</span>
+        {<span class="pl-v">this</span>.props.items.map(<span class="pl-v">this</span>.getMenuItem, <span class="pl-v">this</span>)}
+      <span class="pl-k">&lt;</span>/ul<span class="pl-k">&gt;</span>
+    );
+  }
+}
+
+Menu.propTypes <span class="pl-k">=</span> {
+  items<span class="pl-k">:</span> PropTypes.array.isRequired
+};
+
+<span class="pl-s">export</span> <span class="pl-k">default</span> Menu;</pre></div>
+
+<p>Writing tests:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c">// Filename: __tests__/Menu-test.js</span>
+
+<span class="pl-s1"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">import</span> React from <span class="pl-s1"><span class="pl-pds">'</span>react/addons<span class="pl-pds">'</span></span>;
+
+jest.dontMock(<span class="pl-s1"><span class="pl-pds">'</span>../Menu.jsx<span class="pl-pds">'</span></span>);
+jest.dontMock(<span class="pl-s1"><span class="pl-pds">'</span>../../MenuItem/MenuItem.jsx<span class="pl-pds">'</span></span>);
+
+<span class="pl-k">import</span> Menu from <span class="pl-s1"><span class="pl-pds">'</span>../Menu.jsx<span class="pl-pds">'</span></span>;
+
+<span class="pl-s">var</span> { TestUtils } <span class="pl-k">=</span> React.addons;
+
+describe(<span class="pl-s1"><span class="pl-pds">'</span>Menu<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
+
+  <span class="pl-s">var</span> menuItems <span class="pl-k">=</span> [
+    { id<span class="pl-k">:</span> <span class="pl-c1">1</span>, label<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Option 1<span class="pl-pds">'</span></span> },
+    { id<span class="pl-k">:</span> <span class="pl-c1">2</span>, label<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Option 2<span class="pl-pds">'</span></span> }
+  ];
+
+  <span class="pl-s">var</span> menu <span class="pl-k">=</span> TestUtils.renderIntoDocument(
+    <span class="pl-k">&lt;</span>Menu items<span class="pl-k">=</span>{menuItems} /<span class="pl-k">&gt;</span>
+  );
+  <span class="pl-s">var</span> menuElem <span class="pl-k">=</span> React.findDOMNode(menu);
+
+  it(<span class="pl-s1"><span class="pl-pds">'</span>Renders the menu items<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
+    expect(menuElem.querySelectorAll(<span class="pl-s1"><span class="pl-pds">'</span>li<span class="pl-pds">'</span></span>).<span class="pl-sc">length</span>).toEqual(<span class="pl-c1">2</span>);
+  });
+});</pre></div>
+
+<h2>
+<a id="sass-css--webpack" class="anchor" href="#sass-css--webpack" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sass, CSS &amp; webpack</h2>
+
+<p><code>import</code> Sass and CSS files from within your JavaScript component files:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c">// Filename: app.jsx</span>
+<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>normalize.css/normalize.css<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>./scss/app.scss<span class="pl-pds">'</span></span>;</pre></div>
+
+<ul>
+<li>Sass include paths can be adjusted in the <code>webpack.config.js</code> file.</li>
+<li>All CSS (compiled or otherwise) is run through Autoprefixer.</li>
+<li>CSS files are combined in the order in which they are imported in JavaScript, thus
+you should always import your CSS/Sass before importing any other JavaScript files.</li>
+<li>Use an approach like <a href="http://cssguidelin.es/#bem-like-naming">BEM</a> to avoid specificity
+issues that might exist due to unpredicatable order of CSS rules.</li>
+</ul>
+
+<h2>
+<a id="html-files" class="anchor" href="#html-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML files</h2>
+
+<p>All required <code>.html</code> files are compiled with lodash.template and synced into the <code>./build</code> directory:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c">// Filename: app.jsx</span>
+<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>./index.html<span class="pl-pds">'</span></span>;</pre></div>
+
+<ul>
+<li>You can adjust the lodash template data in the <code>webpack.config.js</code> file.</li>
+</ul>
+
+<h2>
+<a id="releasing" class="anchor" href="#releasing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Releasing</h2>
+
+<p>Updating version:</p>
+
+<ul>
+<li>
+<code>npm version patch</code> - Bump version</li>
+<li>
+<code>git push &amp;&amp; git push --tags</code> - Push to remote</li>
+</ul>
+
+<p>Publishing package:</p>
+
+<ul>
+<li>
+<code>npm login</code> - Login to npm</li>
+<li>
+<code>npm publish</code> - Publish package</li>
+</ul>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>This project was initially forked from <a href="https://github.com/tcoopman/react-es6-browserify">https://github.com/tcoopman/react-es6-browserify</a></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2015 Richard Willis</p>
+
+<p>MIT (<a href="http://opensource.org/licenses/MIT">http://opensource.org/licenses/MIT</a>)</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">React-seed maintained by <a href="https://github.com/badsyntax">badsyntax</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
