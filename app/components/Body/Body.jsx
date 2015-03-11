@@ -19,18 +19,30 @@ class Body extends React.Component {
     AppActions.deSelectItem(item);
   }
 
+  getMenu() {
+    return (
+      <Menu
+        items={this.props.items}
+        onSelect={this.handleMenuSelect}
+        onDeselect={this.handleMenuDeselect} />
+    );
+  }
+
+  getSelectedList() {
+    return (
+      <SelectedList
+        items={this.props.selectedItems} />
+    );
+  }
+
   render() {
     return (
       <div className={'body'}>
         <h1>Example of React with ES6 and webpack</h1>
         <p><em>Click on a menu item to toggle:</em></p>
-        <Menu
-          items={this.props.items}
-          onSelect={this.handleMenuSelect}
-          onDeselect={this.handleMenuDeselect} />
+        {this.getMenu()}
         <p>Your selections:</p>
-        <SelectedList
-          items={this.props.selectedItems} />
+        {this.getSelectedList()}
       </div>
     );
   }
