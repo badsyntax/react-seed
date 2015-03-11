@@ -76,18 +76,20 @@ var loaders = [
   }
 ];
 
+var entry = {
+  app: ['./app.jsx']
+};
+if (DEBUG) {
+  entry.app.push('webpack/hot/dev-server');
+}
+
 var config = {
   context: path.join(__dirname, 'app'),
   cache: DEBUG,
   debug: DEBUG,
   target: 'web',
   devtool: DEBUG ? '#inline-source-map' : false,
-  entry: {
-    app: [
-      'webpack/hot/dev-server',
-      './app.jsx'
-    ]
-  },
+  entry: entry,
   output: {
     path: pkg.config.build_dir,
     publicPath: '/',
