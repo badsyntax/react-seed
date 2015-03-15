@@ -17,7 +17,7 @@ Clone the project and remove the git repository:
 ```bash
 git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 cd my-project
-rm -rf .git
+rm -rf .git && git init
 ```
 
 ## npm scripts
