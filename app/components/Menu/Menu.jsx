@@ -28,7 +28,7 @@ class Menu extends React.Component {
   }
 }
 
-Menu.propTypes =  {
+Menu.propTypes = {
   items: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
   onDeselect: PropTypes.func.isRequired

@@ -11,39 +11,40 @@
     "prerelease": "npm test",
     "prestart": "npm install",
     "prewebpack": "npm run clean",
+    "pretest": "npm run lint",
     "clean": "rm -rf $npm_package_config_build_dir && mkdir $npm_package_config_build_dir",
     "start": "NODE_ENV=development npm run webpack && npm run start-dev-server",
     "webpack": "webpack --colors --progress --config ./webpack.config.js",
     "start-dev-server": "webpack-dev-server --colors --port $npm_package_config_dev_port --content-base $npm_package_config_build_dir --config webpack.config.js --output-pathinfo --inline",
     "build": "NODE_ENV=production npm run webpack",
-    "lint": "eslint ./app",
+    "lint": "eslint --ext .js --ext .jsx ./app && echo No linting errors.",
     "test": "jest"
   },
   "dependencies": {
-    "classnames": "^1.1.4",
+    "classnames": "^1.2.0",
     "flux": "^2.0.1",
     "normalize.css": "^3.0.2",
-    "react": "^0.13.0"
+    "react": "^0.13.1"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.1.7",
-    "babel-core": "^4.7.8",
-    "babel-eslint": "^2.0.0",
+    "babel-core": "^4.7.16",
+    "babel-eslint": "^2.0.2",
     "babel-jest": "^4.0.0",
-    "babel-loader": "^4.1.0",
-    "babel-runtime": "^4.7.8",
+    "babel-loader": "^4.2.0",
+    "babel-runtime": "^4.7.16",
     "css-loader": "^0.9.1",
-    "eslint": "^0.16.2",
+    "eslint": "^0.17.1",
     "extract-text-webpack-plugin": "^0.3.8",
     "file-loader": "^0.8.1",
     "html-loader": "^0.2.3",
     "jest-cli": "^0.4.0",
     "lodash": "^3.5.0",
     "postcss-loader": "^0.3.0",
-    "sass-loader": "^0.4.2",
+    "sass-loader": "^0.5.0",
     "style-loader": "^0.8.3",
     "template-html-loader": "0.0.3",
-    "webpack": "^1.7.2",
+    "webpack": "^1.7.3",
     "webpack-dev-server": "^1.7.0"
   },
   "jest": {
@@ -67,10 +68,14 @@
     "node": ">=0.10.0"
   },
   "eslintConfig": {
-    "parser": "babel-eslint",
     "env": {
       "browser": true,
-      "node": true
+      "node": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
     },
     "globals": {
       "jest": true,

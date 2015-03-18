@@ -48,7 +48,7 @@ class Body extends React.Component {
   }
 }
 
-Body.propTypes =  {
+Body.propTypes = {
   items: PropTypes.array.isRequired,
   selectedItems: PropTypes.array.isRequired
 };

@@ -21,7 +21,7 @@ class SelectedList extends React.Component {
   }
 }
 
-SelectedList.propTypes =  {
+SelectedList.propTypes = {
   items: PropTypes.array.isRequired
 };
 

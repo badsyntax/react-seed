@@ -16,7 +16,7 @@ class MenuItem extends React.Component {
     };
   }
 
-  handleClick(e) {
+  handleClick() {
     console.log('You clicked on: %s', this.props.item.label);
     this.toggleSelected();
     this.props[
@@ -50,7 +50,7 @@ class MenuItem extends React.Component {
   }
 }
 
-MenuItem.propTypes =  {
+MenuItem.propTypes = {
   item: PropTypes.object.isRequired,
   onSelect: PropTypes.func.isRequired,
   onDeselect: PropTypes.func.isRequired

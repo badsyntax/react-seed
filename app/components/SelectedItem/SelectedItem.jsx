@@ -14,7 +14,7 @@ class SelectedItem extends React.Component {
   }
 }
 
-SelectedItem.propTypes =  {
+SelectedItem.propTypes = {
   item: PropTypes.object.isRequired
 };
 
