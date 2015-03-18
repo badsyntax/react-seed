@@ -1,7 +1,12 @@
 'use strict';
 
 import BaseStore from './BaseStore';
-import { ITEMS_UPDATED } from '../constants/AppConstants';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+
+import {
+  ITEMS_UPDATED,
+  ITEMS_GET_SUCCESS
+} from '../constants/AppConstants';
 
 class ItemsStore extends BaseStore {
 
@@ -14,6 +19,15 @@ class ItemsStore extends BaseStore {
   }
 }
 
-var store = new ItemsStore();
+let store = new ItemsStore();
+
+AppDispatcher.register((action) => {
+  switch(action.actionType) {
+    case ITEMS_GET_SUCCESS:
+      store.setAll(action.items);
+      break;
+    default:
+  }
+});
 
 export default store;

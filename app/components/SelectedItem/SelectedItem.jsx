@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-var { PropTypes } = React;
+let { PropTypes } = React;
 
 class SelectedItem extends React.Component {
   render() {

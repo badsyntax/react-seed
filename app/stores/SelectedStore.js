@@ -20,7 +20,7 @@ class SelectedStore extends BaseStore {
   }
 }
 
-var store = new SelectedStore();
+let store = new SelectedStore();
 
 AppDispatcher.register((action) => {
   switch(action.actionType) {

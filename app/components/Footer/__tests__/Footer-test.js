@@ -6,14 +6,14 @@ jest.dontMock('../Footer.jsx');
 
 import Footer from '../Footer.jsx';
 
-var { TestUtils } = React.addons;
+let { TestUtils } = React.addons;
 
 describe('Footer', () => {
   it('Has the correct css class', () => {
-    var footer = TestUtils.renderIntoDocument(
+    let footer = TestUtils.renderIntoDocument(
       <Footer />
     );
-    var footerElem = React.findDOMNode(footer);
+    let footerElem = React.findDOMNode(footer);
     expect(footerElem.className).toEqual('footer');
   });
 });

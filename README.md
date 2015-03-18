@@ -8,7 +8,7 @@ A boilerplate for building React apps with ES6 and webpack.
 * Compilation of ES6 & JSX to ES5
 * Jest testing framework
 * webpack bundling with html, css & sass loaders
-* Basic flux architecture with app actions, events and stores
+* Basic flux architecture with app actions, stores and example web API usage
 
 ## Getting started
 
@@ -40,7 +40,7 @@ import './_Menu.scss';
 import React from 'react';
 import MenuItem from '../MenuItem/MenuItem';
 
-var { PropTypes } = React;
+let { PropTypes } = React;
 
 class Menu extends React.Component {
 
@@ -88,19 +88,19 @@ jest.dontMock('../../MenuItem/MenuItem.jsx');
 
 import Menu from '../Menu.jsx';
 
-var { TestUtils } = React.addons;
+let { TestUtils } = React.addons;
 
 describe('Menu', () => {
 
-  var menuItems = [
+  let menuItems = [
     { id: 1, label: 'Option 1' },
     { id: 2, label: 'Option 2' }
   ];
 
-  var menu = TestUtils.renderIntoDocument(
+  let menu = TestUtils.renderIntoDocument(
     <Menu items={menuItems} />
   );
-  var menuElem = React.findDOMNode(menu);
+  let menuElem = React.findDOMNode(menu);
 
   it('Renders the menu items', () => {
     expect(menuElem.querySelectorAll('li').length).toEqual(2);
@@ -135,6 +135,12 @@ import './index.html';
 ```
 
 * You can adjust the lodash template data in the `webpack.config.js` file.
+
+## Conventions
+
+* Use fat arrows for anonymous functions
+* Don't use `var`. Use `let` and `const`.
+
 
 ## Releasing
 

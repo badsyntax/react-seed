@@ -7,7 +7,7 @@ import AppActions from '../../actions/AppActions';
 import Menu from '../Menu/Menu';
 import SelectedList from '../SelectedList/SelectedList';
 
-var { PropTypes } = React;
+let { PropTypes } = React;
 
 class Body extends React.Component {
 

@@ -7,6 +7,7 @@ import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
 import ItemsStore from '../../stores/ItemsStore';
 import SelectedStore from '../../stores/SelectedStore';
+import AppActions from '../../actions/AppActions';
 
 function getAppState() {
   return {
@@ -25,15 +26,7 @@ export default class App extends React.Component {
   componentDidMount() {
     ItemsStore.addChangeListener(this.onChange.bind(this));
     SelectedStore.addChangeListener(this.onChange.bind(this));
-
-    ItemsStore.setAll(
-      ['Item 1', 'Item 2'].map((item, i) => {
-        return {
-          id: i,
-          label: item
-        };
-      })
-    );
+    AppActions.getItems();
   }
 
   componentWillUnmount() {

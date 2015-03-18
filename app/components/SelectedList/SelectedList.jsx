@@ -3,7 +3,7 @@
 import React from 'react';
 import SelectedItem from '../SelectedItem/SelectedItem';
 
-var { PropTypes } = React;
+let { PropTypes } = React;
 
 class SelectedList extends React.Component {
   render() {
