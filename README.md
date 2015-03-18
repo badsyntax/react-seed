@@ -74,6 +74,28 @@ Menu.propTypes = {
 export default Menu;
 ```
 
+Using mixins:
+
+It's a bit awkward to use mixins with ES6 classes.
+
+Here's an example of how you can do it:
+
+```js
+class Mixins extends React.Component {};
+
+let draggable = {
+  drag() { /* … */ }
+};
+
+let droppable = {
+  drop() { /* … */ }
+};
+
+class Dialog extends mixin(Mixins, draggable, droppable) {
+  /* … */
+}
+```
+
 Writing tests:
 
 ```js

@@ -40,7 +40,7 @@ var loaders = [
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
-    loader: 'babel-loader?optional&optional=runtime'
+    loader: 'babel-loader?optional=runtime'
   },
   {
     test: /\.css$/,
