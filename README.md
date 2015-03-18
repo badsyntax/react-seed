@@ -28,7 +28,7 @@ rm -rf .git && git init
 
 ## Examples
 
-Writing components:
+### Writing components:
 
 ```js
 // Filename: Menu.jsx
@@ -74,13 +74,13 @@ Menu.propTypes = {
 export default Menu;
 ```
 
-Using mixins:
+### Using mixins:
 
-It's a bit awkward to use mixins with ES6 classes.
-
-Here's an example of how you can do it:
+It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin helper:
 
 ```js
+import mixin from 'util/mixin';
+
 class Mixins extends React.Component {};
 
 let draggable = {
@@ -96,7 +96,7 @@ class Dialog extends mixin(Mixins, draggable, droppable) {
 }
 ```
 
-Writing tests:
+###Writing tests:
 
 ```js
 // Filename: __tests__/Menu-test.js
