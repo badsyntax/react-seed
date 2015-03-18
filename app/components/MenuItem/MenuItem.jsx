@@ -4,6 +4,7 @@ import './_MenuItem.scss';
 
 import React from 'react';
 import classnames from 'classnames';
+import AppActions from '../../actions/AppActions';
 
 let { PropTypes } = React;
 
@@ -17,10 +18,9 @@ class MenuItem extends React.Component {
   }
 
   handleClick() {
-    console.log('You clicked on: %s', this.props.item.label);
     this.toggleSelected();
-    this.props[
-      this.isSelected() ? 'onDeselect' : 'onSelect'
+    AppActions[
+      this.isSelected() ? 'deSelectItem' : 'selectItem'
     ](this.props.item);
   }
 
@@ -51,9 +51,7 @@ class MenuItem extends React.Component {
 }
 
 MenuItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  onDeselect: PropTypes.func.isRequired
+  item: PropTypes.object.isRequired
 };
 
 export default MenuItem;

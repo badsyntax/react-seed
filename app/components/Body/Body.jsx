@@ -11,20 +11,10 @@ let { PropTypes } = React;
 
 class Body extends React.Component {
 
-  handleMenuSelect(item) {
-    AppActions.selectItem(item);
-  }
-
-  handleMenuDeselect(item) {
-    AppActions.deSelectItem(item);
-  }
-
   getMenu() {
     return (
       <Menu
-        items={this.props.items}
-        onSelect={this.handleMenuSelect}
-        onDeselect={this.handleMenuDeselect} />
+        items={this.props.items} />
     );
   }
 

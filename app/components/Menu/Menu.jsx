@@ -13,8 +13,6 @@ class Menu extends React.Component {
     return (
       <MenuItem
         item={item}
-        onSelect={this.props.onSelect}
-        onDeselect={this.props.onDeselect}
         key={'menu-item-' + item.id} />
     );
   }
@@ -29,9 +27,7 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  items: PropTypes.array.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  onDeselect: PropTypes.func.isRequired
+  items: PropTypes.array.isRequired
 };
 
 export default Menu;
