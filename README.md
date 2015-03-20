@@ -76,7 +76,7 @@ export default Menu;
 
 ### Using mixins:
 
-It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin help§er:
+It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin helper:
 
 ```js
 import mixin from 'util/mixin';
