@@ -76,12 +76,10 @@ export default Menu;
 
 ### Using mixins:
 
-It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin helper:
+It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin help§er:
 
 ```js
 import mixin from 'util/mixin';
-
-class Mixins extends React.Component {};
 
 let draggable = {
   drag() { /* … */ }
@@ -91,10 +89,12 @@ let droppable = {
   drop() { /* … */ }
 };
 
-class Dialog extends mixin(Mixins, draggable, droppable) {
+class Dialog extends mixin(React.Component, draggable, droppable) {
   /* … */
 }
 ```
+
+Alternatively, just use `React.createClass`.
 
 ###Writing tests:
 
