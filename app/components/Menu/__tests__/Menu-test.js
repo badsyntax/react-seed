@@ -21,11 +21,11 @@ describe('Menu', () => {
   );
   let menuElem = React.findDOMNode(menu);
 
-  it('Has the correct css class', () => {
+  it('Should have the correct css class', () => {
     expect(menuElem.className).toEqual('menu');
   });
 
-  it('Renders the menu items', () => {
+  it('Should render the menu items', () => {
     expect(menuElem.querySelectorAll('li').length).toEqual(2);
   });
 });

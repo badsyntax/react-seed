@@ -9,7 +9,7 @@ import Footer from '../Footer.jsx';
 let { TestUtils } = React.addons;
 
 describe('Footer', () => {
-  it('Has the correct css class', () => {
+  it('Should have the correct css class', () => {
     let footer = TestUtils.renderIntoDocument(
       <Footer />
     );

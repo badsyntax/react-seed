@@ -10,8 +10,8 @@
     "env": "env",
     "prerelease": "npm test",
     "prestart": "npm install",
-    "prewebpack": "npm run clean",
     "pretest": "npm run lint",
+    "prewebpack": "npm run clean",
     "clean": "rm -rf $npm_package_config_build_dir && mkdir $npm_package_config_build_dir",
     "start": "NODE_ENV=development npm run webpack && npm run start-dev-server",
     "webpack": "webpack --colors --progress --config ./webpack.config.js",
@@ -29,7 +29,6 @@
   "devDependencies": {
     "autoprefixer-core": "^5.1.7",
     "babel-core": "^4.7.16",
-    "babel-eslint": "^2.0.2",
     "babel-jest": "^4.0.0",
     "babel-loader": "^4.2.0",
     "babel-runtime": "^4.7.16",
