@@ -21,11 +21,12 @@ export default class App extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = getAppState();
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
-    ItemsStore.addChangeListener(this.onChange.bind(this));
-    SelectedStore.addChangeListener(this.onChange.bind(this));
+    ItemsStore.addChangeListener(this.onChange);
+    SelectedStore.addChangeListener(this.onChange);
     AppActions.getItems();
   }
 
