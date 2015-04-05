@@ -14,7 +14,7 @@ var cssExtractTextPlugin = new ExtractTextPlugin(cssBundle, {
   allChunks: true
 });
 
-var plugins =[
+var plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   cssExtractTextPlugin
 ];
@@ -40,7 +40,7 @@ var loaders = [
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
-    loader: 'babel-loader?optional=runtime'
+    loaders: ['react-hot', 'babel-loader?optional=runtime']
   },
   {
     test: /\.css$/,
@@ -57,7 +57,7 @@ var loaders = [
       'template-html-loader?' + [
         'raw=true',
         'engine=lodash',
-        'version='+pkg.version
+        'version=' + pkg.version
       ].join('&')
     ].join('!')
   },
@@ -80,7 +80,8 @@ var entry = {
   app: ['./app.jsx']
 };
 if (DEBUG) {
-  entry.app.push('webpack/hot/dev-server');
+  entry.app.push('webpack-dev-server/client?http://localhost:8000');
+  entry.app.push('webpack/hot/only-dev-server');
 }
 
 var config = {
@@ -91,10 +92,10 @@ var config = {
   devtool: DEBUG ? '#inline-source-map' : false,
   entry: entry,
   output: {
-    path: pkg.config.build_dir,
+    path: path.resolve(pkg.config.build_dir),
     publicPath: '/',
     filename: jsBundle,
-    pathinfo: DEBUG
+    pathinfo: false
   },
   module: {
     loaders: loaders
@@ -105,6 +106,13 @@ var config = {
   plugins: plugins,
   resolve: {
     extensions: ['', '.js', '.json', '.jsx']
+  },
+  devServer: {
+    contentBase: path.resolve(pkg.config.build_dir),
+    hot: true,
+    noInfo: false,
+    inline: true,
+    stats: { colors: true }
   }
 };
 

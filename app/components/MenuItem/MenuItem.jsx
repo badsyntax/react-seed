@@ -44,7 +44,7 @@ class MenuItem extends React.Component {
   render() {
     return (
       <li className={this.getClassName()} onClick={this.handleClick.bind(this)}>
-        {this.props.item.label}
+       {this.props.item.label}
       </li>
     );
   }

@@ -7,7 +7,7 @@ A boilerplate for building React apps with ES6 and webpack.
 * React 0.13
 * Compilation of ES6 & JSX to ES5
 * Jest testing framework
-* webpack bundling with html, css & sass loaders
+* webpack bundling with react hot loader (as well as html, css & sass loaders)
 * Basic flux architecture with app actions, stores and example web API usage
 
 ## Getting started
