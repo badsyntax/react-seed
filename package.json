@@ -34,6 +34,7 @@
     "babel-runtime": "^5.0.2",
     "css-loader": "^0.9.1",
     "eslint": "^0.18.0",
+    "eslint-plugin-react": "^2.0.2",
     "extract-text-webpack-plugin": "^0.5.0",
     "file-loader": "^0.8.1",
     "flow-bin": "^0.7.0",
@@ -86,6 +87,9 @@
       "it": true,
       "expect": true
     },
+    "plugins": [
+      "react"
+    ],
     "rules": {
       "strict": true,
       "indent": [
@@ -95,7 +99,21 @@
       "quotes": [
         2,
         "single"
-      ]
+      ],
+      "react/display-name": 1,
+      "react/jsx-quotes": 1,
+      "react/jsx-no-undef": 1,
+      "react/jsx-sort-props": 1,
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1,
+      "react/no-did-mount-set-state": 1,
+      "react/no-did-update-set-state": 1,
+      "react/no-multi-comp": 1,
+      "react/no-unknown-property": 1,
+      "react/prop-types": 1,
+      "react/react-in-jsx-scope": 1,
+      "react/self-closing-comp": 1,
+      "react/wrap-multilines": 1
     }
   }
 }
