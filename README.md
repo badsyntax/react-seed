@@ -169,7 +169,7 @@ import './index.html';
 Updating version:
 
 * `npm version patch` - Bump version
-* `git push && git push --tags` - Push to remote
+* `git push --tags` - Push to remote
 
 Publishing package:
 
