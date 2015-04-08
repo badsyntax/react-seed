@@ -17,6 +17,10 @@ class ItemsStore extends BaseStore {
   addChangeListener(callback) {
     this.on(ITEMS_UPDATED, callback);
   }
+
+  removeChangeListener(callback) {
+    this.removeListener(ITEMS_UPDATED, callback);
+  }
 }
 
 let store = new ItemsStore();
