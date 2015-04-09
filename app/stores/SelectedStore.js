@@ -18,6 +18,10 @@ class SelectedStore extends BaseStore {
   addChangeListener(callback) {
     this.on(SELECTED_UPDATED, callback);
   }
+
+  removeChangeListener(callback) {
+    this.removeListener(ITEMS_UPDATED, callback);
+  }
 }
 
 let store = new SelectedStore();
