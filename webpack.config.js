@@ -47,8 +47,13 @@ var loaders = [
     loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
   },
   {
-    test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
+    test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff$|\.ttf$/,
     loader: 'file-loader?name=[path][name].[ext]'
+  },
+	{
+    test: /\.json$/,
+    exclude: /node_modules/,
+    loaders: ['json-loader']
   },
   {
     test: /\.html$/,
