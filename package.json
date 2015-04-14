@@ -1,6 +1,6 @@
 {
   "name": "react-seed",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": "https://github.com/badsyntax/react-seed",
   "config": {
     "build_dir": "./build",
