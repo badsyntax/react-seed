@@ -9,7 +9,7 @@
   "scripts": {
     "env": "env",
     "prerelease": "npm test",
-    "prestart": "npm install",
+    "prestart": "npm install && npm run lint",
     "pretest": "npm run lint",
     "prewebpack": "npm run clean",
     "clean": "rm -rf $npm_package_config_build_dir && mkdir $npm_package_config_build_dir",
@@ -51,6 +51,9 @@
     "webpack": "^1.7.3",
     "webpack-dev-server": "^1.8.0"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "jest": {
     "scriptPreprocessor": "./jest-preprocessor.js",
     "testPathDirs": [
@@ -67,9 +70,6 @@
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react"
     ]
-  },
-  "engines": {
-    "node": ">=0.10.0"
   },
   "eslintConfig": {
     "env": {
@@ -100,7 +100,7 @@
         2,
         "single"
       ],
-      "react/display-name": 1,
+      "react/display-name": 0,
       "react/jsx-quotes": 1,
       "react/jsx-no-undef": 1,
       "react/jsx-sort-props": 1,
