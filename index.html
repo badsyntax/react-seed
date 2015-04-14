@@ -43,8 +43,8 @@
 <li>React 0.13</li>
 <li>Compilation of ES6 &amp; JSX to ES5</li>
 <li>Jest testing framework</li>
-<li>webpack bundling with html, css &amp; sass loaders</li>
-<li>Basic flux architecture with app actions, events and stores</li>
+<li>webpack bundling with react hot loader (as well as html, css &amp; sass loaders)</li>
+<li>Basic flux architecture with app actions, stores and example web API usage</li>
 </ul>
 
 <h2>
@@ -53,8 +53,8 @@
 <p>Clone the project and remove the git repository:</p>
 
 <div class="highlight highlight-bash"><pre>git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
-<span class="pl-s3">cd</span> my-project
-rm -rf .git</pre></div>
+<span class="pl-c1">cd</span> my-project
+rm -rf .git <span class="pl-k">&amp;&amp;</span> git init</pre></div>
 
 <h2>
 <a id="npm-scripts" class="anchor" href="#npm-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>npm scripts</h2>
@@ -71,20 +71,21 @@ rm -rf .git</pre></div>
 <h2>
 <a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<p>Writing components:</p>
+<h3>
+<a id="writing-components" class="anchor" href="#writing-components" aria-hidden="true"><span class="octicon octicon-link"></span></a> Writing components:</h3>
 
 <div class="highlight highlight-js"><pre><span class="pl-c">// Filename: Menu.jsx</span>
 
-<span class="pl-s1"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
+<span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
-<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>./_Menu.scss<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">'</span>./_Menu.scss<span class="pl-pds">'</span></span>;
 
-<span class="pl-k">import</span> React from <span class="pl-s1"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
-<span class="pl-k">import</span> MenuItem from <span class="pl-s1"><span class="pl-pds">'</span>../MenuItem/MenuItem<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> React <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> MenuItem <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>../MenuItem/MenuItem<span class="pl-pds">'</span></span>;
 
-<span class="pl-s">var</span> { PropTypes } <span class="pl-k">=</span> React;
+<span class="pl-k">let</span> { PropTypes } <span class="pl-k">=</span> React;
 
-<span class="pl-st">class</span> Menu <span class="pl-s">extends</span> React.Component {
+<span class="pl-k">class</span> <span class="pl-en">Menu</span> <span class="pl-k">extends</span> <span class="pl-en">React.Component</span> {
 
   constructor(...args) {
     <span class="pl-v">super</span>(...args);
@@ -96,13 +97,13 @@ rm -rf .git</pre></div>
 
   getMenuItem(item) {
     <span class="pl-k">return</span> (
-      <span class="pl-k">&lt;</span>MenuItem item<span class="pl-k">=</span>{item} key<span class="pl-k">=</span>{<span class="pl-s1"><span class="pl-pds">'</span>menu-item-<span class="pl-pds">'</span></span> <span class="pl-k">+</span> item.<span class="pl-sc">id</span>} /<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>MenuItem item<span class="pl-k">=</span>{item} key<span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>menu-item-<span class="pl-pds">'</span></span> <span class="pl-k">+</span> item.<span class="pl-c1">id</span>} /<span class="pl-k">&gt;</span>
     );
   }
 
   render() {
     <span class="pl-k">return</span> (
-      <span class="pl-k">&lt;</span>ul className<span class="pl-k">=</span>{<span class="pl-s1"><span class="pl-pds">'</span>menu<span class="pl-pds">'</span></span>}<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>ul className<span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>menu<span class="pl-pds">'</span></span>}<span class="pl-k">&gt;</span>
         {<span class="pl-v">this</span>.props.items.map(<span class="pl-v">this</span>.getMenuItem, <span class="pl-v">this</span>)}
       <span class="pl-k">&lt;</span>/ul<span class="pl-k">&gt;</span>
     );
@@ -113,37 +114,59 @@ Menu.propTypes <span class="pl-k">=</span> {
   items<span class="pl-k">:</span> PropTypes.array.isRequired
 };
 
-<span class="pl-s">export</span> <span class="pl-k">default</span> Menu;</pre></div>
+<span class="pl-k">export</span> <span class="pl-k">default</span> Menu;</pre></div>
 
-<p>Writing tests:</p>
+<h3>
+<a id="using-mixins" class="anchor" href="#using-mixins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using mixins:</h3>
+
+<p>It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin helper:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">import</span> mixin <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>util/mixin<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">let</span> draggable <span class="pl-k">=</span> {
+  drag() { <span class="pl-c">/* … */</span> }
+};
+
+<span class="pl-k">let</span> droppable <span class="pl-k">=</span> {
+  drop() { <span class="pl-c">/* … */</span> }
+};
+
+<span class="pl-k">class</span> <span class="pl-en">Dialog</span> <span class="pl-k">extends</span> <span class="pl-en">mixin</span>(React.Component, draggable, droppable) {
+  <span class="pl-c">/* … */</span>
+}</pre></div>
+
+<p>Alternatively, just use <code>React.createClass</code>.</p>
+
+<h3>
+<a id="writing-tests" class="anchor" href="#writing-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Writing tests:</h3>
 
 <div class="highlight highlight-js"><pre><span class="pl-c">// Filename: __tests__/Menu-test.js</span>
 
-<span class="pl-s1"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
+<span class="pl-s"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
 
-<span class="pl-k">import</span> React from <span class="pl-s1"><span class="pl-pds">'</span>react/addons<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> React <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react/addons<span class="pl-pds">'</span></span>;
 
-jest.dontMock(<span class="pl-s1"><span class="pl-pds">'</span>../Menu.jsx<span class="pl-pds">'</span></span>);
-jest.dontMock(<span class="pl-s1"><span class="pl-pds">'</span>../../MenuItem/MenuItem.jsx<span class="pl-pds">'</span></span>);
+jest.dontMock(<span class="pl-s"><span class="pl-pds">'</span>../Menu.jsx<span class="pl-pds">'</span></span>);
+jest.dontMock(<span class="pl-s"><span class="pl-pds">'</span>../../MenuItem/MenuItem.jsx<span class="pl-pds">'</span></span>);
 
-<span class="pl-k">import</span> Menu from <span class="pl-s1"><span class="pl-pds">'</span>../Menu.jsx<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> Menu <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>../Menu.jsx<span class="pl-pds">'</span></span>;
 
-<span class="pl-s">var</span> { TestUtils } <span class="pl-k">=</span> React.addons;
+<span class="pl-k">let</span> { TestUtils } <span class="pl-k">=</span> React.addons;
 
-describe(<span class="pl-s1"><span class="pl-pds">'</span>Menu<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
+describe(<span class="pl-s"><span class="pl-pds">'</span>Menu<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
 
-  <span class="pl-s">var</span> menuItems <span class="pl-k">=</span> [
-    { id<span class="pl-k">:</span> <span class="pl-c1">1</span>, label<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Option 1<span class="pl-pds">'</span></span> },
-    { id<span class="pl-k">:</span> <span class="pl-c1">2</span>, label<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Option 2<span class="pl-pds">'</span></span> }
+  <span class="pl-k">let</span> menuItems <span class="pl-k">=</span> [
+    { id<span class="pl-k">:</span> <span class="pl-c1">1</span>, label<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Option 1<span class="pl-pds">'</span></span> },
+    { id<span class="pl-k">:</span> <span class="pl-c1">2</span>, label<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Option 2<span class="pl-pds">'</span></span> }
   ];
 
-  <span class="pl-s">var</span> menu <span class="pl-k">=</span> TestUtils.renderIntoDocument(
+  <span class="pl-k">let</span> menu <span class="pl-k">=</span> TestUtils.renderIntoDocument(
     <span class="pl-k">&lt;</span>Menu items<span class="pl-k">=</span>{menuItems} /<span class="pl-k">&gt;</span>
   );
-  <span class="pl-s">var</span> menuElem <span class="pl-k">=</span> React.findDOMNode(menu);
+  <span class="pl-k">let</span> menuElem <span class="pl-k">=</span> React.findDOMNode(menu);
 
-  it(<span class="pl-s1"><span class="pl-pds">'</span>Renders the menu items<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
-    expect(menuElem.querySelectorAll(<span class="pl-s1"><span class="pl-pds">'</span>li<span class="pl-pds">'</span></span>).<span class="pl-sc">length</span>).toEqual(<span class="pl-c1">2</span>);
+  it(<span class="pl-s"><span class="pl-pds">'</span>Renders the menu items<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
+    expect(menuElem.querySelectorAll(<span class="pl-s"><span class="pl-pds">'</span>li<span class="pl-pds">'</span></span>).<span class="pl-c1">length</span>).toEqual(<span class="pl-c1">2</span>);
   });
 });</pre></div>
 
@@ -153,8 +176,8 @@ describe(<span class="pl-s1"><span class="pl-pds">'</span>Menu<span class="pl-pd
 <p><code>import</code> Sass and CSS files from within your JavaScript component files:</p>
 
 <div class="highlight highlight-js"><pre><span class="pl-c">// Filename: app.jsx</span>
-<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>normalize.css/normalize.css<span class="pl-pds">'</span></span>;
-<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>./scss/app.scss<span class="pl-pds">'</span></span>;</pre></div>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">'</span>normalize.css/normalize.css<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">'</span>./scss/app.scss<span class="pl-pds">'</span></span>;</pre></div>
 
 <ul>
 <li>Sass include paths can be adjusted in the <code>webpack.config.js</code> file.</li>
@@ -171,10 +194,18 @@ issues that might exist due to unpredicatable order of CSS rules.</li>
 <p>All required <code>.html</code> files are compiled with lodash.template and synced into the <code>./build</code> directory:</p>
 
 <div class="highlight highlight-js"><pre><span class="pl-c">// Filename: app.jsx</span>
-<span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">'</span>./index.html<span class="pl-pds">'</span></span>;</pre></div>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">'</span>./index.html<span class="pl-pds">'</span></span>;</pre></div>
 
 <ul>
 <li>You can adjust the lodash template data in the <code>webpack.config.js</code> file.</li>
+</ul>
+
+<h2>
+<a id="conventions" class="anchor" href="#conventions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conventions</h2>
+
+<ul>
+<li>Use fat arrows for anonymous functions</li>
+<li>Don't use <code>var</code>. Use <code>let</code> and <code>const</code>.</li>
 </ul>
 
 <h2>
@@ -216,7 +247,7 @@ issues that might exist due to unpredicatable order of CSS rules.</li>
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">React-seed maintained by <a href="https://github.com/badsyntax">badsyntax</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
