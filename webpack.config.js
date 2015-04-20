@@ -72,7 +72,8 @@ var loaders = [
       'css-loader?sourceMap',
       'postcss-loader',
       'sass-loader?' + [
-        'sourceMap',
+        'sourceMap=map',
+        'sourceMapContents=true',
         'outputStyle=expanded',
         'includePaths[]=' + path.resolve(__dirname, './app/scss'),
         'includePaths[]=' + path.resolve(__dirname, './node_modules')
@@ -94,7 +95,7 @@ var config = {
   cache: DEBUG,
   debug: DEBUG,
   target: 'web',
-  devtool: DEBUG ? '#inline-source-map' : false,
+  devtool: DEBUG ? 'inline-source-map' : false,
   entry: entry,
   output: {
     path: path.resolve(pkg.config.build_dir),
