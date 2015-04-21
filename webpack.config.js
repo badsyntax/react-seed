@@ -72,7 +72,7 @@ var loaders = [
       'css-loader?sourceMap',
       'postcss-loader',
       'sass-loader?' + [
-        'sourceMap=map',
+        'sourceMap',
         'sourceMapContents=true',
         'outputStyle=expanded',
         'includePaths[]=' + path.resolve(__dirname, './app/scss'),
