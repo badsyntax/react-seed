@@ -3,16 +3,17 @@
   "version": "0.0.9",
   "repository": "https://github.com/badsyntax/react-seed",
   "config": {
-    "build_dir": "./build",
-    "dev_port": 8000
+    "buildDir": "./build",
+    "devPort": 8000,
+    "devHost": "localhost"
   },
   "scripts": {
     "env": "env",
     "prerelease": "npm test",
     "prestart": "npm install",
-    "pretest": "npm run lint",
+    "pretest": "npm install && npm run lint",
     "prewebpack": "npm run clean",
-    "clean": "rm -rf $npm_package_config_build_dir && mkdir $npm_package_config_build_dir",
+    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
     "start": "NODE_ENV=development node dev-server",
     "webpack": "webpack --colors --progress --config ./webpack.config.js",
     "start-dev-server": "webpack-dev-server --output-pathinfo --inline",
@@ -29,7 +30,7 @@
   "devDependencies": {
     "autoprefixer-core": "^5.1.11",
     "babel-core": "^5.1.11",
-    "babel-jest": "^5.0.1",
+    "babel-jest": "^4.0.0",
     "babel-loader": "^5.0.0",
     "babel-runtime": "^5.1.11",
     "css-loader": "^0.10.1",
@@ -44,6 +45,7 @@
     "opn": "^1.0.1",
     "postcss-loader": "^0.4.0",
     "react-hot-loader": "^1.2.5",
+    "rimraf": "^2.3.2",
     "sass-loader": "^0.4.2",
     "style-loader": "^0.10.2",
     "template-html-loader": "0.0.3",
