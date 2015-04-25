@@ -98,7 +98,7 @@ var config = {
   devtool: DEBUG ? 'inline-source-map' : false,
   entry: entry,
   output: {
-    path: path.resolve(pkg.config.build_dir),
+    path: path.resolve(pkg.config.buildDir),
     publicPath: '/',
     filename: jsBundle,
     pathinfo: false
@@ -114,7 +114,7 @@ var config = {
     extensions: ['', '.js', '.json', '.jsx']
   },
   devServer: {
-    contentBase: path.resolve(pkg.config.build_dir),
+    contentBase: path.resolve(pkg.config.buildDir),
     hot: true,
     noInfo: false,
     inline: true,

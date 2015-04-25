@@ -46,7 +46,6 @@ class Menu extends React.Component {
 
   constructor(...args) {
     super(...args);
-    // Set initial state
     this.state = {
       foo: false
     };
@@ -73,28 +72,6 @@ Menu.propTypes = {
 
 export default Menu;
 ```
-
-### Using mixins:
-
-It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin helper:
-
-```js
-import mixin from 'util/mixin';
-
-let draggable = {
-  drag() { /* … */ }
-};
-
-let droppable = {
-  drop() { /* … */ }
-};
-
-class Dialog extends mixin(React.Component, draggable, droppable) {
-  /* … */
-}
-```
-
-Alternatively, just use `React.createClass`.
 
 ###Writing tests:
 

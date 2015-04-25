@@ -1,10 +1,9 @@
 'use strict';
 
-import React from 'react/addons';
-import 'babel-core/polyfill';
-
+jest.dontMock('babel-core/polyfill');
 jest.dontMock('../BaseStore.js');
 
+import 'babel-core/polyfill';
 import BaseStore from '../BaseStore.js';
 
 const ITEMS_UPDATED = 'ITEMS_UPDATED';

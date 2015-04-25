@@ -6,7 +6,8 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import {
   SELECTED_UPDATED,
   ITEM_SELECTED,
-  ITEM_DESELECTED
+  ITEM_DESELECTED,
+  ITEMS_UPDATED
 } from '../constants/AppConstants';
 
 class SelectedStore extends BaseStore {
