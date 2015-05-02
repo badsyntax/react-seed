@@ -2,5 +2,5 @@
 
 .app {
   font-size: inherit;
-  @include my-padding-mixin(20px);
+  padding: 20px;
 }

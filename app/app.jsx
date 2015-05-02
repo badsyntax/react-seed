@@ -7,9 +7,9 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 
 import React from 'react';
-import App from './components/App/App';
+import Router from 'react-router';
+import routes from './routes';
 
-React.render(
-  <App />,
-  document.getElementById('app')
-);
+Router.run(routes, function (Handler) {
+  React.render(<Handler/>, document.getElementById('app'));
+});

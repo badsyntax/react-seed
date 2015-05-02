@@ -1,7 +1,3 @@
 'use strict';
 
-export const ITEMS_UPDATED = 'ITEMS_UPDATED';
-export const ITEM_SELECTED = 'ITEM_SELECTED';
-export const ITEM_DESELECTED = 'ITEM_DESELECTED';
-export const ITEMS_GET_SUCCESS = 'ITEMS_GET_SUCCESS';
-export const ITEMS_GET_ERROR = 'ITEMS_GET_ERROR';
+export const NAVIGATION_UPDATED = 'NAVIGATION_UPDATED';

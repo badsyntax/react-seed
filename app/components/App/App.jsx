@@ -3,50 +3,37 @@
 import './_App.scss';
 
 import React from 'react';
-import Body from '../Body/Body';
+import { RouteHandler } from 'react-router';
+import NavigationStore from '../../stores/NavigationStore';
+import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
-import ItemsStore from '../../stores/ItemsStore';
-import SelectedStore from '../../stores/SelectedStore';
-import AppActions from '../../actions/AppActions';
 
-function getAppState() {
+function getState() {
   return {
-    items: ItemsStore.getAll(),
-    selectedItems: SelectedStore.getAll()
+    pages: NavigationStore.getAll()
   };
 }
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   constructor(...args) {
     super(...args);
-    this.state = getAppState();
-    this.onChange = this.onChange.bind(this);
-  }
-
-  componentDidMount() {
-    ItemsStore.addChangeListener(this.onChange);
-    SelectedStore.addChangeListener(this.onChange);
-    AppActions.getItems();
-  }
-
-  componentWillUnmount() {
-    ItemsStore.removeChangeListener(this.onChange);
-    SelectedStore.removeChangeListener(this.onChange);
-  }
-
-  onChange() {
-    this.setState(getAppState());
+    this.state = getState();
   }
 
   render() {
     return (
       <div className={'app'}>
-        <Body
-          items={this.state.items}
-          selectedItems={this.state.selectedItems} />
+        <Navigation pages={this.state.pages} />
+        <RouteHandler key={this.context.router.getCurrentPath()} />
         <Footer />
       </div>
     );
   }
 }
+
+App.contextTypes = {
+  router: React.PropTypes.func.isRequired
+};
+
+export default App;

@@ -1,0 +1,16 @@
+@import "toolkit";
+
+.navigation {
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    margin-right: 10px;
+    a {
+      text-decoration: none;
+    }
+    &.-selected {
+      text-decoration: underline;
+    }
+  }
+}
