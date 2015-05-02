@@ -62,7 +62,8 @@ var loaders = [
       'template-html-loader?' + [
         'raw=true',
         'engine=lodash',
-        'version=' + pkg.version
+        'version=' + pkg.version,
+        'title=' + pkg.name
       ].join('&')
     ].join('!')
   },
