@@ -1,8 +1,6 @@
 # React seed - Material UI example [![Build Status](https://travis-ci.org/badsyntax/react-seed.svg?branch=feature/material-ui)](https://travis-ci.org/badsyntax/react-seed)
 
-A boilerplate for building React apps with ES6, webpack & material-ui.
-
-![Material UI](http://i.imgur.com/F9LhbY8.png)
+A boilerplate for building React apps with ES6, webpack & material-ui. 
 
 ## What you get
 
@@ -11,6 +9,7 @@ A boilerplate for building React apps with ES6, webpack & material-ui.
 * Jest testing framework
 * webpack bundling with react hot loader (as well as html, css & sass loaders)
 * Basic flux architecture with app actions, stores and example web API usage
+* View http://imgur.com/S17tOcp for an example
 
 ## Getting started
 
