@@ -2,6 +2,8 @@
 
 A boilerplate for building React apps with ES6, webpack & material-ui.
 
+![Material UI](http://i.imgur.com/F9LhbY8.png)
+
 ## What you get
 
 * React 0.13
