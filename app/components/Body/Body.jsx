@@ -1,45 +1,32 @@
 'use strict';
 
 import './_Body.scss';
-
 import React from 'react';
-import Menu from '../Menu/Menu';
-import SelectedList from '../SelectedList/SelectedList';
-
-let { PropTypes } = React;
 
 class Body extends React.Component {
 
-  getMenu() {
+  renderItem(item) {
     return (
-      <Menu
-        items={this.props.items} />
-    );
-  }
-
-  getSelectedList() {
-    return (
-      <SelectedList
-        items={this.props.selectedItems} />
+      <li key={item.id}>{item.label}</li>
     );
   }
 
   render() {
     return (
       <div className={'body'}>
-        <h1>Example of React with ES6 and webpack</h1>
-        <p><em>Click on a menu item to toggle:</em></p>
-        {this.getMenu()}
-        <p>Your selections:</p>
-        {this.getSelectedList()}
+        <h1>React Seed</h1>
+        <p>This is an example seed app, powered by React, ES6 &amp; webpack.</p>
+        <p>Here is some example data:</p>
+        <ul>
+          {this.props.items.map(this.renderItem, this)}
+        </ul>
       </div>
     );
   }
 }
 
 Body.propTypes = {
-  items: PropTypes.array.isRequired,
-  selectedItems: PropTypes.array.isRequired
+  items: React.PropTypes.array.isRequired
 };
 
 export default Body;

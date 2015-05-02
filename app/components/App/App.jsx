@@ -3,16 +3,14 @@
 import './_App.scss';
 
 import React from 'react';
+import AppActions from '../../actions/AppActions';
+import ItemsStore from '../../stores/ItemsStore';
 import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
-import ItemsStore from '../../stores/ItemsStore';
-import SelectedStore from '../../stores/SelectedStore';
-import AppActions from '../../actions/AppActions';
 
 function getAppState() {
   return {
-    items: ItemsStore.getAll(),
-    selectedItems: SelectedStore.getAll()
+    items: ItemsStore.getAll()
   };
 }
 
@@ -26,13 +24,11 @@ export default class App extends React.Component {
 
   componentDidMount() {
     ItemsStore.addChangeListener(this.onChange);
-    SelectedStore.addChangeListener(this.onChange);
     AppActions.getItems();
   }
 
   componentWillUnmount() {
     ItemsStore.removeChangeListener(this.onChange);
-    SelectedStore.removeChangeListener(this.onChange);
   }
 
   onChange() {
@@ -42,9 +38,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={'app'}>
-        <Body
-          items={this.state.items}
-          selectedItems={this.state.selectedItems} />
+        <Body items={this.state.items} />
         <Footer />
       </div>
     );
