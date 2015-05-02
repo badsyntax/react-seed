@@ -1,0 +1,12 @@
+@import "variables";
+
+.logo{
+  @extend %mui-font-style-headline;
+  background-color: $app-bar-color;
+  color: $app-bar-text-color;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: $desktop-keyline-increment;
+  padding-left: 24px;
+  padding-top: 0;
+}

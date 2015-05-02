@@ -1,0 +1,9 @@
+// The font paths are set here. In case they live elsewhere, a different
+// path must be specified.
+$mui-fonts-path: "./" !default;
+
+// Assuming './material-design-fonticons' as base dir.
+$mdfi-font-path: $mui-fonts-path !default;
+
+// Assuming './material-ui-icons' as base dir.
+$mui-icons-font-path: $mui-fonts-path !default;

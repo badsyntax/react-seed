@@ -3,3 +3,12 @@
 @mixin my-padding-mixin($some-number) {
   padding: $some-number;
 }
+
+@mixin font-face($font-family, $file-path, $font-weight, $font-style) {
+  @font-face {
+    font-family: $font-family;
+    src: url("#{$file-path}.woff2") format("woff2");
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}

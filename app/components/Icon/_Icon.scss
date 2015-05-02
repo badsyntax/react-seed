@@ -1,0 +1,15 @@
+.icon {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
+  &.-size-24 {
+    width: 24px;
+    height: 24px;
+  }
+  &.-size-18 {
+    width: 18px;
+    height: 18px;
+  }
+}

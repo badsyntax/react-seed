@@ -2,5 +2,21 @@
 
 .app {
   font-size: inherit;
-  @include my-padding-mixin(20px);
+
+  .body {
+    padding: 64px 0 0 0;
+  }
+}
+
+.app__title {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.app-bar__refresh {
+  float: right;
+  margin-right: -12px;
+  .icon {
+    margin: 0;
+  }
 }

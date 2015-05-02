@@ -1,6 +1,6 @@
-# React seed [![Build Status](https://travis-ci.org/badsyntax/react-seed.svg?branch=master)](https://travis-ci.org/badsyntax/react-seed)
+# React seed - Material UI example [![Build Status](https://travis-ci.org/badsyntax/react-seed.svg?branch=feature/material-ui)](https://travis-ci.org/badsyntax/react-seed)
 
-A boilerplate for building React apps with ES6 and webpack.
+A boilerplate for building React apps with ES6, webpack & material-ui.
 
 ## What you get
 

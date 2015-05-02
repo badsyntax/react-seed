@@ -24,8 +24,14 @@
   "dependencies": {
     "classnames": "^1.2.0",
     "flux": "^2.0.1",
+    "lodash": "^3.8.0",
+    "lorem-ipsum": "^1.0.1",
+    "material-design-icons": "^1.0.1",
+    "material-ui": "^0.7.5",
     "normalize.css": "^3.0.3",
-    "react": "^0.13.2"
+    "react": "^0.13.2",
+    "react-intl": "^1.2.0",
+    "react-tap-event-plugin": "^0.1.6"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.1.11",
@@ -41,9 +47,9 @@
     "html-loader": "^0.2.3",
     "jest-cli": "^0.4.0",
     "json-loader": "^0.5.1",
-    "lodash": "^3.7.0",
     "opn": "^1.0.1",
     "postcss-loader": "^0.4.0",
+    "raw-loader": "^0.5.1",
     "react-hot-loader": "^1.2.5",
     "rimraf": "^2.3.2",
     "sass-loader": "^0.4.2",

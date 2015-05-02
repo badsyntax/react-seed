@@ -7,7 +7,10 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 
 import React from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './components/App/App';
+
+injectTapEventPlugin();
 
 React.render(
   <App />,
