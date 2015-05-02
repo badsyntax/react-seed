@@ -1,4 +1,4 @@
-# React seed [![Build Status](https://travis-ci.org/badsyntax/react-seed.svg?branch=feature/react-router)](https://travis-ci.org/badsyntax/react-seed)
+# React seed - React router example [![Build Status](https://travis-ci.org/badsyntax/react-seed.svg?branch=feature/react-router)](https://travis-ci.org/badsyntax/react-seed)
 
 A boilerplate for building React apps with ES6, webpack & react-router.
 
