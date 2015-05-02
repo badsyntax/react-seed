@@ -10,6 +10,11 @@ A boilerplate for building React apps with ES6 and webpack.
 * webpack bundling with react hot loader (as well as html, css & sass loaders)
 * Basic flux architecture with app actions, stores and example web API usage
 
+## Other examples
+
+* React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
+* Material UI ([feature/material-ui](https://github.com/badsyntax/react-seed/tree/feature/material-ui))
+
 ## Getting started
 
 Clone the project and remove the git repository:
