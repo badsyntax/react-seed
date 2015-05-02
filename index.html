@@ -20,7 +20,8 @@
 
     <section class="main-content">
       <h1>
-<a id="react-seed" class="anchor" href="#react-seed" aria-hidden="true"><span class="octicon octicon-link"></span></a>React seed</h1>
+<a id="react-seed-" class="anchor" href="#react-seed-" aria-hidden="true"><span class="octicon octicon-link"></span></a>React seed <a href="https://travis-ci.org/badsyntax/react-seed"><img src="https://travis-ci.org/badsyntax/react-seed.svg?branch=master" alt="Build Status"></a>
+</h1>
 
 <p>A boilerplate for building React apps with ES6 and webpack.</p>
 
@@ -33,6 +34,14 @@
 <li>Jest testing framework</li>
 <li>webpack bundling with react hot loader (as well as html, css &amp; sass loaders)</li>
 <li>Basic flux architecture with app actions, stores and example web API usage</li>
+</ul>
+
+<h2>
+<a id="other-examples" class="anchor" href="#other-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other examples</h2>
+
+<ul>
+<li>React router (<a href="https://github.com/badsyntax/react-seed/tree/feature/react-router">feature/react-router</a>)</li>
+<li>Material UI (<a href="https://github.com/badsyntax/react-seed/tree/feature/material-ui">feature/material-ui</a>)</li>
 </ul>
 
 <h2>
@@ -77,7 +86,6 @@ rm -rf .git <span class="pl-k">&amp;&amp;</span> git init</pre></div>
 
   constructor(...args) {
     <span class="pl-v">super</span>(...args);
-    <span class="pl-c">// Set initial state</span>
     <span class="pl-v">this</span>.state <span class="pl-k">=</span> {
       foo<span class="pl-k">:</span> <span class="pl-c1">false</span>
     };
@@ -103,27 +111,6 @@ Menu.propTypes <span class="pl-k">=</span> {
 };
 
 <span class="pl-k">export</span> <span class="pl-k">default</span> Menu;</pre></div>
-
-<h3>
-<a id="using-mixins" class="anchor" href="#using-mixins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using mixins:</h3>
-
-<p>It's a bit awkward to use mixins with ES6 classes. You'll need to use a mixin helper:</p>
-
-<div class="highlight highlight-js"><pre><span class="pl-k">import</span> mixin <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>util/mixin<span class="pl-pds">'</span></span>;
-
-<span class="pl-k">let</span> draggable <span class="pl-k">=</span> {
-  drag() { <span class="pl-c">/* … */</span> }
-};
-
-<span class="pl-k">let</span> droppable <span class="pl-k">=</span> {
-  drop() { <span class="pl-c">/* … */</span> }
-};
-
-<span class="pl-k">class</span> <span class="pl-en">Dialog</span> <span class="pl-k">extends</span> <span class="pl-en">mixin</span>(React.Component, draggable, droppable) {
-  <span class="pl-c">/* … */</span>
-}</pre></div>
-
-<p>Alternatively, just use <code>React.createClass</code>.</p>
 
 <h3>
 <a id="writing-tests" class="anchor" href="#writing-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Writing tests:</h3>
