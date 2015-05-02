@@ -1,14 +1,7 @@
 import './_LeftNav.scss';
 
 import React from 'react';
-import util from 'util';
-
-import {
-  MenuItem,
-  LeftNav as MuiLeftNav
-} from 'material-ui';
-
-import { APP_TITLE } from '../../constants/AppConstants';
+import { LeftNav as MuiLeftNav } from 'material-ui';
 
 let menuItems = [
   { route: 'home', text: 'Posts' },

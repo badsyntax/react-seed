@@ -5,9 +5,9 @@ function rand(min, max) {
 }
 
 let data = {
-  status: "OK",
+  status: 'OK',
   news: []
-}
+};
 
 for(var i = 0; i < 30; i++) {
   data.news.push({

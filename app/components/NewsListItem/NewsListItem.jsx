@@ -5,7 +5,7 @@ import './_NewsListItem.scss';
 import React from 'react';
 import classnames from 'classnames';
 import { FormattedRelative } from 'react-intl';
-import { Paper, FloatingActionButton } from 'material-ui';
+import { FloatingActionButton } from 'material-ui';
 
 let { PropTypes } = React;
 
@@ -15,7 +15,7 @@ class NewsListItem extends React.Component {
     return classnames('listing-item');
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return nextProps.item.id !== this.props.item.id;
   }
 
@@ -46,7 +46,7 @@ class NewsListItem extends React.Component {
             </a>
           </span>
         </footer>
-        <a href="#" className="list-item-comments">
+        <a className="list-item-comments" href="#">
           <FloatingActionButton
             mini={true}
             secondary={true}
