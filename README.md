@@ -18,6 +18,7 @@ Clone the project and remove the git repository:
 ```bash
 git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 cd my-project
+git checkout feature/material-ui
 rm -rf .git && git init
 ```
 
