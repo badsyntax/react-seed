@@ -28,6 +28,7 @@
     "lorem-ipsum": "^1.0.1",
     "material-design-icons": "^1.0.1",
     "material-ui": "^0.7.5",
+    "material-ui-sass": "^0.7.2",
     "normalize.css": "^3.0.3",
     "react": "^0.13.2",
     "react-intl": "^1.2.0",
