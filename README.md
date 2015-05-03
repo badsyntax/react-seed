@@ -17,12 +17,34 @@ A boilerplate for building React apps with ES6 and webpack.
 
 ## Getting started
 
+### Installing with git
+
 Clone the project and remove the git repository:
 
 ```bash
 git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 cd my-project
 rm -rf .git && git init
+```
+
+### Installing with yeoman
+
+Ensure yeoman is installed:
+
+```bash
+npm install -g yo
+```
+
+Install generator-react-seed from npm:
+
+```bash
+npm install -g generator-react-seed
+```
+
+Finally, initiate the generator:
+
+```bash
+yo react-seed
 ```
 
 ## npm scripts
