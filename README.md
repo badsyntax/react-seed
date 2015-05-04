@@ -9,9 +9,6 @@ A boilerplate for building React apps with ES6 and webpack.
 * Jest testing framework
 * webpack bundling with react hot loader (as well as html, css & sass loaders)
 * Basic flux architecture with app actions, stores and example web API usage
-
-## Other examples
-
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
 * Material UI ([feature/material-ui](https://github.com/badsyntax/react-seed/tree/feature/material-ui))
 
@@ -19,33 +16,14 @@ A boilerplate for building React apps with ES6 and webpack.
 
 ### Installing with git
 
-Clone the project and remove the git repository:
-
 ```bash
 git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
-cd my-project
-rm -rf .git && git init
 ```
 
 ### Installing with yeoman
 
-Ensure yeoman is installed:
-
-```bash
-npm install -g yo
-```
-
-Install generator-react-seed from npm:
-
-```bash
-npm install -g generator-react-seed
-```
-
-Finally, initiate the generator:
-
-```bash
-yo react-seed
-```
+* First install the generator: `npm install -g generator-react-seed`
+* Use the generator like so: `yo react-seed`
 
 ## npm scripts
 
@@ -170,15 +148,10 @@ import './index.html';
 
 ## Releasing
 
-Updating version:
-
-* `npm version patch` - Bump version
-* `git push && git push --tags` - Push to remote
-
-Publishing package:
-
-* `npm login` - Login to npm
-* `npm publish` - Publish package
+1. `npm version patch`
+2. `git push && git push --tags`
+3. `npm login` (Optional)
+4. `npm publish`
 
 ## Credits
 
