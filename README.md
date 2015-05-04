@@ -22,8 +22,9 @@ git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 
 ### Installing with yeoman
 
-* First install the generator: `npm install -g generator-react-seed`
-* Use the generator like so: `yo react-seed`
+1. `npm install -g yo`
+2. `npm install -g generator-react-seed`
+3. Use the generator like so: `yo react-seed`
 
 ## npm scripts
 
