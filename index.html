@@ -34,12 +34,6 @@
 <li>Jest testing framework</li>
 <li>webpack bundling with react hot loader (as well as html, css &amp; sass loaders)</li>
 <li>Basic flux architecture with app actions, stores and example web API usage</li>
-</ul>
-
-<h2>
-<a id="other-examples" class="anchor" href="#other-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other examples</h2>
-
-<ul>
 <li>React router (<a href="https://github.com/badsyntax/react-seed/tree/feature/react-router">feature/react-router</a>)</li>
 <li>Material UI (<a href="https://github.com/badsyntax/react-seed/tree/feature/material-ui">feature/material-ui</a>)</li>
 </ul>
@@ -47,11 +41,20 @@
 <h2>
 <a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h2>
 
-<p>Clone the project and remove the git repository:</p>
+<h3>
+<a id="installing-with-git" class="anchor" href="#installing-with-git" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing with git</h3>
 
-<div class="highlight highlight-bash"><pre>git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
-<span class="pl-c1">cd</span> my-project
-rm -rf .git <span class="pl-k">&amp;&amp;</span> git init</pre></div>
+<div class="highlight highlight-bash"><pre>git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project</pre></div>
+
+<h3>
+<a id="installing-with-yeoman" class="anchor" href="#installing-with-yeoman" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing with yeoman</h3>
+
+<ol>
+<li><code>npm install -g yo</code></li>
+<li><code>npm install -g generator-react-seed</code></li>
+<li>Use the generator like so: <code>yo react-seed</code>
+</li>
+</ol>
 
 <h2>
 <a id="npm-scripts" class="anchor" href="#npm-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>npm scripts</h2>
@@ -186,23 +189,13 @@ issues that might exist due to unpredicatable order of CSS rules.</li>
 <h2>
 <a id="releasing" class="anchor" href="#releasing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Releasing</h2>
 
-<p>Updating version:</p>
-
-<ul>
+<ol>
+<li><code>npm version patch</code></li>
+<li><code>git push &amp;&amp; git push --tags</code></li>
 <li>
-<code>npm version patch</code> - Bump version</li>
-<li>
-<code>git push &amp;&amp; git push --tags</code> - Push to remote</li>
-</ul>
-
-<p>Publishing package:</p>
-
-<ul>
-<li>
-<code>npm login</code> - Login to npm</li>
-<li>
-<code>npm publish</code> - Publish package</li>
-</ul>
+<code>npm login</code> (Optional)</li>
+<li><code>npm publish</code></li>
+</ol>
 
 <h2>
 <a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
