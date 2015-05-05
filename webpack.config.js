@@ -19,10 +19,22 @@ var plugins = [
   cssExtractTextPlugin
 ];
 
+var sassLoader, cssLoader;
+var sassParams = [
+  'sourceMap',
+  'sourceMapContents=true',
+  'outputStyle=expanded',
+  'includePaths[]=' + path.resolve(__dirname, './app/scss'),
+  'includePaths[]=' + path.resolve(__dirname, './node_modules')
+].join('&');
+
 if (DEBUG) {
   plugins.push(
     new webpack.HotModuleReplacementPlugin()
   );
+  // Use style loader directly to support css livereload
+  sassLoader = 'style!css!sass?' + sassParams;
+  cssLoader = 'style-loader!css-loader!postcss-loader';
 } else {
   plugins.push(
     new webpack.optimize.UglifyJsPlugin(),
@@ -34,6 +46,12 @@ if (DEBUG) {
     }),
     new webpack.NoErrorsPlugin()
   );
+  sassLoader = cssExtractTextPlugin.extract('style-loader', [
+    'css-loader?sourceMap',
+    'postcss-loader',
+    'sass-loader?' + sassParams
+  ].join('!'));
+  cssLoader = ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader');
 }
 
 var loaders = [
@@ -44,7 +62,7 @@ var loaders = [
   },
   {
     test: /\.css$/,
-    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+    loader: cssLoader
   },
   {
     test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff$|\.ttf$/,
@@ -69,17 +87,7 @@ var loaders = [
   },
   {
     test: /\.scss$/,
-    loader: cssExtractTextPlugin.extract('style-loader', [
-      'css-loader?sourceMap',
-      'postcss-loader',
-      'sass-loader?' + [
-        'sourceMap',
-        'sourceMapContents=true',
-        'outputStyle=expanded',
-        'includePaths[]=' + path.resolve(__dirname, './app/scss'),
-        'includePaths[]=' + path.resolve(__dirname, './node_modules')
-      ].join('&')
-    ].join('!'))
+    loader: sassLoader
   }
 ];
 
