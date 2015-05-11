@@ -1,10 +1,8 @@
 'use strict';
 
 import React from 'react/addons';
-
-jest.dontMock('../Footer.jsx');
-
 import Footer from '../Footer.jsx';
+import { expect } from 'chai';
 
 let { TestUtils } = React.addons;
 
@@ -14,6 +12,6 @@ describe('Footer', () => {
       <Footer />
     );
     let footerElem = React.findDOMNode(footer);
-    expect(footerElem.className).toEqual('footer');
+    expect(footerElem.className).to.equal('footer');
   });
 });
