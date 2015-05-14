@@ -1,5 +1,3 @@
-var webpackConfig = require('./webpack.config.test.js');
-
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -18,9 +16,8 @@ module.exports = function(config) {
     autoWatch: true,
     browsers: [/*'Chrome', */'PhantomJS'],
     singleRun: false,
-    webpack: webpackConfig,
-    webpackMiddleware: {},
-    webpackServer: {
+    webpack: require('./webpack/config.test'),
+    webpackMiddleware: {
       noInfo: true
     }
   });
