@@ -3,15 +3,9 @@
 import './_App.scss';
 
 import React from 'react';
-<<<<<<< HEAD
 import { RouteHandler } from 'react-router';
 import NavigationStore from '../../stores/NavigationStore';
 import Navigation from '../Navigation/Navigation';
-=======
-import AppActions from '../../actions/AppActions';
-import ItemsStore from '../../stores/ItemsStore';
-import Body from '../Body/Body';
->>>>>>> master
 import Footer from '../Footer/Footer';
 
 function getState() {
