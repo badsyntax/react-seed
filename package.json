@@ -19,7 +19,7 @@
     "pretest": "npm install",
     "pretest-travis": "npm install",
     "start": "NODE_ENV=development node dev-server ./webpack/config",
-    "test": "NODE_ENV=test karma start --config=test/webpack.config.js",
+    "test": "NODE_ENV=test karma start",
     "test-travis": "NODE_ENV=test karma start --single-run",
     "webpack": "webpack --colors --progress --config ./webpack/config"
   },
