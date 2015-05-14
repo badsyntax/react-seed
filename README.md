@@ -6,8 +6,8 @@ A boilerplate for building React apps with ES6 and webpack.
 
 * React 0.13
 * Compilation of ES6 & JSX to ES5
-* Jest testing framework
-* webpack bundling with react hot loader (as well as html, css & sass loaders)
+* webpack module loader with react hot loader (as well as html, css & sass loaders)
+* Karma, mocha, chai & sinon for testing
 * Basic flux architecture with app actions, stores and example web API usage
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
 * Material UI ([feature/material-ui](https://github.com/badsyntax/react-seed/tree/feature/material-ui))
@@ -87,10 +87,6 @@ export default Menu;
 'use strict';
 
 import React from 'react/addons';
-
-jest.dontMock('../Menu.jsx');
-jest.dontMock('../../MenuItem/MenuItem.jsx');
-
 import Menu from '../Menu.jsx';
 
 let { TestUtils } = React.addons;
@@ -108,7 +104,7 @@ describe('Menu', () => {
   let menuElem = React.findDOMNode(menu);
 
   it('Renders the menu items', () => {
-    expect(menuElem.querySelectorAll('li').length).toEqual(2);
+    expect(menuElem.querySelectorAll('li').length).to.equal(2);
   });
 });
 ```
@@ -123,7 +119,7 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 ```
 
-* Sass include paths can be adjusted in the `webpack.config.js` file.
+* Sass include paths can be adjusted in the `webpack/loaders.js` file.
 * All CSS (compiled or otherwise) is run through Autoprefixer.
 * CSS files are combined in the order in which they are imported in JavaScript, thus
 you should always import your CSS/Sass before importing any other JavaScript files.
@@ -139,7 +135,7 @@ All required `.html` files are compiled with lodash.template and synced into the
 import './index.html';
 ```
 
-* You can adjust the lodash template data in the `webpack.config.js` file.
+* You can adjust the lodash template data in the `webpack/loaders.js` file.
 
 ## Conventions
 
