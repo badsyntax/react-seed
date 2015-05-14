@@ -42,6 +42,7 @@ class LeftNav extends React.Component {
 
     return (
       <MuiLeftNav
+        className={'left-nav'}
         docked={false}
         header={header}
         isInitiallyOpen={false}

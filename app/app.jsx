@@ -12,7 +12,9 @@ import App from './components/App/App';
 
 injectTapEventPlugin();
 
-React.render(
-  <App />,
-  document.getElementById('app')
-);
+window.onload = function() {
+  React.render(
+    <App />,
+    document.getElementById('app')
+  );
+};

@@ -69,7 +69,7 @@ var loaders = [
     loader: cssLoader
   },
   {
-    test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff$|\.ttf$/,
+    test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff2?$|\.ttf$/,
     loader: fileLoader
   },
   {

@@ -8,7 +8,6 @@ var port = pkg.config.devPort;
 var host = pkg.config.devHost;
 
 var configPath = process.argv[2] || './webpack/config';
-console.log('CONFIGPATH', configPath);
 var config = require(configPath);
 
 var server = new WebpackDevServer(
