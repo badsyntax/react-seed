@@ -6,8 +6,8 @@ A boilerplate for building React apps with ES6 and webpack.
 
 * React 0.13
 * Compilation of ES6 & JSX to ES5
-* Jest testing framework
-* webpack bundling with react hot loader (as well as html, css & sass loaders)
+* webpack module loader with react hot loader (as well as html, css & sass loaders)
+* Karma, mocha, chai & sinon for testing
 * Basic flux architecture with app actions, stores and example web API usage
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
 * Material UI ([feature/material-ui](https://github.com/badsyntax/react-seed/tree/feature/material-ui))

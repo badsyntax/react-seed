@@ -1,5 +1,6 @@
 var path = require('path');
 var pkg = require('../package.json');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var DEBUG = process.env.NODE_ENV === 'development';
 var TEST = process.env.NODE_ENV === 'test';
@@ -32,7 +33,7 @@ if (DEBUG || TEST) {
     jsxLoader.push('react-hot');
   }
   jsxLoader.push('babel-loader?optional=runtime');
-  sassParams.push('sourceMap', 'sourceMapContents=true')
+  sassParams.push('sourceMap', 'sourceMapContents=true');
   sassLoader = [
     'style-loader',
     'css-loader?sourceMap',

@@ -1,6 +1,5 @@
 var path = require('path');
 var util = require('util');
-var webpack = require('webpack');
 var autoprefixer = require('autoprefixer-core');
 var pkg = require('../package.json');
 
