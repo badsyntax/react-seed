@@ -7,63 +7,18 @@ var pkg = require('./package.json');
 
 var DEBUG = process.env.NODE_ENV !== 'production';
 
-var cssBundle = path.join('css', util.format('[name].%s.css', pkg.version));
-var jsBundle = path.join('js', util.format('[name].%s.js', pkg.version));
-
-var entry = {
-  app: ['./run-tests.jsx']
-};
-
-entry.app.push(
-  util.format(
-    'webpack-dev-server/client?http://%s:%d',
-    pkg.config.devHost,
-    pkg.config.devPort
-  )
-);
-entry.app.push('webpack/hot/only-dev-server');
-
 var config = {
-  context: path.join(__dirname, 'app'),
-  cache: DEBUG,
-  debug: DEBUG,
-  target: 'web',
-  devtool: DEBUG ? 'inline-source-map' : false,
-  entry: entry,
-  output: {
-    path: path.resolve(pkg.config.buildDir),
-    publicPath: '/',
-    filename: jsBundle,
-    pathinfo: false
-  },
+  devtool: 'inline-source-map',
   module: {
     loaders: getLoaders()
   },
   postcss: [
     autoprefixer
   ],
-  plugins: getPlugins(),
   resolve: {
     extensions: ['', '.js', '.json', '.jsx']
-  },
-  devServer: {
-    contentBase: path.resolve(pkg.config.buildDir),
-    hot: true,
-    noInfo: false,
-    inline: true,
-    stats: { colors: true }
   }
 };
-
-function getPlugins() {
-  var plugins = [
-    new webpack.optimize.OccurenceOrderPlugin()
-  ];
-  plugins.push(
-    new webpack.HotModuleReplacementPlugin()
-  );
-  return plugins;
-}
 
 function getLoaders() {
 
@@ -89,19 +44,19 @@ function getLoaders() {
     'includePaths[]=' + path.resolve(__dirname, './node_modules')
   ];
 
-    jsxLoader = ['react-hot', 'babel-loader?optional=runtime'];
-    sassParams.push('sourceMap', 'sourceMapContents=true')
-    sassLoader = [
-      'style-loader',
-      'css-loader?sourceMap',
-      'postcss-loader',
-      'sass-loader?' + sassParams.join('&')
-    ].join('!');
-    cssLoader = [
-      'style-loader',
-      'css-loader?sourceMap',
-      'postcss-loader'
-    ].join('!');
+  jsxLoader = ['babel-loader?optional=runtime'];
+  sassParams.push('sourceMap', 'sourceMapContents=true')
+  sassLoader = [
+    'style-loader',
+    'css-loader?sourceMap',
+    'postcss-loader',
+    'sass-loader?' + sassParams.join('&')
+  ].join('!');
+  cssLoader = [
+    'style-loader',
+    'css-loader?sourceMap',
+    'postcss-loader'
+  ].join('!');
 
   return [
     {
