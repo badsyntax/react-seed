@@ -1,6 +1,9 @@
 'use strict';
 
-export const APP_TITLE = 'Material-UI App';
+import pkg from '../../package';
+export const DEBUG = (process.env.NODE_ENV !== 'production');
+
+export const APP_TITLE = pkg.name;
 
 export const NEWS_UPDATED = 'NEWS_UPDATED';
 export const ACTION_NEWS_GET = 'ACTION_NEWS_GET';

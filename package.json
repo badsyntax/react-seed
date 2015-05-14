@@ -1,25 +1,27 @@
 {
   "name": "react-seed",
-  "version": "0.0.9",
+  "version": "0.0.12",
+  "description": "Seed project for React apps using ES6 & webpack.",
   "repository": "https://github.com/badsyntax/react-seed",
   "config": {
     "buildDir": "./build",
-    "devPort": 8000,
-    "devHost": "localhost"
+    "buildDirTests": "./build_tests",
+    "devHost": "localhost",
+    "devPort": 8000
   },
   "scripts": {
+    "build": "NODE_ENV=production npm run webpack",
+    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
     "env": "env",
-    "prerelease": "npm test",
+    "lint": "eslint --ext .js --ext .jsx ./app ./webpack && echo No linting errors.",
+    "prebuild": "npm run clean",
     "prestart": "npm install",
     "pretest": "npm install && npm run lint",
-    "prewebpack": "npm run clean",
-    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
-    "start": "NODE_ENV=development node dev-server",
-    "webpack": "webpack --colors --progress --config ./webpack.config.js",
-    "start-dev-server": "webpack-dev-server --output-pathinfo --inline",
-    "build": "NODE_ENV=production npm run webpack",
-    "lint": "eslint --ext .js --ext .jsx ./app && echo No linting errors.",
-    "test": "jest"
+    "pretest-travis": "npm install && npm run lint",
+    "start": "NODE_ENV=development node dev-server ./webpack/config",
+    "test": "NODE_ENV=test karma start",
+    "test-travis": "NODE_ENV=test karma start --single-run",
+    "webpack": "webpack --colors --progress --config ./webpack/config"
   },
   "dependencies": {
     "classnames": "^1.2.0",
@@ -36,48 +38,45 @@
   },
   "devDependencies": {
     "autoprefixer-core": "^5.1.11",
-    "babel-core": "^5.1.11",
-    "babel-jest": "^4.0.0",
+    "babel-core": "^5.3.3",
     "babel-loader": "^5.0.0",
-    "babel-runtime": "^5.1.11",
-    "css-loader": "^0.10.1",
-    "eslint": "^0.19.0",
-    "eslint-plugin-react": "^2.1.1",
-    "extract-text-webpack-plugin": "^0.5.0",
+    "babel-runtime": "^5.3.3",
+    "chai": "^2.3.0",
+    "css-loader": "^0.12.1",
+    "eslint": "^0.21.0",
+    "eslint-plugin-react": "^2.3.0",
+    "extract-text-webpack-plugin": "^0.8.0",
     "file-loader": "^0.8.1",
-    "html-loader": "^0.2.3",
-    "jest-cli": "^0.4.0",
+    "glob": "^5.0.6",
+    "html-loader": "^0.3.0",
     "json-loader": "^0.5.1",
-    "opn": "^1.0.1",
-    "postcss-loader": "^0.4.0",
-    "raw-loader": "^0.5.1",
-    "react-hot-loader": "^1.2.5",
-    "rimraf": "^2.3.2",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-cli": "0.0.4",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon": "^1.0.4",
+    "karma-source-map-support": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.4",
+    "karma-webpack": "^1.5.1",
+    "lodash": "^3.8.0",
+    "mocha": "^2.2.4",
+    "mocha-loader": "^0.7.1",
+    "node-libs-browser": "^0.5.0",
+    "opn": "^1.0.2",
+    "postcss-loader": "^0.4.3",
+    "react-hot-loader": "^1.2.7",
+    "rimraf": "^2.3.3",
     "sass-loader": "^0.4.2",
-    "style-loader": "^0.10.2",
+    "source-map-support": "^0.2.10",
+    "style-loader": "^0.12.2",
     "template-html-loader": "0.0.3",
-    "webpack": "^1.8.8",
+    "webpack": "^1.9.5",
     "webpack-dev-server": "^1.8.2"
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "jest": {
-    "scriptPreprocessor": "./jest-preprocessor.js",
-    "testPathDirs": [
-      "./app"
-    ],
-    "testFileExtensions": [
-      "js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx"
-    ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
-    ]
   },
   "eslintConfig": {
     "env": {
@@ -90,10 +89,9 @@
       "jsx": true
     },
     "globals": {
-      "jest": true,
       "describe": true,
       "it": true,
-      "expect": true
+      "sinon": true
     },
     "plugins": [
       "react"

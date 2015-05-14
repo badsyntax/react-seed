@@ -1,26 +1,33 @@
 # React seed - Material UI example [![Build Status](https://travis-ci.org/badsyntax/react-seed.svg?branch=feature/material-ui)](https://travis-ci.org/badsyntax/react-seed)
 
-A boilerplate for building React apps with ES6, webpack & material-ui. 
+A boilerplate for building React apps with ES6, webpack & material-ui.
 
 ## What you get
 
 * React 0.13
 * Compilation of ES6 & JSX to ES5
-* Jest testing framework
-* webpack bundling with react hot loader (as well as html, css & sass loaders)
+* webpack module loader with react hot loader (as well as html, css & sass loaders)
+* Karma, mocha, chai & sinon for testing
 * Basic flux architecture with app actions, stores and example web API usage
 * View http://imgur.com/S17tOcp for an example
+* React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
+* Material UI ([feature/material-ui](https://github.com/badsyntax/react-seed/tree/feature/material-ui))
 
 ## Getting started
 
-Clone the project and remove the git repository:
+### Installing with git
 
 ```bash
 git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 cd my-project
 git checkout feature/material-ui
-rm -rf .git && git init
 ```
+
+### Installing with yeoman
+
+1. `npm install -g yo`
+2. `npm install -g generator-react-seed`
+3. Use the generator like so: `yo react-seed`
 
 ## npm scripts
 
@@ -83,10 +90,6 @@ export default Menu;
 'use strict';
 
 import React from 'react/addons';
-
-jest.dontMock('../Menu.jsx');
-jest.dontMock('../../MenuItem/MenuItem.jsx');
-
 import Menu from '../Menu.jsx';
 
 let { TestUtils } = React.addons;
@@ -104,7 +107,7 @@ describe('Menu', () => {
   let menuElem = React.findDOMNode(menu);
 
   it('Renders the menu items', () => {
-    expect(menuElem.querySelectorAll('li').length).toEqual(2);
+    expect(menuElem.querySelectorAll('li').length).to.equal(2);
   });
 });
 ```
@@ -119,7 +122,7 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 ```
 
-* Sass include paths can be adjusted in the `webpack.config.js` file.
+* Sass include paths can be adjusted in the `webpack/loaders.js` file.
 * All CSS (compiled or otherwise) is run through Autoprefixer.
 * CSS files are combined in the order in which they are imported in JavaScript, thus
 you should always import your CSS/Sass before importing any other JavaScript files.
@@ -135,7 +138,7 @@ All required `.html` files are compiled with lodash.template and synced into the
 import './index.html';
 ```
 
-* You can adjust the lodash template data in the `webpack.config.js` file.
+* You can adjust the lodash template data in the `webpack/loaders.js` file.
 
 ## Conventions
 
@@ -145,15 +148,10 @@ import './index.html';
 
 ## Releasing
 
-Updating version:
-
-* `npm version patch` - Bump version
-* `git push && git push --tags` - Push to remote
-
-Publishing package:
-
-* `npm login` - Login to npm
-* `npm publish` - Publish package
+1. `npm version patch`
+2. `git push && git push --tags`
+3. `npm login` (Optional)
+4. `npm publish`
 
 ## Credits
 

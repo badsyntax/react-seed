@@ -29,5 +29,4 @@ export default class BaseStore extends EventEmitter {
     this.data.delete(item);
     this.emitChange();
   }
-
 }
