@@ -119,6 +119,7 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 ```
 
+* **Important note:** If you're importing component Sass files within your JavaScript component files, then each sass file will be compiled as part of a different process, and thus you cannot share global references. See [this issue](https://github.com/jtangelder/sass-loader/issues/105) for more information.
 * Sass include paths can be adjusted in the `webpack/loaders.js` file.
 * All CSS (compiled or otherwise) is run through Autoprefixer.
 * CSS files are combined in the order in which they are imported in JavaScript, thus
