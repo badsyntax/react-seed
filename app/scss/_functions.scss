@@ -1,7 +1,8 @@
 /* _functions.scss */
 
+/** NOTE: this function is only useful when importing Sass files with Sass instead
+of requiring the Sass files with the webpack sass-loader. */
 $imported-once-files: ();
-
 @function import-once($filename) {
   @if index($imported-once-files, $filename) {
     @return false;
