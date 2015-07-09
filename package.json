@@ -94,7 +94,10 @@
       "react"
     ],
     "rules": {
-      "strict": true,
+      "strict": [
+        2,
+        "global"
+      ],
       "indent": [
         2,
         2

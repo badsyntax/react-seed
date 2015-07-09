@@ -1,5 +1,3 @@
-'use strict';
-
 import './_Body.scss';
 import React from 'react';
 

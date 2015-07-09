@@ -1,5 +1,3 @@
-'use strict';
-
 import './_Footer.scss';
 import React from 'react';
 

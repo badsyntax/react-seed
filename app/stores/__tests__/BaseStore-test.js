@@ -1,5 +1,3 @@
-'use strict';
-
 import 'babel-core/polyfill';
 import BaseStore from '../BaseStore.js';
 import { expect } from 'chai';
