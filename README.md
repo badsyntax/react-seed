@@ -5,8 +5,8 @@ A boilerplate for building React apps with ES6 and webpack.
 ## What you get
 
 * React 0.13
-* Compilation of ES6 & JSX to ES5
-* webpack module loader with react hot loader (as well as html, css & sass loaders)
+* Compilation of ES6, ES7 & JSX to ES5 via babel
+* webpack with react hot loader (also html, css, sass and other useful loaders)
 * Karma, mocha, chai & sinon for testing
 * Basic flux architecture with app actions, stores and example web API usage
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
@@ -42,41 +42,38 @@ git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 'use strict';
 
 import './_Menu.scss';
-
 import React from 'react';
-import MenuItem from '../MenuItem/MenuItem';
 
-let { PropTypes } = React;
+let { Component, PropTypes } = React;
 
-class Menu extends React.Component {
+export default class Menu extends Component {
 
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      foo: false
-    };
+  static defaultProps = {
+    items: []
+  };
+
+  static propTypes = {
+    items: PropTypes.array.isRequired
+  };
+
+  state = {
+    foo: false
   }
 
-  getMenuItem(item) {
+  renderItem(item) {
     return (
-      <MenuItem item={item} key={'menu-item-' + item.id} />
+      <li key={'menu-item-' + item.id}>{item.label}</li>
     );
   }
 
   render() {
     return (
       <ul className={'menu'}>
-        {this.props.items.map(this.getMenuItem, this)}
+        {this.props.items.map(this.renderItem, this)}
       </ul>
     );
   }
 }
-
-Menu.propTypes = {
-  items: PropTypes.array.isRequired
-};
-
-export default Menu;
 ```
 
 ###Writing tests:

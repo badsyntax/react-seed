@@ -1,13 +1,18 @@
 import './_Body.scss';
 import React from 'react';
+import Menu from '../Menu/Menu';
 
-class Body extends React.Component {
+let { PropTypes } = React;
 
-  renderItem(item) {
-    return (
-      <li key={item.id}>{item.label}</li>
-    );
-  }
+export default class Body extends React.Component {
+
+  static defaultProps = {
+    items: []
+  };
+
+  static propTypes = {
+    items: PropTypes.array.isRequired
+  };
 
   render() {
     return (
@@ -15,9 +20,7 @@ class Body extends React.Component {
         <h1 className={'body__header'}>React Seed</h1>
         <p>This is an example seed app, powered by React, ES6 &amp; webpack.</p>
         <p>Here is some example data:</p>
-        <ul>
-          {this.props.items.map(this.renderItem, this)}
-        </ul>
+        <Menu items={this.props.items} />
         <h2>Getting started</h2>
         <p>Here's a couple of things you can do to get familiar with the project:</p>
         <ol>
@@ -29,9 +32,3 @@ class Body extends React.Component {
     );
   }
 }
-
-Body.propTypes = {
-  items: React.PropTypes.array.isRequired
-};
-
-export default Body;

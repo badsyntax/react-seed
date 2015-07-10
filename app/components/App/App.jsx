@@ -14,9 +14,10 @@ function getAppState() {
 
 export default class App extends React.Component {
 
+  state = getAppState()
+
   constructor(...args) {
     super(...args);
-    this.state = getAppState();
     this.onChange = this.onChange.bind(this);
   }
 
@@ -29,7 +30,7 @@ export default class App extends React.Component {
     ItemsStore.removeChangeListener(this.onChange);
   }
 
-  onChange() {
+  onChange = () => {
     this.setState(getAppState());
   }
 
