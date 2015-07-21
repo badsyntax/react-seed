@@ -5,8 +5,8 @@ A boilerplate for building React apps with ES6, webpack & react-router.
 ## What you get
 
 * React 0.13
-* Compilation of ES6 & JSX to ES5
-* webpack module loader with react hot loader (as well as html, css & sass loaders)
+* Compilation of ES6, ES7 & JSX to ES5 via babel
+* webpack with react hot loader (also html, css, sass and other useful loaders)
 * Karma, mocha, chai & sinon for testing
 * Basic flux architecture with app actions, stores and example web API usage
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
@@ -43,56 +43,61 @@ git checkout feature/react-router
 'use strict';
 
 import './_Menu.scss';
-
 import React from 'react';
-import MenuItem from '../MenuItem/MenuItem';
+import MenuItem from './MenuItem';
 
-let { PropTypes } = React;
+let { Component, PropTypes } = React;
 
-class Menu extends React.Component {
+export default class Menu extends Component {
 
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      foo: false
-    };
-  }
+  static defaultProps = {
+    items: []
+  };
 
-  getMenuItem(item) {
-    return (
-      <MenuItem item={item} key={'menu-item-' + item.id} />
-    );
-  }
+  static propTypes = {
+    items: PropTypes.array.isRequired
+  };
 
   render() {
     return (
       <ul className={'menu'}>
-        {this.props.items.map(this.getMenuItem, this)}
+        {this.props.items.map((item) => {
+          return (<MenuItem item={item} />);
+        }, this)}
       </ul>
     );
   }
 }
-
-Menu.propTypes = {
-  items: PropTypes.array.isRequired
-};
-
-export default Menu;
 ```
 
 ###Writing tests:
 
 ```js
-// Filename: __tests__/Menu-test.js
+// Filename: __tests__/Menu-test.jsx
 
 'use strict';
 
 import React from 'react/addons';
-import Menu from '../Menu.jsx';
+import { expect } from 'chai';
 
-let { TestUtils } = React.addons;
+import Menu from '../Menu.jsx';
+import MenuItem from '../MenuItem.jsx';
+
+// Here we create a mocked MenuItem component.
+class MockedMenuItem extends MenuItem {
+  render() {
+    return (
+      <li className={'mocked-menu-item'}>{this.props.item.label}</li>
+    );
+  }
+}
+
+// Here we set the mocked MenuItem component.
+Menu.__Rewire__('MenuItem', MockedMenuItem);
 
 describe('Menu', () => {
+
+  let { TestUtils } = React.addons;
 
   let menuItems = [
     { id: 1, label: 'Option 1' },
@@ -103,11 +108,23 @@ describe('Menu', () => {
     <Menu items={menuItems} />
   );
   let menuElem = React.findDOMNode(menu);
+  let items = menuElem.querySelectorAll('li');
 
-  it('Renders the menu items', () => {
-    expect(menuElem.querySelectorAll('li').length).to.equal(2);
+  it('Should render the menu items', () => {
+    expect(items.length).to.equal(2);
+  });
+
+  it('Should render the menu item labels', () => {
+    Array.prototype.forEach.call(items, (item, i) => {
+      expect(item.textContent.trim()).to.equal(menuItems[i].label);
+    });
+  })
+
+  it('Should render the mocked menu item', () => {
+    expect(menuElem.querySelectorAll('li')[0].className).to.equal('mocked-menu-item');
   });
 });
+
 ```
 
 ## Sass, CSS & webpack
@@ -120,6 +137,7 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 ```
 
+* **Important note:** If you're importing component Sass files within your JavaScript component files, then each sass file will be compiled as part of a different process, and thus you cannot share global references. See [this issue](https://github.com/jtangelder/sass-loader/issues/105) for more information.
 * Sass include paths can be adjusted in the `webpack/loaders.js` file.
 * All CSS (compiled or otherwise) is run through Autoprefixer.
 * CSS files are combined in the order in which they are imported in JavaScript, thus

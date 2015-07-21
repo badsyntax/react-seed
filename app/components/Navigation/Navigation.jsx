@@ -3,19 +3,25 @@ import './_Navigation.scss';
 import React from 'react';
 import { Link } from 'react-router';
 
-class Navigation extends React.Component {
+export default class Navigation extends React.Component {
 
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      selectedIndex: null
-    };
+  state = {
+    selectedIndex: null
   }
+
+  static contextTypes = {
+    router: React.PropTypes.func.isRequired
+  };
+
+  static propTypes = {
+    pages: React.PropTypes.array.isRequired
+  };
 
   getSelectedIndex() {
     let router = this.context.router;
     let pages = this.props.pages;
-    for (let i = pages.length - 1; i >= 0; i--) {
+    let i = pages.length - 1;
+    for (; i >= 0; i--) {
       let page = pages[i];
       let isPageActive = Boolean(page.route && router.isActive(page.route));
       if (isPageActive) { return i; }
@@ -46,13 +52,3 @@ class Navigation extends React.Component {
     );
   }
 }
-
-Navigation.contextTypes = {
-  router: React.PropTypes.func.isRequired
-};
-
-Navigation.propTypes = {
-  pages: React.PropTypes.array.isRequired
-};
-
-export default Navigation;

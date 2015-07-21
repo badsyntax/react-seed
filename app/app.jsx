@@ -1,5 +1,3 @@
-'use strict';
-
 import './favicon.ico';
 import './index.html';
 import 'babel-core/polyfill';

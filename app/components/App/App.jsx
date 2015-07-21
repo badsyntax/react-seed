@@ -1,5 +1,3 @@
-'use strict';
-
 import './_App.scss';
 
 import React from 'react';
@@ -16,10 +14,7 @@ function getState() {
 
 class App extends React.Component {
 
-  constructor(...args) {
-    super(...args);
-    this.state = getState();
-  }
+  state = getState()
 
   render() {
     return (
