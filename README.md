@@ -79,12 +79,13 @@ export default class Menu extends Component {
 ###Writing tests:
 
 ```js
-// Filename: __tests__/Menu-test.js
+// Filename: __tests__/Menu-test.jsx
 
 'use strict';
 
 import React from 'react/addons';
 import Menu from '../Menu.jsx';
+import { expect } from 'chai';
 
 let { TestUtils } = React.addons;
 
@@ -104,6 +105,7 @@ describe('Menu', () => {
     expect(menuElem.querySelectorAll('li').length).to.equal(2);
   });
 });
+
 ```
 
 ## Sass, CSS & webpack
