@@ -1,5 +1,3 @@
-'use strict';
-
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import WebAPI from '../util/WebAPI';
 

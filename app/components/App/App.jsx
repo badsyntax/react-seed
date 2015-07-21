@@ -1,5 +1,3 @@
-'use strict';
-
 import './_App.scss';
 
 import React from 'react';
@@ -22,9 +20,10 @@ function getState(state) {
 
 class App extends React.Component {
 
+  state = getState();
+
   constructor(...args) {
     super(...args);
-    this.state = getState();
     this.onChange = this.onChange.bind(this);
   }
 
