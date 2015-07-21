@@ -29,12 +29,17 @@ describe('Menu', () => {
     <Menu items={menuItems} />
   );
   let menuElem = React.findDOMNode(menu);
+  let items = menuElem.querySelectorAll('li');
 
   it('Should render the menu items', () => {
-    expect(menuElem.querySelectorAll('li').length).to.equal(2);
-    expect(menuElem.querySelectorAll('li')[0].textContent.trim()).to.equal(menuItems[0].label);
-    expect(menuElem.querySelectorAll('li')[1].textContent.trim()).to.equal(menuItems[1].label);
+    expect(items.length).to.equal(2);
   });
+
+  it('Should render the menu item labels', () => {
+    Array.prototype.forEach.call(items, (item, i) => {
+      expect(item.textContent.trim()).to.equal(menuItems[i].label);
+    });
+  })
 
   it('Should render the mocked menu item', () => {
     expect(menuElem.querySelectorAll('li')[0].className).to.equal('mocked-menu-item');
