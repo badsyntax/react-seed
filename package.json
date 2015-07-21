@@ -1,6 +1,6 @@
 {
   "name": "react-seed",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Seed project for React apps using ES6 & webpack.",
   "repository": "https://github.com/badsyntax/react-seed",
   "license": "MIT",
