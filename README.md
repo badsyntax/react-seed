@@ -43,6 +43,7 @@ git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 
 import './_Menu.scss';
 import React from 'react';
+import MenuItem from './MenuItem';
 
 let { Component, PropTypes } = React;
 
@@ -56,20 +57,12 @@ export default class Menu extends Component {
     items: PropTypes.array.isRequired
   };
 
-  state = {
-    foo: false
-  }
-
-  renderItem(item) {
-    return (
-      <li key={'menu-item-' + item.id}>{item.label}</li>
-    );
-  }
-
   render() {
     return (
       <ul className={'menu'}>
-        {this.props.items.map(this.renderItem, this)}
+        {this.props.items.map((item) => {
+          return (<MenuItem item={item} />);
+        }, this)}
       </ul>
     );
   }
