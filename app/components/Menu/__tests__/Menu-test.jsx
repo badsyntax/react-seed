@@ -56,7 +56,7 @@ describe('Menu', () => {
       var clicked = 0;
 
       class MockedMenuItemWithClickHandler extends MenuItem {
-        onItemClick = (e) => {
+        onItemClick = () => {
           clicked++;
         }
       }
