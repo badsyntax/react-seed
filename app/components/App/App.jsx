@@ -1,4 +1,4 @@
-import './_App.scss';
+import styles from './_App.scss';
 
 import React from 'react';
 import _ from 'lodash';
@@ -21,11 +21,6 @@ function getState(state) {
 class App extends React.Component {
 
   state = getState();
-
-  constructor(...args) {
-    super(...args);
-    this.onChange = this.onChange.bind(this);
-  }
 
   componentDidMount() {
     NewsStore.addChangeListener(this.onChange);

@@ -5,9 +5,10 @@ A boilerplate for building React apps with ES6, webpack & material-ui.
 ## What you get
 
 * React 0.13
-* Compilation of ES6, ES7 & JSX to ES5 via babel
-* webpack with react hot loader (also html, css, sass and other useful loaders)
-* Karma, mocha, chai & sinon for testing
+* ES6, ES7 & JSX to ES5 via babel
+* webpack with react hot loader, and other useful loaders
+* Inline (local) css
+* Karma, mocha, chai & sinon for testing with mocking examples
 * Basic flux architecture with app actions, stores and example web API usage
 * View http://imgur.com/S17tOcp for an example
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
@@ -44,7 +45,7 @@ git checkout feature/material-ui
 
 'use strict';
 
-import './_Menu.scss';
+import styles from './_Menu.scss';
 import React from 'react';
 import MenuItem from './MenuItem';
 
@@ -62,7 +63,7 @@ export default class Menu extends Component {
 
   render() {
     return (
-      <ul className={'menu'}>
+      <ul className={styles.menu}>
         {this.props.items.map((item) => {
           return (<MenuItem item={item} />);
         }, this)}
