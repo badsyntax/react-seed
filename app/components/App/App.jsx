@@ -1,4 +1,4 @@
-import './_App.scss';
+import styles from './_App.scss';
 
 import React from 'react';
 import AppActions from '../../actions/AppActions';
@@ -16,11 +16,6 @@ export default class App extends React.Component {
 
   state = getAppState()
 
-  constructor(...args) {
-    super(...args);
-    this.onChange = this.onChange.bind(this);
-  }
-
   componentDidMount() {
     ItemsStore.addChangeListener(this.onChange);
     AppActions.getItems();
@@ -36,7 +31,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className={'app'}>
+      <div className={styles.app}>
         <Body items={this.state.items} />
         <Footer />
       </div>

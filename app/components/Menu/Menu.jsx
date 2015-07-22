@@ -1,4 +1,4 @@
-import './_Menu.scss';
+import styles from './_Menu.scss';
 import React from 'react';
 import MenuItem from './MenuItem';
 
@@ -16,7 +16,7 @@ export default class Menu extends Component {
 
   render() {
     return (
-      <ul className={'menu'}>
+      <ul className={styles.menu}>
         {this.props.items.map((item) => {
           return (<MenuItem item={item} />);
         }, this)}

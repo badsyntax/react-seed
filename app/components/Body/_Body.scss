@@ -2,9 +2,10 @@
 
 .body {
   font-size: inherit;
+  padding: 20px;
 }
 
-.body__header {
+.header {
   border-bottom: 1px solid $border-color;
   margin: 0 0 20px 0;
   padding-bottom: 20px;
