@@ -1,4 +1,4 @@
-import './_LeftNav.scss';
+import styles from './_LeftNav.scss';
 
 import React from 'react';
 import { LeftNav as MuiLeftNav } from 'material-ui';
@@ -35,14 +35,14 @@ class LeftNav extends React.Component {
 
   render() {
     var header = (
-      <div className={'logo'} onClick={this.onHeaderClick.bind(this)}>
+      <div className={styles['logo']} onClick={this.onHeaderClick.bind(this)}>
         {'Left Nav'}
       </div>
     );
 
     return (
       <MuiLeftNav
-        className={'left-nav'}
+        className={styles['left-nav']}
         docked={false}
         header={header}
         isInitiallyOpen={false}

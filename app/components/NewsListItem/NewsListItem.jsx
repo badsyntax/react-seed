@@ -1,4 +1,4 @@
-import './_NewsListItem.scss';
+import styles from './_NewsListItem.scss';
 
 import React from 'react';
 import classnames from 'classnames';
@@ -10,7 +10,7 @@ let { PropTypes } = React;
 class NewsListItem extends React.Component {
 
   getClassName() {
-    return classnames('listing-item');
+    return classnames(styles['listing-item']);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -28,7 +28,7 @@ class NewsListItem extends React.Component {
             {item.title}
           </a>
         </h2>
-        <footer className={'listing-item-metadata'}>
+        <footer className={styles['listing-item-metadata']}>
           <span>{item.up - item.down} points</span>
           <span>by</span>
           <span>
@@ -37,14 +37,14 @@ class NewsListItem extends React.Component {
             </a>
           </span>
           <span><FormattedRelative value={time} /></span>
-          <span className={'listing-item-metadata__comments'}>
+          <span className={styles['listing-item-metadata__comments']}>
             <span>with</span>
             <a href="#">
               {item.comments} comments
             </a>
           </span>
         </footer>
-        <a className="list-item-comments" href="#">
+        <a className={styles['list-item-comments']} href="#">
           <FloatingActionButton
             mini={true}
             secondary={true}

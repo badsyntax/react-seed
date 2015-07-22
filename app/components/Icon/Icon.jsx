@@ -1,4 +1,4 @@
-import './_Icon.scss';
+import styles from './_Icon.scss';
 
 import React from 'react';
 import classnames from 'classnames';
@@ -15,13 +15,22 @@ let icons = {
 
 let { PropTypes } = React;
 
-class Icon extends React.Component {
+export default class Icon extends React.Component {
+
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+    size: PropTypes.number
+  }
+
+  static defaultProps = {
+    size: 24
+  }
 
   getClassName() {
     return classnames(
-      '-' + this.props.type,
-      'icon',
-      '-size-' + this.props.size
+      styles['-' + this.props.type],
+      styles['icon'],
+      styles['-size-' + this.props.size]
     );
   }
 
@@ -37,18 +46,3 @@ class Icon extends React.Component {
     );
   }
 }
-
-Icon.propTypes = {
-  type: PropTypes.string.isRequired,
-  size: PropTypes.number
-};
-
-Icon.defaultProps = {
-  size: 24
-};
-
-export default Icon;
-
-
-
-

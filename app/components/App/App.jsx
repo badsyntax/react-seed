@@ -3,12 +3,17 @@ import styles from './_App.scss';
 import React from 'react';
 import _ from 'lodash';
 import AppActions from '../../actions/AppActions';
-import { AppBar, AppCanvas, IconButton } from 'material-ui';
 import { APP_TITLE } from '../../constants/AppConstants';
 import NewsStore from '../../stores/NewsStore';
 import LeftNav from '../LeftNav/LeftNav';
 import NewsList from '../NewsList/NewsList';
 import Icon from '../Icon/Icon';
+
+import mui from 'material-ui';
+
+let { AppBar, AppCanvas, IconButton } = mui;
+
+let ThemeManager = new mui.Styles.ThemeManager();
 
 let { Perf } = React.addons;
 
@@ -22,6 +27,16 @@ class App extends React.Component {
 
   state = getState();
 
+  static childContextTypes = {
+    muiTheme: React.PropTypes.object
+  }
+
+  getChildContext() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  }
+
   componentDidMount() {
     NewsStore.addChangeListener(this.onChange);
     AppActions.getNews();
@@ -31,7 +46,7 @@ class App extends React.Component {
     NewsStore.removeChangeListener(this.onChange);
   }
 
-  onChange() {
+  onChange = () => {
     Perf.start();
     this.setState(getState());
     Perf.stop();
@@ -49,9 +64,11 @@ class App extends React.Component {
 
   render() {
 
+    // return <div>foo</div>;
+
     let refreshButton = (
       <IconButton
-        className={'app-bar__refresh'}
+        className={styles['app-bar__refresh']}
         onTouchTap={this.onRefreshButtonTap.bind(this)}
         touch={true}>
         <Icon type={'refresh'} />
@@ -60,8 +77,8 @@ class App extends React.Component {
 
     let appBar = (
       <AppBar
-        className={'app-bar mui-dark-theme'}
-        onMenuIconButtonTouchTap={this.onMenuIconButtonTouchTap.bind(this)}
+        className={styles['app-bar mui-dark-theme']}
+        onLeftIconButtonTouchTap={this.onMenuIconButtonTouchTap.bind(this)}
         title={APP_TITLE}
         zDepth={0}>
         {refreshButton}
@@ -69,7 +86,7 @@ class App extends React.Component {
     );
 
     let newsList = (
-      <div className={'mui-app-content-canvas'}>
+      <div className={styles['mui-app-content-canvas']}>
         <NewsList
           posts={this.state.posts} />
       </div>

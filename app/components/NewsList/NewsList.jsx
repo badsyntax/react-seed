@@ -1,4 +1,4 @@
-import './_NewsList.scss';
+import styles from './_NewsList.scss';
 
 import React from 'react';
 import NewsListItem from '../NewsListItem/NewsListItem';
@@ -17,7 +17,7 @@ class NewsList extends React.Component {
 
   render() {
     return (
-      <section className={'listing'}>
+      <section className={styles['listing']}>
         {this.props.posts.map(this.getNewsListItem, this)}
       </section>
     );
