@@ -109,6 +109,7 @@
         2,
         "single"
       ],
+      "no-alert": 0,
       "no-underscore-dangle": 0,
       "react/display-name": 0,
       "react/jsx-quotes": 1,
