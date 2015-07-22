@@ -39,7 +39,7 @@ describe('Menu', () => {
     Array.prototype.forEach.call(items, (item, i) => {
       expect(item.textContent.trim()).to.equal(menuItems[i].label);
     });
-  })
+  });
 
   it('Should render the mocked menu item', () => {
     expect(menuElem.querySelectorAll('li')[0].className).to.equal('mocked-menu-item');
