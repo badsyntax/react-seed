@@ -1,5 +1,6 @@
 import styles from './_App.scss';
 
+import mui from 'material-ui';
 import React from 'react';
 import _ from 'lodash';
 import AppActions from '../../actions/AppActions';
@@ -9,13 +10,11 @@ import LeftNav from '../LeftNav/LeftNav';
 import NewsList from '../NewsList/NewsList';
 import Icon from '../Icon/Icon';
 
-import mui from 'material-ui';
-
+let { Perf } = React.addons;
 let { AppBar, AppCanvas, IconButton } = mui;
 
 let ThemeManager = new mui.Styles.ThemeManager();
-
-let { Perf } = React.addons;
+ThemeManager.setTheme(ThemeManager.types.LIGHT);
 
 function getState(state) {
   return _.merge({
@@ -23,7 +22,7 @@ function getState(state) {
   }, state);
 }
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   state = getState();
 
@@ -68,7 +67,7 @@ class App extends React.Component {
 
     let refreshButton = (
       <IconButton
-        className={styles['app-bar__refresh']}
+        className={styles.refresh}
         onTouchTap={this.onRefreshButtonTap.bind(this)}
         touch={true}>
         <Icon type={'refresh'} />
@@ -103,5 +102,3 @@ class App extends React.Component {
     return appCanvas;
   }
 }
-
-export default App;

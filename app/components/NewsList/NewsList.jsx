@@ -2,30 +2,34 @@ import styles from './_NewsList.scss';
 
 import React from 'react';
 import NewsListItem from '../NewsListItem/NewsListItem';
+import mui from 'material-ui';
 
+let { List, ListDivider } = mui;
 let { PropTypes } = React;
 
-class NewsList extends React.Component {
+export default class NewsList extends React.Component {
 
-  getNewsListItem(item = {}) {
-    return (
-      <NewsListItem
-        item={item}
-        key={'listing-item-' + item.id} />
-    );
+  static propTypes = {
+    posts: PropTypes.array.isRequired
   }
 
   render() {
+    var items = this.props.posts.map(function(item) {
+      return (
+        <article>
+          <NewsListItem
+            item={item}
+            key={'listing-item-' + item.id} />
+          <ListDivider />
+        </article>
+      );
+    });
     return (
-      <section className={styles['listing']}>
-        {this.props.posts.map(this.getNewsListItem, this)}
+      <section className={styles.listing}>
+        <List>
+          {items}
+        </List>
       </section>
     );
   }
 }
-
-NewsList.propTypes = {
-  posts: PropTypes.array.isRequired
-};
-
-export default NewsList;

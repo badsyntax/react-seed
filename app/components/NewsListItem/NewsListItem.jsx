@@ -3,11 +3,16 @@ import styles from './_NewsListItem.scss';
 import React from 'react';
 import classnames from 'classnames';
 import { FormattedRelative } from 'react-intl';
-import { FloatingActionButton } from 'material-ui';
+import mui from 'material-ui';
 
+let { ListItem } = mui;
 let { PropTypes } = React;
 
-class NewsListItem extends React.Component {
+export default class NewsListItem extends React.Component {
+
+  static propTypes = {
+    item: PropTypes.object.isRequired
+  }
 
   getClassName() {
     return classnames(styles['listing-item']);
@@ -22,47 +27,15 @@ class NewsListItem extends React.Component {
     let time = new Date(item.ctime * 1000);
 
     return (
-      <article className={this.getClassName()}>
-        <h2>
-          <a href={item.url} rel="nofollow" target={'_system'}>
-            {item.title}
-          </a>
-        </h2>
-        <footer className={styles['listing-item-metadata']}>
-          <span>{item.up - item.down} points</span>
-          <span>by</span>
-          <span>
-            <a href={'http://echojs.com/user/' + item.username} target={'_system'}>
-              {item.username}
-            </a>
-          </span>
-          <span><FormattedRelative value={time} /></span>
-          <span className={styles['listing-item-metadata__comments']}>
-            <span>with</span>
-            <a href="#">
-              {item.comments} comments
-            </a>
-          </span>
-        </footer>
-        <a className={styles['list-item-comments']} href="#">
-          <FloatingActionButton
-            mini={true}
-            secondary={true}
-            >
-            <span>{item.comments}</span>
-          </FloatingActionButton>
-        </a>
-      </article>
+      <ListItem
+        primaryText={item.title}
+        secondaryText={
+          <p>
+            <span style={{color: mui.Styles.Colors.darkBlack}}>{item.up - item.down} points by {item.username}</span><br/>
+            <FormattedRelative value={time} /> with {item.comments} comments
+          </p>
+        }
+        secondaryTextLines={2} />
     );
   }
 }
-
-NewsListItem.propTypes = {
-  item: PropTypes.object.isRequired
-};
-
-NewsListItem.contextTypes = {
-  router: PropTypes.func
-};
-
-export default NewsListItem;

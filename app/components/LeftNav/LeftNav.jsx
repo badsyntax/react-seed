@@ -8,13 +8,10 @@ let menuItems = [
   { route: 'about', text: 'About' }
 ];
 
-class LeftNav extends React.Component {
+export default class LeftNav extends React.Component {
 
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      selectedIndex: null
-    };
+  state = {
+    selectedIndex: null
   }
 
   toggle() {
@@ -35,7 +32,7 @@ class LeftNav extends React.Component {
 
   render() {
     var header = (
-      <div className={styles['logo']} onClick={this.onHeaderClick.bind(this)}>
+      <div className={styles.logo} onClick={this.onHeaderClick.bind(this)}>
         {'Left Nav'}
       </div>
     );
@@ -53,5 +50,3 @@ class LeftNav extends React.Component {
     );
   }
 }
-
-export default LeftNav;

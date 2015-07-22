@@ -29,7 +29,7 @@ export default class Icon extends React.Component {
   getClassName() {
     return classnames(
       styles['-' + this.props.type],
-      styles['icon'],
+      styles.icon,
       styles['-size-' + this.props.size]
     );
   }

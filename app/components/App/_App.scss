@@ -8,16 +8,10 @@
   }
 }
 
-.app__title {
-  font-size: 18px;
-  margin-bottom: 0;
-}
-
-.app-bar__refresh {
-  float: right;
-  margin-right: -12px;
-  margin-top: 6px;
+.refresh {
   fill: white;
+  float: right;
+  margin-top: 6px;
   .icon {
     margin: 0;
   }
