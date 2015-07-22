@@ -42,7 +42,7 @@ $date-picker-select-text-color: $white !default;
 $menu-background-color: $white !default;
 $menu-item-data-height: 32px !default;
 $menu-item-height: 48px !default;
-$menu-item-hover-color: rgba(0, 0, 0, .035) !default;
+$menu-item-hover-color: rgba(0, 0, 0, 0.035) !default;
 $menu-item-padding: $desktop-gutter !default;
 $menu-item-selected-text-color: $accent-1-color !default;
 $menu-container-background-color: white !default;
@@ -55,7 +55,7 @@ $button-min-width: 88px !default;
 $flat-button-color: $white !default;
 $flat-button-hover-color: darken($flat-button-color, 10%) !default;
 $flat-button-text-color: $body-text-color !default;
-$flat-button-ripple-color: rgba(0,0,0,0.1) !default;
+$flat-button-ripple-color: rgba(0, 0, 0, 0.1) !default;
 $flat-button-focus-ripple-color: rgba($flat-button-ripple-color, 0.07) !default;
 $flat-button-primary-hover-color: lighten($accent-1-color, 32%) !default;
 $flat-button-primary-text-color: $accent-1-color !default;
@@ -70,17 +70,17 @@ $flat-button-disabled-text-color: rgba($flat-button-text-color, 0.3) !default;
 $raised-button-color: $white !default;
 $raised-button-hover-color: darken($raised-button-color, 10%) !default;
 $raised-button-text-color: $body-text-color !default;
-$raised-button-ripple-color: rgba(0,0,0,0.1) !default;
+$raised-button-ripple-color: rgba(0, 0, 0, 0.1) !default;
 $raised-button-focus-ripple-color: rgba($raised-button-ripple-color, 0.7) !default;
 $raised-button-primary-color: $accent-1-color !default;
 $raised-button-primary-hover-color: darken($accent-1-color, 15%) !default;
 $raised-button-primary-text-color: $white !default;
-$raised-button-primary-ripple-color: rgba($white, 0.50) !default;
+$raised-button-primary-ripple-color: rgba($white, 0.5) !default;
 $raised-button-primary-focus-ripple-color: $raised-button-primary-ripple-color !default;
 $raised-button-secondary-color: $primary-1-color !default;
 $raised-button-secondary-hover-color: darken($primary-1-color, 4%) !default;
 $raised-button-secondary-text-color: $white !default;
-$raised-button-secondary-ripple-color: rgba($white, 0.50) !default;
+$raised-button-secondary-ripple-color: rgba($white, 0.5) !default;
 $raised-button-secondary-focus-ripple-color: $raised-button-secondary-ripple-color !default;
 $raised-button-disabled-color: $raised-button-hover-color !default;
 $raised-button-disabled-text-color: rgba($raised-button-text-color, 0.3) !default;
@@ -112,7 +112,7 @@ $switches-ripple-color: rgba($primary-1-color, 0.2) !default;
 
 // radio button
 $radio-button-size: 24px !default;
-$radio-button-border-color:  $body-text-color !default;
+$radio-button-border-color: $body-text-color !default;
 $radio-button-background-color: white !default;
 $radio-button-checked-color: $primary-1-color !default;
 $radio-button-required-color: $primary-1-color !default;
@@ -143,9 +143,9 @@ $toggle-track-required-color: fade-out($toggle-thumb-required-color, 0.5) !defau
 // toolbar
 $toolbar-background-color: darken(#eeeeee, 5%) !default;
 $toolbar-height: 56px !default;
-$toolbar-icon-color: rgba(0, 0, 0, .40) !default;
-$toolbar-separator-color: rgba(0, 0, 0, .175) !default;
-$toolbar-menu-hover-color: rgba(0, 0, 0, .10) !default;
+$toolbar-icon-color: rgba(0, 0, 0, 0.4) !default;
+$toolbar-separator-color: rgba(0, 0, 0, 0.175) !default;
+$toolbar-menu-hover-color: rgba(0, 0, 0, 0.1) !default;
 $toolbar-menu-hover-color: $white !default;
 
 // slider
@@ -160,4 +160,4 @@ $slider-selection-color: $primary-3-color !default;
 
 // layout
 $app-bar-height: $desktop-keyline-increment !default;
-$left-nav-width: ($desktop-keyline-increment * 4) !default;
+$left-nav-width: $desktop-keyline-increment * 4 !default;
