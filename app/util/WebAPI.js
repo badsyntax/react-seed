@@ -1,5 +1,3 @@
-'use strict';
-
 import MockData from './MockData';
 
 class API {

@@ -1,5 +1,3 @@
-'use strict';
-
 import './_Icon.scss';
 
 import React from 'react';

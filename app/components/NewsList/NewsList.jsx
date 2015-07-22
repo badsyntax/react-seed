@@ -1,5 +1,3 @@
-'use strict';
-
 import './_NewsList.scss';
 
 import React from 'react';

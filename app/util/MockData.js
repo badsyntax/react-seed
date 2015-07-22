@@ -1,5 +1,3 @@
-'use strict';
-
 import newsData from '../data/example-news.json';
 
 let data = {
