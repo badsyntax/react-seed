@@ -7,7 +7,7 @@ A boilerplate for building React apps with ES6 and webpack.
 * React 0.13
 * ES6, ES7 & JSX to ES5 via babel
 * webpack with react hot loader, and other useful loaders
-* Inline (local) css
+* [Local CSS](https://github.com/webpack/css-loader#local-scope)
 * Karma, mocha, chai & sinon for testing with mocking examples
 * Basic flux architecture with app actions, stores and example web API usage
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
@@ -32,6 +32,15 @@ git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 * `npm start` - Build and start the app in dev mode at http://localhost:8000
 * `npm test` - Run the tests
 * `npm run build` - Run a production build
+
+## Running on Windows
+
+This project should work on Windows (tested on Windows 7). Please create an issue if you encounter any problems.
+
+Before running the project you'll need to have the following installed:
+
+* Python: http://www.python.org/getit/windows/
+* Microsoft Visual Studio C++ 2012 Express version: http://go.microsoft.com/?linkid=9816758
 
 ## Examples
 
@@ -121,7 +130,7 @@ describe('Menu', () => {
   })
 
   it('Should render the mocked menu item', () => {
-    expect(menuElem.querySelectorAll('li')[0].className).to.equal('mocked-menu-item');
+    expect(items[0].className).to.equal('mocked-menu-item');
   });
 });
 
@@ -134,15 +143,15 @@ describe('Menu', () => {
 ```js
 // Filename: app.jsx
 import 'normalize.css/normalize.css';
-import './scss/app.scss';
+import styles from './scss/app.scss';
 ```
 
-* **Important note:** If you're importing component Sass files within your JavaScript component files, then each sass file will be compiled as part of a different process, and thus you cannot share global references. See [this issue](https://github.com/jtangelder/sass-loader/issues/105) for more information.
+* **Note:** If you're importing component Sass files from within your JavaScript component files, then each sass file will be compiled as part of a different compile process, and thus you cannot share global references. See [this issue](https://github.com/jtangelder/sass-loader/issues/105) for more information.
 * Sass include paths can be adjusted in the `webpack/loaders.js` file.
-* All CSS (compiled or otherwise) is run through Autoprefixer.
+* All CSS (compiled or otherwise) is run through Autoprefixer and style-loader. Any images/fonts etc referenced in the CSS will be copied to the build dir.
 * CSS files are combined in the order in which they are imported in JavaScript, thus
 you should always import your CSS/Sass before importing any other JavaScript files.
-* Use an approach like [BEM](http://cssguidelin.es/#bem-like-naming) to avoid specificity
+* If not using local CSS, use an approach like [BEM](http://cssguidelin.es/#bem-like-naming) to avoid specificity
 issues that might exist due to unpredicatable order of CSS rules.
 
 ## HTML files
@@ -165,7 +174,7 @@ import './index.html';
 ## Releasing
 
 1. `npm version patch`
-2. `git push && git push --tags`
+2. `git push --follow-tags`
 3. `npm login` (Optional)
 4. `npm publish`
 
