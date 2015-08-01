@@ -33,15 +33,6 @@ git clone --depth=1 https://github.com/badsyntax/react-seed.git my-project
 * `npm test` - Run the tests
 * `npm run build` - Run a production build
 
-## Running on Windows
-
-This project should work on Windows (tested on Windows 7). Please create an issue if you encounter any problems.
-
-Before running the project you'll need to have the following installed:
-
-* Python: http://www.python.org/getit/windows/
-* Microsoft Visual Studio C++ 2012 Express version: http://go.microsoft.com/?linkid=9816758
-
 ## Examples
 
 ### Writing components:
