@@ -8,12 +8,12 @@ import Footer from '../Footer/Footer';
 
 export default class App extends React.Component {
   constructor() {
-    super()
-    this.state = {items: []}
-    AppActions.getItems()
+    super();
+    this.state = {items: []};
+    AppActions.getItems();
     ItemsStore.listen((data) => {
-      this.setState({items: data.items})
-    })
+      this.setState({items: data.items});
+    });
   }
 
   render() {

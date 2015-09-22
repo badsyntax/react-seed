@@ -18,7 +18,7 @@ export default class Menu extends Component {
     return (
       <ul className={styles.menu}>
         {this.props.items.map((item, key) => {
-          return (<MenuItem key={key} item={item} />);
+          return (<MenuItem item={item} key={key} />);
         }, this)}
       </ul>
     );
