@@ -1,35 +1,22 @@
-import BaseStore from './BaseStore';
-import AppDispatcher from '../dispatcher/AppDispatcher';
+import alt from '../alt';
+import WebAPI from '../util/WebAPI';
+import AppActions from '../actions/AppActions'
 
-import {
-  ITEMS_UPDATED,
-  ITEMS_GET_SUCCESS
-} from '../constants/AppConstants';
-
-class ItemsStore extends BaseStore {
-
-  emitChange() {
-    this.emit(ITEMS_UPDATED);
+class ItemsStore {
+  constructor() {
+    this.bindAction(AppActions.getItems, this.getItems)
+    this.state = {items: [], error: null}
   }
 
-  addChangeListener(callback) {
-    this.on(ITEMS_UPDATED, callback);
-  }
-
-  removeChangeListener(callback) {
-    this.removeListener(ITEMS_UPDATED, callback);
+  getItems() {
+    WebAPI.getItems()
+    .then((items) => {
+      this.setState({items: items})
+    })
+    .catch(() => {
+      this.state.error = "error"
+    });
   }
 }
 
-let store = new ItemsStore();
-
-AppDispatcher.register((action) => {
-  switch(action.actionType) {
-    case ITEMS_GET_SUCCESS:
-      store.setAll(action.items);
-      break;
-    default:
-  }
-});
-
-export default store;
+export default alt.createStore(ItemsStore, 'ItemsStore')
