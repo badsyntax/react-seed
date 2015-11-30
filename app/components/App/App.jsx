@@ -1,9 +1,9 @@
 import styles from './_App.scss';
 
 import React from 'react';
+import { RouteHandler } from 'react-router';
 import AppActions from '../../actions/AppActions';
 import ItemsStore from '../../stores/ItemsStore';
-import Body from '../Body/Body';
 import Footer from '../Footer/Footer';
 
 export default class App extends React.Component {
@@ -19,7 +19,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={styles.app}>
-        <Body items={this.state.items} />
+        <RouteHandler items={this.state.items} />
         <Footer />
       </div>
     );

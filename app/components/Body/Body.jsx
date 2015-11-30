@@ -1,4 +1,5 @@
 import styles from './_Body.scss';
+
 import React from 'react';
 import Menu from '../Menu/Menu';
 
@@ -18,7 +19,7 @@ export default class Body extends React.Component {
     return (
       <div className={styles.body}>
         <h1 className={styles.header}>React Seed</h1>
-        <p>This is an example seed app, powered by React, ES6 &amp; webpack.</p>
+        <p>This is an example seed app, powered by React, ES6, Al &amp; webpack.</p>
         <p>Here is some example data:</p>
         <Menu items={this.props.items} />
         <h2>Getting started</h2>
