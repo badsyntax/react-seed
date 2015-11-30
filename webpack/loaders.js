@@ -32,7 +32,7 @@ if (DEBUG || TEST) {
   if (!TEST) {
     jsxLoader.push('react-hot');
   }
-  jsxLoader.push('babel-loader?optional[]=runtime&stage=0&plugins=rewire');
+  jsxLoader.push('babel-loader?optional[]=runtime&stage=0');
   sassParams.push('sourceMap', 'sourceMapContents=true');
   sassLoader = [
     'style-loader',
@@ -46,7 +46,7 @@ if (DEBUG || TEST) {
     'postcss-loader'
   ].join('!');
 } else {
-  jsxLoader = ['babel-loader?optional[]=runtime&stage=0&plugins=rewire'];
+  jsxLoader = ['babel-loader?optional[]=runtime&stage=0'];
   sassLoader = ExtractTextPlugin.extract('style-loader', [
     'css-loader?modules&localIdentName=[hash:base64:5]',
     'postcss-loader',
