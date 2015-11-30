@@ -1,8 +1,8 @@
-var config = require('./config');
+var config = require('./config')
 
-delete config.context;
-delete config.entry;
-delete config.output;
-delete config.devServer;
+delete config.context
+delete config.entry
+delete config.output
+delete config.devServer
 
-module.exports = config;
+module.exports = config

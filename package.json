@@ -14,7 +14,7 @@
     "build": "NODE_ENV=production npm run webpack",
     "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
     "env": "env",
-    "lint": "eslint --ext .js --ext .jsx ./app ./webpack && echo No linting errors.",
+    "lint": "standard",
     "prebuild": "npm run clean",
     "prestart": "npm install",
     "pretest": "npm install && npm run lint",
@@ -71,6 +71,7 @@
     "sass-loader": "^1.0.2",
     "sinon": "^1.15.4",
     "source-map-support": "^0.3.2",
+    "standard": "^3.0.0",
     "style-loader": "^0.12.3",
     "template-html-loader": "0.0.3",
     "webpack": "^1.10.1",
@@ -79,43 +80,22 @@
   "engines": {
     "node": ">=0.12.0"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "node": true,
-      "es6": true
-    },
+  "standard": {
+    "parser": "babel-eslint",
     "ecmaFeatures": {
+      "classes": true,
       "modules": true,
       "jsx": true
     },
-    "globals": {
-      "describe": true,
-      "it": true,
-      "sinon": true
-    },
-    "parser": "babel-eslint",
+    "globals": [ "describe", "it" ],
     "plugins": [
       "react"
     ],
     "rules": {
-      "strict": [
-        2,
-        "global"
-      ],
-      "indent": [
-        2,
-        2
-      ],
-      "quotes": [
-        2,
-        "single"
-      ],
-      "no-alert": 0,
-      "no-underscore-dangle": 0,
-      "react/display-name": 0,
-      "react/jsx-quotes": 1,
+      "react/jsx-boolean-value": 1,
       "react/jsx-no-undef": 1,
+      "react/jsx-quotes": 1,
+      "react/jsx-sort-prop-types": 1,
       "react/jsx-sort-props": 1,
       "react/jsx-uses-react": 1,
       "react/jsx-uses-vars": 1,
@@ -123,10 +103,18 @@
       "react/no-did-update-set-state": 1,
       "react/no-multi-comp": 1,
       "react/no-unknown-property": 1,
-      "react/prop-types": 0,
+      "react/prop-types": 1,
       "react/react-in-jsx-scope": 1,
       "react/self-closing-comp": 1,
-      "react/wrap-multilines": 1
+      "react/sort-comp": 1,
+      "react/wrap-multilines": 1,
+      "strict": 0,
+      "indent": [2, 4],
+      "quotes": [2],
+      "no-unused-vars": 0
+    },
+    "env" : {
+      "node": true
     }
   }
 }

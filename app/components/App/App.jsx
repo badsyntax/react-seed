@@ -1,27 +1,27 @@
-import styles from './_App.scss';
+import styles from './_App.scss'
 
-import React from 'react';
-import { RouteHandler } from 'react-router';
-import AppActions from '../../actions/AppActions';
-import ItemsStore from '../../stores/ItemsStore';
-import Footer from '../Footer/Footer';
+import React from 'react'
+import { RouteHandler } from 'react-router'
+import AppActions from '../../actions/AppActions'
+import ItemsStore from '../../stores/ItemsStore'
+import Footer from '../Footer/Footer'
 
 export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {items: []};
-    AppActions.getItems();
+  constructor () {
+    super()
+    this.state = {items: []}
+    AppActions.getItems()
     ItemsStore.listen((data) => {
-      this.setState({items: data.items});
-    });
+      this.setState({items: data.items})
+    })
   }
 
-  render() {
+  render () {
     return (
       <div className={styles.app}>
         <RouteHandler items={this.state.items} />
         <Footer />
       </div>
-    );
+    )
   }
 }

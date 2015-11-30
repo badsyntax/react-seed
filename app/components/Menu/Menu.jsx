@@ -1,26 +1,26 @@
-import styles from './_Menu.scss';
-import React from 'react';
-import MenuItem from './MenuItem';
+import styles from './_Menu.scss'
+import React from 'react'
+import MenuItem from './MenuItem'
 
-let { Component, PropTypes } = React;
+let { Component, PropTypes } = React
 
 export default class Menu extends Component {
 
   static defaultProps = {
     items: []
-  };
+  }
 
   static propTypes = {
     items: PropTypes.array.isRequired
-  };
+  }
 
-  render() {
+  render () {
     return (
       <ul className={styles.menu}>
         {this.props.items.map((item, key) => {
-          return (<MenuItem item={item} key={key} />);
+          return (<MenuItem item={item} key={key} />)
         }, this)}
       </ul>
-    );
+    )
   }
 }
