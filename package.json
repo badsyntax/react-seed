@@ -18,10 +18,10 @@
     "prebuild": "npm run clean",
     "prestart": "npm install",
     "pretest": "npm install && npm run lint",
-    "pretest-travis": "npm install && npm run lint",
+    "pretest-circleci": "npm install && npm run lint",
     "start": "NODE_ENV=development node dev-server ./webpack/config",
     "test": "NODE_ENV=test karma start",
-    "test-travis": "NODE_ENV=test karma start --single-run",
+    "test-circleci": "NODE_ENV=test karma start --single-run",
     "webpack": "webpack --colors --progress --config ./webpack/config"
   },
   "dependencies": {
