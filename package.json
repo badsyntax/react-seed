@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
-    "babel-core": "^5.8.3",
-    "babel-eslint": "^3.1.23",
-    "babel-loader": "^5.3.1",
-    "babel-plugin-rewire": "^0.1.8",
+    "babel-core": "^5.8.x",
+    "babel-eslint": "^4.1.x",
+    "babel-loader": "^5.4.x",
+    "babel-plugin-rewire": "^0.1.22",
     "babel-runtime": "^5.6.15",
     "chai": "^3.0.0",
     "css-loader": "^0.15.2",
@@ -70,8 +70,9 @@
     "rimraf": "^2.4.1",
     "sass-loader": "^1.0.2",
     "sinon": "^1.15.4",
+    "snazzy": "^2.0.1",
     "source-map-support": "^0.3.2",
-    "standard": "^3.0.0",
+    "standard": "^5.4.1",
     "style-loader": "^0.12.3",
     "template-html-loader": "0.0.3",
     "webpack": "^1.10.1",
@@ -87,7 +88,10 @@
       "modules": true,
       "jsx": true
     },
-    "globals": [ "describe", "it" ],
+    "globals": [
+      "describe",
+      "it"
+    ],
     "plugins": [
       "react"
     ],
@@ -109,11 +113,13 @@
       "react/sort-comp": 1,
       "react/wrap-multilines": 1,
       "strict": 0,
-      "indent": [2, 4],
-      "quotes": [2],
+      "indent": [
+        2,
+        4
+      ],
       "no-unused-vars": 0
     },
-    "env" : {
+    "env": {
       "node": true
     }
   }
