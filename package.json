@@ -74,6 +74,7 @@
     "source-map-support": "^0.3.2",
     "standard": "^5.4.1",
     "style-loader": "^0.12.3",
+    "stylus-loader": "^1.4.2",
     "template-html-loader": "0.0.3",
     "webpack": "^1.10.1",
     "webpack-dev-server": "^1.10.1"

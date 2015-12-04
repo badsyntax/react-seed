@@ -84,6 +84,10 @@ var loaders = [
   {
     test: /\.scss$/,
     loader: sassLoader
+  },
+  {
+    test: /\.styl$/,
+    loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
   }
 ]
 
