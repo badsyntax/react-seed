@@ -1,4 +1,4 @@
-# React seed [![Build Status](https://travis-ci.org/badsyntax/react-seed.svg?branch=master)](https://travis-ci.org/badsyntax/react-seed)
+# React seed [![Circle CI](https://circleci.com/gh/continuata/react-seed.svg?style=svg)](https://circleci.com/gh/continuata/react-seed)
 
 A boilerplate for building React apps with ES6 and webpack.
 
@@ -12,6 +12,7 @@ A boilerplate for building React apps with ES6 and webpack.
 * Basic flux architecture with app actions, stores and example web API usage
 * React router ([feature/react-router](https://github.com/badsyntax/react-seed/tree/feature/react-router))
 * Material UI ([feature/material-ui](https://github.com/badsyntax/react-seed/tree/feature/material-ui))
+* Standard JS for linting
 
 ## Getting started
 
