@@ -1,5 +1,3 @@
-/* global describe, it */
-
 import React from 'react/addons'
 import Footer from '../Footer.jsx'
 import { expect } from 'chai'
