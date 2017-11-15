@@ -2,6 +2,8 @@
 
 A boilerplate for building React apps with ES6 and webpack.
 
+**_This is old. You should use [create-react-app](https://github.com/facebookincubator/create-react-app) instead._**
+
 ## What you get
 
 * React 0.13
