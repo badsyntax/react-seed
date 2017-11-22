@@ -72,7 +72,7 @@ export default class Menu extends Component {
 }
 ```
 
-###Writing tests:
+### Writing tests:
 
 ```js
 // Filename: __tests__/Menu-test.jsx
