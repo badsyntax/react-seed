@@ -1,0 +1,5 @@
+test:
+  override:
+    - npm run test-circleci
+  pre:
+    - npm run pretest-circleci

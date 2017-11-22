@@ -1,24 +1,25 @@
-import styles from './_Body.scss';
-import React from 'react';
-import Menu from '../Menu/Menu';
+import styles from './_Body.scss'
 
-let { PropTypes } = React;
+import React from 'react'
+import Menu from '../Menu/Menu'
+
+let { PropTypes } = React
 
 export default class Body extends React.Component {
 
   static defaultProps = {
     items: []
-  };
+  }
 
   static propTypes = {
     items: PropTypes.array.isRequired
-  };
+  }
 
-  render() {
+  render () {
     return (
       <div className={styles.body}>
         <h1 className={styles.header}>React Seed</h1>
-        <p>This is an example seed app, powered by React, ES6 &amp; webpack.</p>
+        <p>This is an example seed app, powered by React, ES6, Alt &amp; webpack.</p>
         <p>Here is some example data:</p>
         <Menu items={this.props.items} />
         <h2>Getting started</h2>
@@ -29,6 +30,6 @@ export default class Body extends React.Component {
           <li>Change the data rendered above. Look in: <pre>./app/components/App/App.jsx</pre> Understand how data flows from the actions into the stores and then into the Body component.</li>
         </ol>
       </div>
-    );
+    )
   }
 }

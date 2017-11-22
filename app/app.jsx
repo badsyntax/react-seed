@@ -1,13 +1,14 @@
-import './favicon.ico';
-import './index.html';
-import 'babel-core/polyfill';
-import 'normalize.css/normalize.css';
-import './scss/app.scss';
+import './favicon.ico'
+import './index.html'
+import 'babel-core/polyfill'
+import 'normalize.css/normalize.css'
+import './scss/app.scss'
 
-import React from 'react';
-import App from './components/App/App';
+import React from 'react'
+import Router from 'react-router'
 
-React.render(
-  <App />,
-  document.getElementById('app')
-);
+import routes from './routes'
+
+Router.run(routes, function (Handler) {
+  React.render(React.createElement(Handler), document.body)
+})

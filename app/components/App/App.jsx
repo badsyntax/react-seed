@@ -1,40 +1,27 @@
-import styles from './_App.scss';
+import styles from './_App.scss'
 
-import React from 'react';
-import AppActions from '../../actions/AppActions';
-import ItemsStore from '../../stores/ItemsStore';
-import Body from '../Body/Body';
-import Footer from '../Footer/Footer';
-
-function getAppState() {
-  return {
-    items: ItemsStore.getAll()
-  };
-}
+import React from 'react'
+import { RouteHandler } from 'react-router'
+import AppActions from '../../actions/AppActions'
+import ItemsStore from '../../stores/ItemsStore'
+import Footer from '../Footer/Footer'
 
 export default class App extends React.Component {
-
-  state = getAppState()
-
-  componentDidMount() {
-    ItemsStore.addChangeListener(this.onChange);
-    AppActions.getItems();
+  constructor () {
+    super()
+    this.state = {items: []}
+    AppActions.getItems()
+    ItemsStore.listen((data) => {
+      this.setState({items: data.items})
+    })
   }
 
-  componentWillUnmount() {
-    ItemsStore.removeChangeListener(this.onChange);
-  }
-
-  onChange = () => {
-    this.setState(getAppState());
-  }
-
-  render() {
+  render () {
     return (
       <div className={styles.app}>
-        <Body items={this.state.items} />
+        <RouteHandler items={this.state.items} />
         <Footer />
       </div>
-    );
+    )
   }
 }
